@@ -1477,11 +1477,11 @@
                     type: 'skill',
                     icon: 'verified',
                     title: skill.title,
-                    description: 'Skill listed on the About page',
+                    description: '',
                     date: 'Skill',
                     tags: [],
                     pageId: 'about',
-                    searchText: normalizeSearchText(`${skill.title} skill about expertise`),
+                    searchText: normalizeSearchText(`${skill.title} skill expertise`),
                 })),
                 {
                     type: 'page',
@@ -1507,7 +1507,7 @@
                     type: 'page',
                     icon: 'home',
                     title: 'Home',
-                    description: "Return to Zejun's Drive home page and suggested projects.",
+                    description: "Return to Zejun\'s Drive home page and suggested projects.",
                     date: 'Page',
                     tags: [],
                     pageId: 'home',
@@ -1553,7 +1553,7 @@
                         <span class="material-symbols-outlined">${result.icon}</span>
                     </div>
                     <h3>${result.title}</h3>
-                    <p>${result.description}</p>
+                    ${result.description ? `<p>${result.description}</p>` : ''}
                     <div class="project-footer">
                         <span>${result.date}</span>
                         <div class="project-tags-footer">
