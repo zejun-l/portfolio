@@ -39,13 +39,13 @@
             color: #202124;
             white-space: nowrap;
             min-width: fit-content;
-            margin-left: -8px;
+            margin-left: 0;
         }
 
         .top-bar-search {
             flex: 1;
             max-width: 500px;
-            margin-left: 140px;
+            margin-left: 120px;
         }
 
         .top-bar-actions {
@@ -103,13 +103,22 @@
         }
 
         .nav-item.active {
-            color: #1f2937;
-            background-color: #e8f0fe;
+            color: #1e3a8a;
+            background-color: #e3f2fd;
+        }
+
+        .nav-item.active .nav-icon .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: #1e3a8a;
         }
 
         .nav-item:hover:not(.active) {
-            background-color: #f1f3f4;
-            color: #202124;
+            background-color: #e8eef5;
+            color: #0d47a1;
+        }
+
+        .nav-item:hover:not(.active) .nav-icon {
+            color: #0d47a1;
         }
 
         .nav-icon {
@@ -182,23 +191,43 @@
         }
 
         .avatar {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5f6368;
+        }
+
+        body.dark-mode .avatar {
+            color: #e8e8e8;
         }
 
         .theme-toggle {
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 0;
             color: #5f6368;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: color 0.2s;
+            font-size: 32px;
         }
 
         .theme-toggle:hover {
             color: #202124;
+        }
+
+        body.dark-mode .theme-toggle {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            color: #ffffff;
+        }
+
+        .top-bar-actions {
+            gap: 24px;
         }
 
         /* Dark Mode Styles */
@@ -216,7 +245,7 @@
         }
 
         body.dark-mode .top-bar .search-bar {
-            background-color: #2a2a2a;
+            background-color: #383838;
             border-color: #444;
         }
 
@@ -225,18 +254,19 @@
         }
 
         body.dark-mode .top-bar .search-bar input::placeholder {
-            color: #888;
+            color: #b0b0b0;
         }
 
-        body.dark-mode .theme-toggle {
-            color: #e8e8e8;
+        body.dark-mode .project-card h3 {
+            color: #ffffff !important;
         }
 
-        body.dark-mode .theme-toggle:hover {
-            color: #ffffff;
+        body.dark-mode #skillsGrid .project-card h3 {
+            color: #ffffff !important;
         }
 
         body.dark-mode .avatar {
+            color: #e8e8e8;
             opacity: 0.9;
         }
 
@@ -250,17 +280,34 @@
         }
 
         body.dark-mode .nav-item {
-            color: #b0b0b0;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .nav-item .nav-icon {
+            color: #ffffff;
         }
 
         body.dark-mode .nav-item:hover:not(.active) {
-            background-color: #2a2a2a;
-            color: #e8e8e8;
+            background-color: #383838;
+            color: #bbdefb;
+        }
+
+        body.dark-mode .nav-item:hover:not(.active) .nav-icon {
+            color: #bbdefb;
         }
 
         body.dark-mode .nav-item.active {
-            background-color: #1a3a52;
-            color: #90caf9;
+            background-color: #0d47a1;
+            color: #cce0f7;
+        }
+
+        body.dark-mode .nav-item.active .nav-icon {
+            color: #cce0f7;
+        }
+
+        body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: #cce0f7;
         }
 
         body.dark-mode .content-area {
@@ -277,30 +324,16 @@
 
         body.dark-mode .project-count,
         body.dark-mode .empty-state {
-            color: #888;
-        }
-
-        body.dark-mode .project-card {
-            background-color: #1e1e1e;
-            border-color: #333;
-        }
-
-        body.dark-mode .project-card h3 {
-            color: #e8e8e8;
-        }
-
-        body.dark-mode .project-card p {
             color: #b0b0b0;
         }
 
         body.dark-mode .project-footer {
             border-top-color: #2a2a2a;
-            color: #888;
+            color: #b0b0b0;
         }
 
         body.dark-mode .project-icon {
-            background-color: #2a2a2a;
-            color: #888;
+            color: #b0b0b0;
         }
 
         body.dark-mode .status-badge {
@@ -315,6 +348,51 @@
 
         body.dark-mode .status-completed {
             background-color: #2a2a2a !important;
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode .interactive-item {
+            background-color: #1e1e1e !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .interactive-item p {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .interactive-item > div:first-child {
+            background-color: #2a2a2a !important;
+        }
+
+        body.dark-mode .interactive-item .material-symbols-outlined {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode .interactive-item p[style*="9aa0a6"] {
+            color: #a0a0a0 !important;
+        }
+
+        body.dark-mode .interactive-item p[style*="202124"] {
+            color: #e8e8e8 !important;
+        }
+
+        body.dark-mode .interactive-item p[style*="5f6368"] {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode p[style*="5f6368"] {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode p[style*="9aa0a6"] {
+            color: #a0a0a0 !important;
+        }
+
+        body.dark-mode p[style*="202124"] {
+            color: #e8e8e8 !important;
+        }
+
+        body.dark-mode .top-bar .search-bar input::placeholder {
             color: #b0b0b0 !important;
         }
 
@@ -351,22 +429,33 @@
         }
 
         #skillsGrid {
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
         }
 
         #skillsGrid .project-card {
-            padding: 16px 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2px;
         }
 
         #skillsGrid .project-card h3 {
             font-size: 13px;
+            margin: 0;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         #skillsGrid .project-icon {
             width: 32px;
             height: 32px;
-            margin-bottom: 8px;
+            margin-bottom: 0;
+            flex-shrink: 0;
         }
 
         #skillsGrid .project-icon .material-symbols-outlined {
@@ -412,14 +501,9 @@
         }
 
         .project-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 16px;
             color: #5f6368;
         }
 
@@ -505,23 +589,13 @@
 
         <div class="top-bar-actions">
             <button id="themeToggle" class="theme-toggle" title="Toggle dark mode">
-                <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="10" cy="10" r="5"></circle>
-                    <line x1="10" y1="1" x2="10" y2="3"></line>
-                    <line x1="10" y1="17" x2="10" y2="19"></line>
-                    <line x1="1" y1="10" x2="3" y2="10"></line>
-                    <line x1="17" y1="10" x2="19" y2="10"></line>
-                    <line x1="3" y1="3" x2="4.5" y2="4.5"></line>
-                    <line x1="15.5" y1="15.5" x2="17" y2="17"></line>
-                    <line x1="3" y1="17" x2="4.5" y2="15.5"></line>
-                    <line x1="15.5" y1="4.5" x2="17" y2="3"></line>
-                </svg>
-                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: none;">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
+                <span class="sun-icon material-symbols-outlined">light_mode</span>
+                <span class="moon-icon material-symbols-outlined" style="display: none;">dark_mode</span>
             </button>
 
-            <div class="avatar">👤</div>
+            <div class="avatar">
+                <span class="material-symbols-outlined" style="font-size: 32px;">account_circle</span>
+            </div>
         </div>
     </div>
 
@@ -561,7 +635,7 @@
                     <!-- About Page -->
                     <div id="page-about" class="page" style="display: none;">
                         <h1>About me</h1>
-                        <div style="max-width: 800px; margin-top: 32px;">
+                        <div style="margin-top: 32px;">
                             <p style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8;">
                                 Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)
                             </p>
@@ -578,7 +652,7 @@
                             <button id="backBtn" style="background: none; border: none; cursor: pointer; padding: 8px; color: #5f6368; font-size: 20px;">←</button>
                             <h1 id="projectDetailTitle" style="margin: 0; flex: 1;"></h1>
                         </div>
-                        <div style="max-width: 800px;">
+                        <div>
                             <div style="background-color: #f8f9fa; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
                                 <p id="projectDetailDescription" style="font-size: 16px; color: #5f6368; line-height: 1.6; margin: 0 0 16px 0;"></p>
                                 <div style="display: flex; gap: 16px; align-items: center;">
@@ -599,10 +673,21 @@
                         </div>
                     </div>
 
+                    <!-- Resume Page -->
+                    <div id="page-resume" class="page" style="display: none;">
+                        <h1>Resume</h1>
+                        <div style="margin-top: 32px;">
+                            <p style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8;">
+                                Download my resume to learn more about my experience, education, and skills.
+                            </p>
+                            <a href="#" style="display: inline-block; background-color: #1e88e5; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500;">Download Resume (PDF)</a>
+                        </div>
+                    </div>
+
                     <!-- Contact Page -->
                     <div id="page-contact" class="page" style="display: none;">
                         <h1>Contact</h1>
-                        <div style="max-width: 600px; margin-top: 32px;">
+                        <div style="margin-top: 32px;">
                             <p style="font-size: 16px; color: #5f6368; margin: 0 0 32px 0; line-height: 1.8;">
                                 I'd love to hear from you. Whether you have a project in mind, want to collaborate, or just want to chat, 
                                 feel free to reach out.
@@ -611,7 +696,7 @@
                                 <!-- Email -->
                                 <div class="interactive-item" style="display: flex; align-items: center; gap: 16px; padding: 12px 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px; cursor: pointer;">
                                     <div style="width: 48px; height: 48px; background-color: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <span class="material-symbols-outlined" style="font-size: 28px; font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 28; color: #5f6368;">mail</span>
+                                        <span class="material-symbols-outlined" style="font-size: 28px; color: #5f6368;">mail</span>
                                     </div>
                                     <div style="flex: 1; min-width: 0;">
                                         <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 4px 0; text-transform: uppercase; font-weight: 500;">Email</p>
@@ -622,7 +707,7 @@
                                 <!-- LinkedIn -->
                                 <div class="interactive-item" style="display: flex; align-items: center; gap: 16px; padding: 12px 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px; cursor: pointer;">
                                     <div style="width: 48px; height: 48px; background-color: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <span class="material-symbols-outlined" style="font-size: 28px; font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 28; color: #5f6368;">work</span>
+                                        <span class="material-symbols-outlined" style="font-size: 28px; color: #5f6368;">work</span>
                                     </div>
                                     <div style="flex: 1; min-width: 0;">
                                         <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 4px 0; text-transform: uppercase; font-weight: 500;">LinkedIn</p>
@@ -633,7 +718,7 @@
                                 <!-- GitHub -->
                                 <div class="interactive-item" style="display: flex; align-items: center; gap: 16px; padding: 12px 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px; cursor: pointer;">
                                     <div style="width: 48px; height: 48px; background-color: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <span class="material-symbols-outlined" style="font-size: 28px; font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 28; color: #5f6368;">code_blocks</span>
+                                        <span class="material-symbols-outlined" style="font-size: 28px; color: #5f6368;">code_blocks</span>
                                     </div>
                                     <div style="flex: 1; min-width: 0;">
                                         <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 4px 0; text-transform: uppercase; font-weight: 500;">GitHub</p>
@@ -653,6 +738,7 @@
             { icon: 'home', label: 'Home', id: 'home' },
             { icon: 'folder', label: 'Projects', id: 'projects' },
             { icon: 'user', label: 'About me', id: 'about' },
+            { icon: 'description', label: 'Resume', id: 'resume' },
             { icon: 'mail', label: 'Contact', id: 'contact' },
         ];
 
@@ -706,6 +792,7 @@
                 home: '<span class="material-symbols-outlined">home</span>',
                 folder: '<span class="material-symbols-outlined">folder</span>',
                 user: '<span class="material-symbols-outlined">person</span>',
+                description: '<span class="material-symbols-outlined">description</span>',
                 mail: '<span class="material-symbols-outlined">mail</span>',
             };
             return icons[iconName] || '';
@@ -845,7 +932,7 @@
             grid.innerHTML = skills.map(skill => `
                 <div class="project-card">
                     <div class="project-icon">
-                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">verified</span>
                     </div>
                     <h3>${skill.title}</h3>
                 </div>
