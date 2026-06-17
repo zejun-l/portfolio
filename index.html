@@ -469,6 +469,8 @@
             padding: 20px;
             cursor: pointer;
             transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card p {
@@ -476,6 +478,7 @@
             color: #5f6368;
             margin: 0 0 16px 0;
             line-height: 1.5;
+            flex: 1;
         }
 
         .project-card:hover {
@@ -524,6 +527,63 @@
             font-weight: 600;
             color: #202124;
             margin: 0 0 8px 0;
+        }
+
+        .project-tags-footer {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background-color: #e8eef5;
+            color: #1565c0;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        .project-tag.tag-uxd {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .project-tag.tag-uxr {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .project-tag.tag-uiux {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .project-tag.tag-article {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        body.dark-mode .project-tag.tag-uxd {
+            background-color: #1a3a52;
+            color: #90caf9;
+        }
+
+        body.dark-mode .project-tag.tag-uxr {
+            background-color: #1b5e20;
+            color: #81c784;
+        }
+
+        body.dark-mode .project-tag.tag-uiux {
+            background-color: #4a148c;
+            color: #ce93d8;
+        }
+
+        body.dark-mode .project-tag.tag-article {
+            background-color: #e65100;
+            color: #ffe0b2;
         }
 
         .project-footer {
@@ -752,6 +812,7 @@
                 description: 'Comprehensive component library and design documentation',
                 date: 'Mar 2024',
                 status: 'Active',
+                tags: ['UXD', 'UI/UX'],
             },
             {
                 id: 2,
@@ -759,6 +820,7 @@
                 description: 'UX improvements and modern visual refresh',
                 date: 'Feb 2024',
                 status: 'Completed',
+                tags: ['UXD', 'UXR', 'UI/UX'],
             },
             {
                 id: 3,
@@ -766,6 +828,7 @@
                 description: 'Real-time data visualization and reporting platform',
                 date: 'Jan 2024',
                 status: 'Completed',
+                tags: ['UI/UX'],
             },
             {
                 id: 4,
@@ -773,6 +836,7 @@
                 description: 'Updated brand identity with new color palette',
                 date: 'Dec 2023',
                 status: 'Completed',
+                tags: ['Article'],
             },
         ];
 
@@ -869,7 +933,9 @@
                         <p>${project.description}</p>
                         <div class="project-footer">
                             <span>${project.date}</span>
-                            <span class="status-badge ${project.status === 'Active' ? 'status-active' : 'status-completed'}">${project.status}</span>
+                            <div class="project-tags-footer">
+                                ${project.tags && project.tags.length > 0 ? project.tags.map(tag => `<span class="project-tag tag-${tag.toLowerCase().replace(/\//g, '')}">${tag}</span>`).join('') : ''}
+                            </div>
                         </div>
                     </div>
                 `).join('');
@@ -913,7 +979,9 @@
                     <p>${project.description}</p>
                     <div class="project-footer">
                         <span>${project.date}</span>
-                        <span class="status-badge ${project.status === 'Active' ? 'status-active' : 'status-completed'}">${project.status}</span>
+                        <div class="project-tags-footer">
+                            ${project.tags && project.tags.length > 0 ? project.tags.map(tag => `<span class="project-tag tag-${tag.toLowerCase().replace(/\//g, '')}">${tag}</span>`).join('') : ''}
+                        </div>
                     </div>
                 </div>
             `).join('');
