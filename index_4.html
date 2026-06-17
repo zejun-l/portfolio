@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #ffffff;
+            border-bottom: 1px solid #dadce0;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            height: 64px;
+        }
+
+        .top-bar-branding {
+            font-size: 22px;
+            font-weight: 600;
+            color: #202124;
+            white-space: nowrap;
+            min-width: fit-content;
+            margin-left: 0;
+        }
+
+        .top-bar-search {
+            flex: 1;
+            max-width: 500px;
+            margin-left: 120px;
+        }
+
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .container {
+            display: flex;
+            min-height: calc(100vh - 65px);
+        }
+
+        .sidebar {
+            width: 240px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dadce0;
+            padding: 24px 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            height: calc(100vh - 65px);
+        }
+
+        .sidebar-content {
+            padding-left: 24px;
+            padding-right: 16px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #202124;
+            margin: 0 0 32px 0;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #5f6368;
+            background-color: transparent;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item.active {
+            color: #1e3a8a;
+            background-color: #e3f2fd;
+        }
+
+        .nav-item.active .nav-icon .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: #1e3a8a;
+        }
+
+        .nav-item:hover:not(.active) {
+            background-color: #e8eef5;
+            color: #0d47a1;
+        }
+
+        .nav-item:hover:not(.active) .nav-icon {
+            color: #0d47a1;
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .nav-icon .material-symbols-outlined {
+            font-size: 24px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow: hidden;
+            height: calc(100vh - 65px);
+        }
+
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #dadce0;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: #5f6368;
+            display: none;
+            align-items: center;
+        }
+
+        .search-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background-color: transparent;
+            flex: 1;
+            color: #202124;
+        }
+
+        .search-bar input::placeholder {
+            color: #9aa0a6;
+        }
+
+        .avatar {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5f6368;
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+            min-height: 26px;
+            padding: 0;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .avatar svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .avatar:hover {
+            color: #202124;
+            background-color: transparent;
+        }
+
+        body.dark-mode .avatar {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .avatar:hover {
+            color: #ffffff;
+            background-color: transparent;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: #5f6368;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+            font-size: 26px;
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+            min-height: 26px;
+        }
+
+        .theme-toggle svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .theme-toggle .moon-icon {
+            fill: currentColor;
+            stroke: none;
+        }
+
+        .theme-toggle:hover {
+            color: #202124;
+            background-color: transparent;
+        }
+
+        body.dark-mode .theme-toggle {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            color: #ffffff;
+            background-color: transparent;
+        }
+
+        .social-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: #5f6368;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+            font-size: 26px;
+            text-decoration: none;
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+            min-height: 26px;
+        }
+
+        .social-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .social-icon:hover {
+            color: #202124;
+            background-color: transparent;
+        }
+
+        body.dark-mode .social-icon {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .social-icon:hover {
+            color: #ffffff;
+            background-color: transparent;
+        }
+
+        .top-bar-actions {
+            gap: 24px;
+        }
+
+        .top-bar-actions a:nth-child(3) {
+            margin-right: 24px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+        }
+
+        body.dark-mode .top-bar {
+            background-color: #1e1e1e;
+            border-bottom-color: #333;
+        }
+
+        body.dark-mode .top-bar-branding {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .top-bar .search-bar {
+            background-color: #383838;
+            border-color: #444;
+        }
+
+        body.dark-mode .top-bar .search-bar input {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .top-bar .search-bar input::placeholder {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .project-card h3 {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode #skillsGrid .project-card h3 {
+            color: #ffffff !important;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+        }
+
+        body.dark-mode .top-bar {
+            background-color: #1e1e1e;
+            border-bottom-color: #333;
+        }
+
+        body.dark-mode .top-bar-branding {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .top-bar .search-bar {
+            background-color: #383838;
+            border-color: #444;
+        }
+
+        body.dark-mode .top-bar .search-bar input {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .top-bar .search-bar input::placeholder {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .project-card h3 {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode #skillsGrid .project-card {
+            background-color: #2a2a2a;
+            border-color: #3a3a3a;
+        }
+
+        body.dark-mode #skillsGrid .project-card h3 {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode #skillsGrid .project-icon {
+            color: #b0b0b0;
+        }
+
+        #page-about h3 {
+            color: #202124;
+        }
+
+        body.dark-mode #page-about h3 {
+            color: #ffffff !important;
+        }
+
+        #page-about > div > p {
+            color: #5f6368 !important;
+        }
+
+        body.dark-mode #page-about > div > p {
+            color: #b0b0b0 !important;
+        }
+
+        #backBtn {
+            color: #5f6368;
+        }
+
+        body.dark-mode #backBtn {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode #backBtn:hover {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border-color: #999999;
+            background-color: #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .interactive-item:hover {
+            background-color: #2a2a2a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-color: #999999;
+        }
+
+        body.dark-mode #skillsGrid .project-card:hover {
+            background-color: #282828;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        #page-project-detail h3 {
+            color: #202124;
+        }
+
+        body.dark-mode #page-project-detail h3 {
+            color: #ffffff !important;
+        }
+
+        #page-project-detail p {
+            color: #5f6368;
+        }
+
+        body.dark-mode #page-project-detail p {
+            color: #b0b0b0 !important;
+        }
+
+        #page-project-detail > div > div:first-of-type > div > div {
+            background-color: #ffffff;
+            border-color: #dadce0;
+        }
+
+        body.dark-mode #page-project-detail > div > div:first-of-type > div > div {
+            background-color: #1e1e1e !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode #page-project-detail > div > div:first-of-type > div > div p {
+            color: #b0b0b0 !important;
+        }
+
+        #projectPhoto {
+            background-color: #e8eef5;
+        }
+
+        body.dark-mode #projectPhoto {
+            background-color: #2a2a2a !important;
+            color: #888888 !important;
+        }
+
+        body.dark-mode .avatar {
+            color: #e8e8e8;
+            opacity: 0.9;
+        }
+
+        body.dark-mode .sidebar {
+            background-color: #1e1e1e;
+            border-right-color: #333;
+        }
+
+        body.dark-mode .sidebar h2 {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .nav-item {
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .nav-item .nav-icon {
+            color: #ffffff;
+        }
+
+        body.dark-mode .nav-item:hover:not(.active) {
+            background-color: #383838;
+            color: #bbdefb;
+        }
+
+        body.dark-mode .nav-item:hover:not(.active) .nav-icon {
+            color: #bbdefb;
+        }
+
+        body.dark-mode .nav-item.active {
+            background-color: #0d47a1;
+            color: #cce0f7;
+        }
+
+        body.dark-mode .nav-item.active .nav-icon {
+            color: #cce0f7;
+        }
+
+        body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: #cce0f7;
+        }
+
+        body.dark-mode .content-area {
+            background-color: #121212;
+        }
+
+        body.dark-mode .content-area h1 {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .content-area p {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .project-count,
+        body.dark-mode .empty-state {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .project-footer {
+            border-top-color: #2a2a2a;
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .project-icon {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode div[style*="border: 1px solid #dadce0"] {
+            background-color: #1e1e1e !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .status-active {
+            background-color: #1a3a52 !important;
+            color: #90caf9 !important;
+        }
+
+        body.dark-mode .status-completed {
+            background-color: #2a2a2a !important;
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode .interactive-item {
+            background-color: #1e1e1e !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .interactive-item p {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .interactive-item > div:first-child {
+            background-color: #2a2a2a !important;
+        }
+
+        body.dark-mode .interactive-item .material-symbols-outlined {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode .interactive-item p[style*="9aa0a6"] {
+            color: #a0a0a0 !important;
+        }
+
+        body.dark-mode .interactive-item p[style*="202124"] {
+            color: #e8e8e8 !important;
+        }
+
+        body.dark-mode .interactive-item p[style*="5f6368"] {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode p[style*="5f6368"] {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode p[style*="9aa0a6"] {
+            color: #a0a0a0 !important;
+        }
+
+        body.dark-mode p[style*="202124"] {
+            color: #e8e8e8 !important;
+        }
+
+        body.dark-mode .top-bar .search-bar input::placeholder {
+            color: #b0b0b0 !important;
+        }
+
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 32px 24px;
+            background-color: #ffffff;
+            height: calc(100vh - 65px);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+        }
+
+        .content-area h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #202124;
+            margin: 0 0 8px 0;
+        }
+
+        .project-count {
+            font-size: 14px;
+            color: #5f6368;
+            margin: 0 0 32px 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        #skillsGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        #skillsGrid .project-card {
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2px;
+        }
+
+        #skillsGrid .project-card h3 {
+            font-size: 13px;
+            margin: 0;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #skillsGrid .project-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+        #skillsGrid .project-icon .material-symbols-outlined {
+            font-size: 20px;
+        }
+
+        .project-card {
+            background-color: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card p {
+            font-size: 13px;
+            color: #5f6368;
+            margin: 0 0 16px 0;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: #888888;
+            background-color: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .project-card {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+
+        body.dark-mode .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border-color: #999999;
+            background-color: #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-item {
+            transition: all 0.2s;
+        }
+
+        .interactive-item:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        body.dark-mode .interactive-item:hover {
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-icon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            color: #5f6368;
+        }
+
+        .project-icon .material-symbols-outlined {
+            font-size: 28px;
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 28;
+        }
+
+        .project-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #202124;
+            margin: 0 0 8px 0;
+        }
+
+        .project-tags-footer {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background-color: #e8eef5;
+            color: #1565c0;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        .project-tag.tag-uxd {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .project-tag.tag-uxr {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .project-tag.tag-uiux {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .project-tag.tag-article {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        body.dark-mode .project-tag.tag-uxd {
+            background-color: #1a3a52;
+            color: #90caf9;
+        }
+
+        body.dark-mode .project-tag.tag-uxr {
+            background-color: #1b5e20;
+            color: #81c784;
+        }
+
+        body.dark-mode .project-tag.tag-uiux {
+            background-color: #4a148c;
+            color: #ce93d8;
+        }
+
+        body.dark-mode .project-tag.tag-article {
+            background-color: #e65100;
+            color: #ffe0b2;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #f1f3f4;
+            font-size: 12px;
+            color: #9aa0a6;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .status-active {
+            background-color: #e3f2fd;
+            color: #1f2937;
+        }
+
+        .status-completed {
+            background-color: #f5f5f5;
+            color: #5f6368;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: #9aa0a6;
+            font-size: 14px;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <button class="menu-btn" id="menuBtn">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="3" y1="6" x2="17" y2="6"></line>
+                <line x1="3" y1="10" x2="17" y2="10"></line>
+                <line x1="3" y1="14" x2="17" y2="14"></line>
+            </svg>
+        </button>
+
+        <div class="top-bar-branding">Zejun Li</div>
+        
+        <div class="top-bar-search search-bar">
+            <input type="text" id="searchInput" placeholder="Search projects...">
+        </div>
+
+        <div class="top-bar-actions">
+            <button class="social-icon" title="Email">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/>
+                </svg>
+            </button>
+
+            <a href="https://www.linkedin.com/in/zejli/" target="_blank" class="social-icon" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.5 2H3.5C2.67 2 2 2.67 2 3.5V20.5C2 21.33 2.67 22 3.5 22H20.5C21.33 22 22 21.33 22 20.5V3.5C22 2.67 21.33 2 20.5 2ZM8 19H5V9H8V19ZM6.5 7.5C5.5 7.5 4.7 6.7 4.7 5.8C4.7 4.9 5.5 4.1 6.5 4.1C7.5 4.1 8.3 4.9 8.3 5.8C8.3 6.7 7.5 7.5 6.5 7.5ZM19 19H16V13.5C16 12.5 15.5 11.7 14.5 11.7C13.7 11.7 13.2 12.2 13 12.7C12.9 12.9 12.9 13.2 12.9 13.5V19H9.9V9H12.9V10.2C13.3 9.5 14.3 8.5 16 8.5C18.5 8.5 19 10.2 19 12.5V19Z"/>
+                </svg>
+            </a>
+
+            <a href="https://github.com/zejun-l" target="_blank" class="social-icon" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+
+            <button id="themeToggle" class="theme-toggle" title="Toggle dark mode">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+                </svg>
+            </button>
+
+            <button class="avatar" title="Profile" onclick="showPage('page-about')">
+                <img src="https://zejun-l.github.io/portfolio/profile%20photo.jpg" alt="Profile">
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <nav class="nav" id="nav">
+                    <!-- Navigation items will be inserted here -->
+                </nav>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-area">
+                <div class="content-wrapper">
+                    <!-- Home Page -->
+                    <div id="page-home" class="page" style="display: block;">
+                        <h1>Welcome to Zejun's Drive</h1>
+                        <p style="font-size: 13px; color: #9aa0a6; margin: 0 0 32px 0;">Suggested projects</p>
+                        <div class="projects-grid" id="featuredGrid">
+                            <!-- Featured projects will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Projects Page -->
+                    <div id="page-projects" class="page" style="display: none;">
+                        <h1>Projects</h1>
+                        <p style="font-size: 13px; color: #9aa0a6; margin: 0 0 32px 0;" id="projectCount">4 projects found</p>
+                        <div class="projects-grid" id="projectsGrid">
+                            <!-- Projects will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="emptyState" style="display: none;">
+                            No projects found matching "<span id="searchTerm"></span>"
+                        </div>
+                    </div>
+
+                    <!-- About Page -->
+                    <div id="page-about" class="page" style="display: none;">
+                        <h1>About me</h1>
+                        <div style="margin-top: 32px;">
+                            <p style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8;">
+                                Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)
+                            </p>
+                            <h3 style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">Skills</h3>
+                            <div class="projects-grid" id="skillsGrid" style="margin-top: 16px;">
+                                <!-- Skills will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Detail Page -->
+                    <div id="page-project-detail" class="page" style="display: none;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
+                            <button id="backBtn" style="background: none; border: none; cursor: pointer; padding: 8px; color: #5f6368; font-size: 20px; transition: color 0.2s; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined">arrow_back</span></button>
+                            <h1 id="projectDetailTitle" style="margin: 0; flex: 1;"></h1>
+                        </div>
+                        <div>
+                            <!-- Photo Placeholder -->
+                            <div id="projectPhoto" style="width: 100%; height: 300px; background-color: #e8eef5; border-radius: 12px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: #9aa0a6; font-size: 14px;">
+                                Project photo
+                            </div>
+
+                            <!-- Project Meta Information -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px;">
+                                <div style="padding: 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px;">
+                                    <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 8px 0; text-transform: uppercase; font-weight: 500;">Role</p>
+                                    <p id="projectRole" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                </div>
+                                <div style="padding: 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px;">
+                                    <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 8px 0; text-transform: uppercase; font-weight: 500;">Team Size</p>
+                                    <p id="projectTeamSize" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                </div>
+                                <div style="padding: 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px;">
+                                    <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 8px 0; text-transform: uppercase; font-weight: 500;">Timeline</p>
+                                    <p id="projectTimeline" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                </div>
+                            </div>
+
+                            <!-- About Section -->
+                            <h3 style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">About</h3>
+                            <p id="projectDetailDescription" style="font-size: 16px; color: #5f6368; line-height: 1.8; margin: 0;"></p>
+                        </div>
+                    </div>
+
+                    <!-- Resume Page -->
+                    <div id="page-resume" class="page" style="display: none;">
+                        <h1>Resume</h1>
+                        <div style="margin-top: 32px;">
+                            <div style="border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; background-color: #f8f9fa;">
+                                <iframe 
+                                    src="https://zejun-l.github.io/portfolio/Li,%20Zejun%20Resume.pdf" 
+                                    style="width: 100%; height: 800px; border: none;"
+                                    title="Zejun Resume PDF">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const navigationItems = [
+            { icon: 'home', label: 'Home', id: 'home' },
+            { icon: 'folder', label: 'Projects', id: 'projects' },
+            { icon: 'user', label: 'About', id: 'about' },
+            { icon: 'description', label: 'Resume', id: 'resume' },
+        ];
+
+        const projects = [
+            {
+                id: 1,
+                title: 'U-M GPT',
+                description: 'Redesigning Michigan\'s AI chatbot',
+                date: 'Dec 2025',
+                status: 'Completed',
+                tags: ['UXD', 'UI/UX'],
+                role: 'Product Designer',
+                teamSize: '1',
+                timeline: 'Aug 2025 - Dec 2025',
+                fullDescription: 'This project centered on a redesign of the interface of U-M GPT, the University of Michigan\'s custom generative AI platform, including the implementation of a new feature to improve the user experience of students. Completed within a semester-long intro to UX course, this project progressed through the full UX design process, starting with the client brief and initial sketches to low- and high-fidelity wireframes, all underscored by an emphasis on strong storytelling and thoughtful design choices.',
+            },
+            {
+                id: 2,
+                title: 'MotiMuse',
+                description: 'Designing a mobile app to encourage music practice',
+                date: 'Nov 2025',
+                status: 'Completed',
+                tags: ['UXR', 'UXD', 'UI/UX'],
+                role: 'Product Manager & UX Designer',
+                teamSize: '5',
+                timeline: 'Oct 2025 - Nov 2025',
+                fullDescription: 'MotiMuse is a motivational music practice tool designed by a cross-functional team of five over the course of six weeks for the U-M Ross Business+Tech Innovation Jam. Our design won 1st place in the EdTech track and 2nd overall out of 72 teams, receiving a total of $4,500 in seed funding.',
+            },
+            {
+                id: 3,
+                title: 'Stardew Valley Game Remake',
+                description: 'Improving the co-op player experience',
+                date: 'Mar 2025',
+                status: 'Completed',
+                tags: ['UXR', 'UXD'],
+                role: 'UX Researcher & Designer',
+                teamSize: '4',
+                timeline: 'Jan 2025 - Mar 2025',
+                fullDescription: 'This project was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. Our team identified areas for improvement and proposed design changes for a hypothetical remake/update of the game Stardew Valley based on insights from market research and user interviews.',
+            },
+            {
+                id: 4,
+                title: 'Counter-Strike 2 Game UX Study',
+                description: 'Analyzing CS2 using UX heuristics',
+                date: 'Mar 2025',
+                status: 'Completed',
+                tags: ['Article'],
+                role: 'Author',
+                teamSize: 'March 16, 2025',
+                fullDescription: 'This case study article was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. I explored the effectiveness of Counter-Strike 2\'s UX and provided considerations for the developers if a game update were to be made.',
+            },
+        ];
+
+        const skills = [
+            { id: 1, title: 'UI/UX Design' },
+            { id: 2, title: 'Web Design' },
+            { id: 3, title: 'Prototyping' },
+            { id: 4, title: 'Front-end Development' },
+            { id: 5, title: 'React' },
+            { id: 6, title: 'HTML/CSS' },
+            { id: 7, title: 'JavaScript' },
+            { id: 8, title: 'Figma' },
+            { id: 9, title: 'Adobe XD' },
+            { id: 10, title: 'User Research' },
+            { id: 11, title: 'Wireframing' },
+        ];
+
+        function getIcon(iconName) {
+            const icons = {
+                home: '<span class="material-symbols-outlined">home</span>',
+                folder: '<span class="material-symbols-outlined">folder</span>',
+                user: '<span class="material-symbols-outlined">person</span>',
+                info: '<span class="material-symbols-outlined">info</span>',
+                description: '<span class="material-symbols-outlined">description</span>',
+                mail: '<span class="material-symbols-outlined">mail</span>',
+            };
+            return icons[iconName] || '';
+        }
+
+        function renderNavigation() {
+            const nav = document.getElementById('nav');
+            nav.innerHTML = navigationItems.map(item => `
+                <div class="nav-item ${item.id === 'home' ? 'active' : ''}" data-id="${item.id}">
+                    <div class="nav-icon">${getIcon(item.icon)}</div>
+                    <span>${item.label}</span>
+                </div>
+            `).join('');
+
+            // Add click listeners to nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const pageId = item.dataset.id;
+                    showPage(pageId);
+                });
+            });
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+
+            // Show selected page
+            document.getElementById(`page-${pageId}`).style.display = 'block';
+
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.id === pageId) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Handle page-specific logic
+            if (pageId === 'home') {
+                renderFeaturedProjects();
+            } else if (pageId === 'projects') {
+                renderProjects(projects);
+            } else if (pageId === 'about') {
+                renderSkills();
+            }
+        }
+
+        function renderProjects(filtered = projects) {
+            const grid = document.getElementById('projectsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const projectCount = document.getElementById('projectCount');
+
+            projectCount.textContent = `${filtered.length} projects found`;
+
+            if (filtered.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                document.getElementById('searchTerm').textContent = document.getElementById('searchInput').value;
+            } else {
+                grid.style.display = 'grid';
+                emptyState.style.display = 'none';
+                grid.innerHTML = filtered.map(project => `
+                    <div class="project-card" data-project-id="${project.id}" style="cursor: pointer;">
+                        <div class="project-icon">
+                            <span class="material-symbols-outlined">folder</span>
+                        </div>
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="project-footer">
+                            <span>${project.date}</span>
+                            <div class="project-tags-footer">
+                                ${project.tags && project.tags.length > 0 ? project.tags.map(tag => `<span class="project-tag tag-${tag.toLowerCase().replace(/\//g, '')}">${tag}</span>`).join('') : ''}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add click handlers
+                grid.querySelectorAll('.project-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const projectId = parseInt(card.dataset.projectId);
+                        const project = projects.find(p => p.id === projectId);
+                        if (project) {
+                            showProjectDetail(project);
+                        }
+                    });
+                });
+            }
+        }
+
+        function showProjectDetail(project) {
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+            document.getElementById('page-project-detail').style.display = 'block';
+            
+            document.getElementById('projectDetailTitle').textContent = project.title;
+            document.getElementById('projectRole').textContent = project.role || 'N/A';
+            document.getElementById('projectTeamSize').textContent = project.teamSize || 'N/A';
+            document.getElementById('projectTimeline').textContent = project.timeline || 'N/A';
+            document.getElementById('projectDetailDescription').textContent = project.fullDescription || project.description;
+        }
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+            showPage('projects');
+        });
+
+        function renderFeaturedProjects() {
+            const featured = projects.slice(0, 3);
+            const grid = document.getElementById('featuredGrid');
+            grid.innerHTML = featured.map(project => `
+                <div class="project-card" data-project-id="${project.id}" style="cursor: pointer;">
+                    <div class="project-icon">
+                        <span class="material-symbols-outlined">folder</span>
+                    </div>
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <div class="project-footer">
+                        <span>${project.date}</span>
+                        <div class="project-tags-footer">
+                            ${project.tags && project.tags.length > 0 ? project.tags.map(tag => `<span class="project-tag tag-${tag.toLowerCase().replace(/\//g, '')}">${tag}</span>`).join('') : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            grid.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const projectId = parseInt(card.dataset.projectId);
+                    const project = projects.find(p => p.id === projectId);
+                    if (project) {
+                        showProjectDetail(project);
+                    }
+                });
+            });
+        }
+
+        function renderSkills() {
+            const grid = document.getElementById('skillsGrid');
+            grid.innerHTML = skills.map(skill => `
+                <div class="project-card">
+                    <div class="project-icon">
+                        <span class="material-symbols-outlined">verified</span>
+                    </div>
+                    <h3>${skill.title}</h3>
+                </div>
+            `).join('');
+        }
+
+        let sidebarOpen = true;
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            sidebarOpen = !sidebarOpen;
+            document.getElementById('sidebar').classList.toggle('closed');
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = themeToggle.querySelector('.sun-icon');
+        const moonIcon = themeToggle.querySelector('.moon-icon');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.trim() === '') {
+                // If search is empty, stay on current page
+                if (document.getElementById('page-home').style.display === 'block') {
+                    renderFeaturedProjects();
+                } else if (document.getElementById('page-projects').style.display === 'block') {
+                    renderProjects(projects);
+                }
+            } else {
+                // When searching, go to projects page and filter
+                showPage('projects');
+                const filtered = projects.filter(project =>
+                    project.title.toLowerCase().includes(query) ||
+                    project.description.toLowerCase().includes(query)
+                );
+                renderProjects(filtered);
+            }
+        });
+
+        renderNavigation();
+        showPage('home');
+    </script>
+</body>
+</html>
