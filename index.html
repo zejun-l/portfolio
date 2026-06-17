@@ -1068,6 +1068,26 @@
             background-color: var(--content-surface);
         }
 
+
+        .site-footer {
+            margin-top: 56px;
+            padding: 20px 0 4px 0;
+            border-top: 1px solid var(--surface-border);
+            color: #5f6368;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .site-footer p {
+            margin: 0;
+            max-width: 760px;
+        }
+
+        body.dark-mode .site-footer {
+            color: #9aa0a6;
+            border-top-color: var(--surface-border);
+        }
+
         .search-bar {
             min-height: 40px;
             height: 40px;
@@ -1105,6 +1125,142 @@
             color: #bdc1c6;
         }
 
+        /* Google Drive-style email popover */
+        .email-popover-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .email-popover {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            z-index: 200;
+            width: 292px;
+            padding: 16px;
+            background-color: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.3);
+            color: #202124;
+        }
+
+        .email-popover[hidden] {
+            display: none;
+        }
+
+        .email-popover-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .email-popover-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background-color: var(--drive-blue-container);
+            color: var(--drive-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .email-popover-icon .material-symbols-outlined {
+            font-size: 22px;
+        }
+
+        .email-popover-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #202124;
+            margin: 0 0 4px 0;
+        }
+
+        .email-popover-address {
+            font-size: 13px;
+            color: #5f6368;
+            margin: 0;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .email-popover-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .email-popover-action {
+            border: 1px solid #dadce0;
+            border-radius: 18px;
+            background-color: transparent;
+            color: var(--drive-blue);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            min-height: 36px;
+            padding: 0 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .email-popover-action .material-symbols-outlined {
+            font-size: 18px;
+        }
+
+        .email-popover-action:hover {
+            background-color: rgba(11, 87, 208, 0.08);
+            border-color: #c4c7c5;
+        }
+
+        .email-popover-action:active {
+            background-color: rgba(11, 87, 208, 0.12);
+        }
+
+        .email-popover-action:focus-visible {
+            outline: 2px solid var(--material-focus);
+            outline-offset: 2px;
+        }
+
+        body.dark-mode .email-popover {
+            background-color: #1e1e1e;
+            border-color: #333333;
+            box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.5);
+            color: #e8eaed;
+        }
+
+        body.dark-mode .email-popover-icon {
+            background-color: var(--drive-blue-dark-container);
+            color: var(--drive-blue-dark);
+        }
+
+        body.dark-mode .email-popover-title {
+            color: #e8eaed;
+        }
+
+        body.dark-mode .email-popover-address {
+            color: #bdc1c6;
+        }
+
+        body.dark-mode .email-popover-action {
+            border-color: #5f6368;
+            color: var(--drive-blue-dark);
+        }
+
+        body.dark-mode .email-popover-action:hover {
+            background-color: rgba(138, 180, 248, 0.08);
+            border-color: #9aa0a6;
+        }
+
     </style>
 </head>
 <body>
@@ -1118,11 +1274,34 @@
         </div>
 
         <div class="top-bar-actions">
-            <a id="emailLink" href="mailto:zejunli@umich.edu" class="social-icon" title="Email">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/>
-                </svg>
-            </a>
+            <div class="email-popover-wrapper">
+                <button id="emailButton" class="social-icon" title="Email" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="emailPopover">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/>
+                    </svg>
+                </button>
+                <div id="emailPopover" class="email-popover" role="dialog" aria-label="Email contact" hidden>
+                    <div class="email-popover-header">
+                        <div class="email-popover-icon" aria-hidden="true">
+                            <span class="material-symbols-outlined">mail</span>
+                        </div>
+                        <div>
+                            <p class="email-popover-title">Email</p>
+                            <p id="emailPopoverAddress" class="email-popover-address">zejunli@umich.edu</p>
+                        </div>
+                    </div>
+                    <div class="email-popover-actions">
+                        <button id="copyEmailButton" class="email-popover-action" type="button">
+                            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+                            <span id="copyEmailText">Copy</span>
+                        </button>
+                        <a id="openEmailLink" class="email-popover-action" href="mailto:zejunli@umich.edu">
+                            <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+                            <span>Open email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
             <a id="linkedinLink" href="https://www.linkedin.com/in/zejli/" target="_blank" class="social-icon" title="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1248,6 +1427,11 @@
                         </div>
                     </div>
 
+
+                    <footer class="site-footer" aria-label="Portfolio disclaimer">
+                        <p id="siteFooterNote">This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.</p>
+                    </footer>
+
                 </div>
             </div>
         </div>
@@ -1291,11 +1475,9 @@
             setText('aboutText', profile.aboutText || '');
             setText('skillsTitle', profile.skillsTitle || 'Skills');
             setText('resumeTitle', profile.resumeTitle || 'Resume');
+            setText('siteFooterNote', profile.footerNote || 'This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.');
 
-            const emailLink = document.getElementById('emailLink');
-            if (emailLink && profile.email) {
-                emailLink.href = `mailto:${profile.email}`;
-            }
+            updateEmailContact(profile.email || 'zejunli@umich.edu');
 
             const linkedinLink = document.getElementById('linkedinLink');
             if (linkedinLink && profile.linkedinUrl) {
@@ -1501,11 +1683,7 @@
                 })),
             ];
 
-            const compactQuery = normalizedQuery.replace(/\s+/g, '');
-            return searchableItems.filter(item => {
-                const compactSearchText = item.searchText.replace(/\s+/g, '');
-                return item.searchText.includes(normalizedQuery) || compactSearchText.includes(compactQuery);
-            });
+            return searchableItems.filter(item => item.searchText.includes(normalizedQuery));
         }
 
         function renderSearchResults(results, query) {
@@ -1632,6 +1810,88 @@
                 </div>
             `).join('');
         }
+
+        function updateEmailContact(email) {
+            const emailButton = document.getElementById('emailButton');
+            const emailPopoverAddress = document.getElementById('emailPopoverAddress');
+            const openEmailLink = document.getElementById('openEmailLink');
+
+            if (emailButton) {
+                emailButton.title = `Email ${email}`;
+                emailButton.setAttribute('aria-label', `Show email address: ${email}`);
+            }
+
+            if (emailPopoverAddress) {
+                emailPopoverAddress.textContent = email;
+            }
+
+            if (openEmailLink) {
+                openEmailLink.href = `mailto:${email}`;
+            }
+        }
+
+        function setEmailPopoverOpen(isOpen) {
+            const emailButton = document.getElementById('emailButton');
+            const emailPopover = document.getElementById('emailPopover');
+
+            if (!emailButton || !emailPopover) return;
+
+            emailPopover.hidden = !isOpen;
+            emailButton.setAttribute('aria-expanded', String(isOpen));
+        }
+
+        function toggleEmailPopover() {
+            const emailPopover = document.getElementById('emailPopover');
+            setEmailPopoverOpen(emailPopover ? emailPopover.hidden : true);
+        }
+
+        function setupEmailPopover() {
+            const emailButton = document.getElementById('emailButton');
+            const emailPopover = document.getElementById('emailPopover');
+            const copyEmailButton = document.getElementById('copyEmailButton');
+            const copyEmailText = document.getElementById('copyEmailText');
+
+            if (!emailButton || !emailPopover) return;
+
+            emailButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleEmailPopover();
+            });
+
+            emailPopover.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
+
+            document.addEventListener('click', () => {
+                setEmailPopoverOpen(false);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    setEmailPopoverOpen(false);
+                    emailButton.focus();
+                }
+            });
+
+            if (copyEmailButton && copyEmailText) {
+                copyEmailButton.addEventListener('click', async () => {
+                    const email = document.getElementById('emailPopoverAddress')?.textContent?.trim() || 'zejunli@umich.edu';
+
+                    try {
+                        await navigator.clipboard.writeText(email);
+                        copyEmailText.textContent = 'Copied';
+                    } catch (error) {
+                        copyEmailText.textContent = 'Copy failed';
+                    }
+
+                    window.setTimeout(() => {
+                        copyEmailText.textContent = 'Copy';
+                    }, 1600);
+                });
+            }
+        }
+
+        setupEmailPopover();
 
         // Dark mode toggle
         const themeToggle = document.getElementById('themeToggle');
