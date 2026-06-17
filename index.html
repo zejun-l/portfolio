@@ -103,22 +103,22 @@
         }
 
         .nav-item.active {
-            color: var(--drive-blue);
-            background-color: var(--drive-blue-container);
+            color: #1e3a8a;
+            background-color: #e3f2fd;
         }
 
         .nav-item.active .nav-icon .material-symbols-outlined {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            color: var(--drive-blue);
+            color: #1e3a8a;
         }
 
         .nav-item:hover:not(.active) {
-            background-color: var(--drive-blue-container);
-            color: var(--drive-blue);
+            background-color: #e8eef5;
+            color: #0d47a1;
         }
 
         .nav-item:hover:not(.active) .nav-icon {
-            color: var(--drive-blue);
+            color: #0d47a1;
         }
 
         .nav-icon {
@@ -370,47 +370,16 @@
             color: #b0b0b0 !important;
         }
 
-        .project-back-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
+        #backBtn {
             color: #5f6368;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 20px;
-            transition: background-color 0.15s ease, color 0.15s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .project-back-btn:hover {
-            background-color: rgba(60, 64, 67, 0.08);
-            color: #202124;
+        body.dark-mode #backBtn {
+            color: #b0b0b0;
         }
 
-        .project-back-btn:active {
-            background-color: rgba(60, 64, 67, 0.12);
-        }
-
-        .project-back-btn:focus-visible {
-            outline: 2px solid var(--drive-blue-focus);
-            outline-offset: 2px;
-        }
-
-        body.dark-mode .project-back-btn {
-            color: #e8eaed;
-        }
-
-        body.dark-mode .project-back-btn:hover {
-            background-color: rgba(232, 234, 237, 0.08);
-            color: #ffffff;
-        }
-
-        body.dark-mode .project-back-btn:active {
-            background-color: rgba(232, 234, 237, 0.12);
+        body.dark-mode #backBtn:hover {
+            color: #e8e8e8;
         }
 
         body.dark-mode #skillsGrid .project-card:hover {
@@ -450,7 +419,7 @@
         }
 
         #projectPhoto {
-            background-color: var(--drive-blue-container);
+            background-color: #e8eef5;
         }
 
         body.dark-mode #projectPhoto {
@@ -477,25 +446,25 @@
 
         body.dark-mode .nav-item:hover:not(.active) {
             background-color: #383838;
-            color: var(--drive-blue-dark);
+            color: #bbdefb;
         }
 
         body.dark-mode .nav-item:hover:not(.active) .nav-icon {
-            color: var(--drive-blue-dark);
+            color: #bbdefb;
         }
 
         body.dark-mode .nav-item.active {
-            background-color: var(--drive-blue);
-            color: var(--drive-blue-container);
+            background-color: #0d47a1;
+            color: #cce0f7;
         }
 
         body.dark-mode .nav-item.active .nav-icon {
-            color: var(--drive-blue-container);
+            color: #cce0f7;
         }
 
         body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            color: var(--drive-blue-container);
+            color: #cce0f7;
         }
 
         body.dark-mode .content-area {
@@ -530,8 +499,8 @@
         }
 
         body.dark-mode .status-active {
-            background-color: var(--drive-blue-dark-container) !important;
-            color: var(--drive-blue-dark) !important;
+            background-color: #1a3a52 !important;
+            color: #90caf9 !important;
         }
 
         body.dark-mode .status-completed {
@@ -727,8 +696,8 @@
 
         .project-tag {
             display: inline-block;
-            background-color: var(--drive-blue-container);
-            color: var(--drive-blue);
+            background-color: #e8eef5;
+            color: #1565c0;
             font-size: 11px;
             font-weight: 500;
             padding: 3px 10px;
@@ -736,8 +705,8 @@
         }
 
         .project-tag.tag-uxd {
-            background-color: var(--drive-blue-container);
-            color: var(--drive-blue);
+            background-color: #e3f2fd;
+            color: #1565c0;
         }
 
         .project-tag.tag-uxr {
@@ -756,8 +725,8 @@
         }
 
         body.dark-mode .project-tag.tag-uxd {
-            background-color: var(--drive-blue-dark-container);
-            color: var(--drive-blue-dark);
+            background-color: #1a3a52;
+            color: #90caf9;
         }
 
         body.dark-mode .project-tag.tag-uxr {
@@ -793,7 +762,7 @@
         }
 
         .status-active {
-            background-color: var(--drive-blue-container);
+            background-color: #e3f2fd;
             color: #1f2937;
         }
 
@@ -818,448 +787,42 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
+        /* About page two-column intro */
+        .about-intro { display: grid; grid-template-columns: minmax(180px, 260px) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 32px; }
+        .about-photo-card { width: 100%; aspect-ratio: 1 / 1; border: 1px solid var(--surface-border, #dadce0); border-radius: 16px; background-color: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .about-photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .about-photo-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px; text-align: center; color: #5f6368; font-size: 13px; }
+        .about-photo-placeholder .material-symbols-outlined { color: #5f6368; font-size: 36px; }
+        .about-copy p { font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8; }
+        body.dark-mode .about-photo-card { background-color: #1e1e1e; border-color: #333333; }
+        body.dark-mode .about-photo-placeholder, body.dark-mode .about-photo-placeholder .material-symbols-outlined, body.dark-mode .about-copy p { color: #bdc1c6; }
+        @media (max-width: 760px) { .about-intro { grid-template-columns: 1fr; } .about-photo-card { max-width: 260px; } }
 
-        /* Cohesive Google Drive / Material interaction styling and blue tokens */
-        :root {
-            --drive-blue: #0b57d0;
-            --drive-blue-container: #d3e3fd;
-            --drive-blue-focus: #1a73e8;
-            --drive-blue-dark: #8ab4f8;
-            --drive-blue-dark-container: rgba(138, 180, 248, 0.24);
-            --material-hover: rgba(60, 64, 67, 0.08);
-            --material-pressed: rgba(60, 64, 67, 0.12);
-            --material-focus: var(--drive-blue-focus);
-            --material-elevation: 0 1px 2px rgba(60, 64, 67, 0.24), 0 1px 3px rgba(60, 64, 67, 0.12);
-            --material-card-border-hover: #c4c7c5;
-        }
-
-        body.dark-mode {
-            --material-hover: rgba(232, 234, 237, 0.08);
-            --material-pressed: rgba(232, 234, 237, 0.12);
-            --material-focus: var(--drive-blue-dark);
-            --material-elevation: 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.28);
-            --material-card-border-hover: #5f6368;
-        }
-
-        .social-icon,
-        .theme-toggle,
-        .avatar,
-        .project-back-btn {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            min-height: 40px;
-            padding: 7px;
-            border-radius: 50%;
-            color: #5f6368;
-            background-color: transparent;
-            transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .social-icon:hover,
-        .theme-toggle:hover,
-        .avatar:hover,
-        .project-back-btn:hover {
-            background-color: var(--material-hover);
-            color: #202124;
-        }
-
-        .social-icon:active,
-        .theme-toggle:active,
-        .avatar:active,
-        .project-back-btn:active {
-            background-color: var(--material-pressed);
-        }
-
-        .social-icon:focus-visible,
-        .theme-toggle:focus-visible,
-        .avatar:focus-visible,
-        .project-back-btn:focus-visible {
-            outline: 2px solid var(--material-focus);
-            outline-offset: 2px;
-        }
-
-        body.dark-mode .social-icon,
-        body.dark-mode .theme-toggle,
-        body.dark-mode .avatar,
-        body.dark-mode .project-back-btn {
-            color: #e8eaed;
-        }
-
-        body.dark-mode .social-icon:hover,
-        body.dark-mode .theme-toggle:hover,
-        body.dark-mode .avatar:hover,
-        body.dark-mode .project-back-btn:hover {
-            background-color: var(--material-hover);
-            color: #ffffff;
-        }
-
-        .top-bar-actions {
-            gap: 4px;
-        }
-
-        .top-bar-actions a:nth-child(3) {
-            margin-right: 8px;
-        }
-
-        .search-bar {
-            background-color: #f1f3f4;
-            border: 1px solid transparent;
-            border-radius: 24px;
-            min-height: 48px;
-            transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .search-bar:focus-within {
-            background-color: #ffffff;
-            border-color: #dadce0;
-            box-shadow: var(--material-elevation);
-        }
-
-        body.dark-mode .top-bar .search-bar {
-            background-color: #2a2a2a;
-            border-color: transparent;
-        }
-
-        body.dark-mode .top-bar .search-bar:focus-within {
-            background-color: #1e1e1e;
-            border-color: #5f6368;
-            box-shadow: var(--material-elevation);
-        }
-
-        .nav-item {
-            min-height: 40px;
-            border-radius: 20px;
-            transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .nav-item:hover:not(.active) {
-            background-color: var(--material-hover);
-            color: #202124;
-        }
-
-        .nav-item:hover:not(.active) .nav-icon {
-            color: #202124;
-        }
-
-        .nav-item.active {
-            background-color: var(--drive-blue-container);
-            color: var(--drive-blue);
-        }
-
-        .nav-item.active .nav-icon,
-        .nav-item.active .nav-icon .material-symbols-outlined {
-            color: var(--drive-blue);
-        }
-
-        body.dark-mode .nav-item {
-            color: #e8eaed;
-        }
-
-        body.dark-mode .nav-item .nav-icon {
-            color: #e8eaed;
-        }
-
-        body.dark-mode .nav-item:hover:not(.active) {
-            background-color: var(--material-hover);
-            color: #ffffff;
-        }
-
-        body.dark-mode .nav-item:hover:not(.active) .nav-icon {
-            color: #ffffff;
-        }
-
-        body.dark-mode .nav-item.active {
-            background-color: var(--drive-blue-dark-container);
-            color: var(--drive-blue-container);
-        }
-
-        body.dark-mode .nav-item.active .nav-icon,
-        body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
-            color: var(--drive-blue-container);
-        }
-
-        .project-card {
-            transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .project-card:hover {
-            background-color: #ffffff;
-            border-color: var(--material-card-border-hover);
-            box-shadow: var(--material-elevation);
-        }
-
-        .project-card:active {
-            background-color: #f8fafd;
-        }
-
-        #skillsGrid .project-card {
-            cursor: default;
-        }
-
-        body.dark-mode .project-card {
-            background-color: #1e1e1e;
-            border-color: #333333;
-        }
-
-        body.dark-mode .project-card:hover,
-        body.dark-mode #skillsGrid .project-card:hover {
-            background-color: #242424;
-            border-color: var(--material-card-border-hover);
-            box-shadow: var(--material-elevation);
-        }
-
-        body.dark-mode .project-card:active {
-            background-color: #2a2a2a;
-        }
-
-        .interactive-item:hover {
-            background-color: #ffffff;
-            border-color: var(--material-card-border-hover);
-            box-shadow: var(--material-elevation);
-        }
-
-        body.dark-mode .interactive-item:hover {
-            background-color: #242424;
-            border-color: var(--material-card-border-hover);
-            box-shadow: var(--material-elevation);
-        }
-
-        /* Shell/content surfaces and compact search refinements */
-        :root {
-            --shell-surface: #ffffff;
-            --content-surface: #f8f9fa;
-            --surface-border: #dadce0;
-        }
-
-        body.dark-mode {
-            --shell-surface: #1e1e1e;
-            --content-surface: #121212;
-            --surface-border: #333333;
-        }
-
-        body {
-            background-color: var(--content-surface);
-        }
-
-        .top-bar,
-        .sidebar {
-            background-color: var(--shell-surface);
-        }
-
-        .top-bar {
-            border-bottom-color: var(--surface-border);
-        }
-
-        .sidebar {
-            border-right-color: var(--surface-border);
-        }
-
-        .content-area {
-            background-color: var(--content-surface);
-        }
-
-        body.dark-mode .top-bar,
-        body.dark-mode .sidebar {
-            background-color: var(--shell-surface);
-        }
-
-        body.dark-mode .content-area {
-            background-color: var(--content-surface);
-        }
-
-
-        .site-footer {
-            margin-top: 56px;
-            padding: 20px 0 4px 0;
-            border-top: 1px solid var(--surface-border);
-            color: #5f6368;
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        .site-footer p {
-            margin: 0;
-            max-width: 760px;
-        }
-
-        body.dark-mode .site-footer {
-            color: #9aa0a6;
-            border-top-color: var(--surface-border);
-        }
-
-        .search-bar {
-            min-height: 40px;
-            height: 40px;
-            padding: 4px 16px;
-            border-radius: 20px;
-        }
-
-        .search-bar input {
-            line-height: 20px;
-        }
-
-        .search-icon {
-            color: #5f6368;
-            font-size: 20px;
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            pointer-events: none;
-            transition: color 0.15s ease;
-        }
-
-        .search-bar:focus-within .search-icon {
-            color: #202124;
-        }
-
-        body.dark-mode .search-icon {
-            color: #bdc1c6;
-        }
-
-        body.dark-mode .search-bar:focus-within .search-icon {
-            color: #e8eaed;
-        }
-
-        body.dark-mode .search-icon {
-            color: #bdc1c6;
-        }
+        /* Consistent bottom footer */
+        .content-area { display: flex; flex-direction: column; }
+        .content-wrapper { flex: 1 0 auto; width: 100%; }
+        .site-footer { flex-shrink: 0; width: 100%; max-width: 1200px; margin-top: auto; padding-top: 32px; color: #5f6368; font-size: 12px; line-height: 1.6; }
+        .site-footer p { margin: 0; }
+        .site-footer p + p { margin-top: 4px; }
+        body.dark-mode .site-footer { color: #9aa0a6; }
 
         /* Google Drive-style email popover */
-        .email-popover-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .email-popover {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            z-index: 200;
-            width: 292px;
-            padding: 16px;
-            background-color: #ffffff;
-            border: 1px solid #dadce0;
-            border-radius: 16px;
-            box-shadow: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.3);
-            color: #202124;
-        }
-
-        .email-popover[hidden] {
-            display: none;
-        }
-
-        .email-popover-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .email-popover-icon {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            border-radius: 50%;
-            background-color: var(--drive-blue-container);
-            color: var(--drive-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .email-popover-icon .material-symbols-outlined {
-            font-size: 22px;
-        }
-
-        .email-popover-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #202124;
-            margin: 0 0 4px 0;
-        }
-
-        .email-popover-address {
-            font-size: 13px;
-            color: #5f6368;
-            margin: 0;
-            line-height: 1.4;
-            word-break: break-word;
-        }
-
-        .email-popover-actions {
-            display: flex;
-            gap: 8px;
-            justify-content: flex-end;
-        }
-
-        .email-popover-action {
-            border: 1px solid #dadce0;
-            border-radius: 18px;
-            background-color: transparent;
-            color: var(--drive-blue);
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 13px;
-            font-weight: 500;
-            min-height: 36px;
-            padding: 0 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            text-decoration: none;
-            transition: background-color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .email-popover-action .material-symbols-outlined {
-            font-size: 18px;
-        }
-
-        .email-popover-action:hover {
-            background-color: rgba(11, 87, 208, 0.08);
-            border-color: #c4c7c5;
-        }
-
-        .email-popover-action:active {
-            background-color: rgba(11, 87, 208, 0.12);
-        }
-
-        .email-popover-action:focus-visible {
-            outline: 2px solid var(--material-focus);
-            outline-offset: 2px;
-        }
-
-        body.dark-mode .email-popover {
-            background-color: #1e1e1e;
-            border-color: #333333;
-            box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.5);
-            color: #e8eaed;
-        }
-
-        body.dark-mode .email-popover-icon {
-            background-color: var(--drive-blue-dark-container);
-            color: var(--drive-blue-dark);
-        }
-
-        body.dark-mode .email-popover-title {
-            color: #e8eaed;
-        }
-
-        body.dark-mode .email-popover-address {
-            color: #bdc1c6;
-        }
-
-        body.dark-mode .email-popover-action {
-            border-color: #5f6368;
-            color: var(--drive-blue-dark);
-        }
-
-        body.dark-mode .email-popover-action:hover {
-            background-color: rgba(138, 180, 248, 0.08);
-            border-color: #9aa0a6;
-        }
+        .email-action-wrapper { position: relative; display: flex; align-items: center; }
+        .email-popover { position: absolute; top: 42px; right: 0; width: 292px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 12px; box-shadow: 0 4px 16px rgba(60, 64, 67, 0.2); padding: 16px; z-index: 200; }
+        .email-popover[hidden] { display: none; }
+        .email-popover-label { font-size: 12px; color: #5f6368; margin: 0 0 6px 0; font-weight: 500; }
+        .email-popover-address { font-size: 14px; color: #202124; margin: 0 0 14px 0; overflow-wrap: anywhere; }
+        .email-popover-actions { display: flex; justify-content: flex-end; gap: 8px; }
+        .email-popover-button { border: none; background: transparent; color: var(--drive-blue, #0b57d0); border-radius: 18px; cursor: pointer; font-size: 13px; font-weight: 500; padding: 8px 12px; transition: background-color 0.15s ease; }
+        .email-popover-button:hover { background-color: rgba(11, 87, 208, 0.08); }
+        .email-popover-button:active { background-color: rgba(11, 87, 208, 0.12); }
+        .email-popover-button:focus-visible { outline: 2px solid var(--drive-focus-blue, #1a73e8); outline-offset: 2px; }
+        body.dark-mode .email-popover { background-color: #1e1e1e; border-color: #333333; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+        body.dark-mode .email-popover-label { color: #bdc1c6; }
+        body.dark-mode .email-popover-address { color: #e8eaed; }
+        body.dark-mode .email-popover-button { color: var(--drive-blue-dark, #8ab4f8); }
+        body.dark-mode .email-popover-button:hover { background-color: rgba(138, 180, 248, 0.08); }
+        body.dark-mode .email-popover-button:active { background-color: rgba(138, 180, 248, 0.12); }
 
     </style>
 </head>
@@ -1269,47 +832,33 @@
         <div class="top-bar-branding" id="siteBranding">Zejun Li</div>
         
         <div class="top-bar-search search-bar">
-            <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
             <input type="text" id="searchInput" placeholder="Search in Drive">
         </div>
 
         <div class="top-bar-actions">
-            <div class="email-popover-wrapper">
-                <button id="emailButton" class="social-icon" title="Email" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="emailPopover">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <div class="email-action-wrapper">
+                <button id="emailButton" class="social-icon" title="Email" aria-haspopup="dialog" aria-expanded="false" aria-controls="emailPopover">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/>
                     </svg>
                 </button>
-                <div id="emailPopover" class="email-popover" role="dialog" aria-label="Email contact" hidden>
-                    <div class="email-popover-header">
-                        <div class="email-popover-icon" aria-hidden="true">
-                            <span class="material-symbols-outlined">mail</span>
-                        </div>
-                        <div>
-                            <p class="email-popover-title">Email</p>
-                            <p id="emailPopoverAddress" class="email-popover-address">zejunli@umich.edu</p>
-                        </div>
-                    </div>
+                <div id="emailPopover" class="email-popover" role="dialog" aria-label="Email Zejun" hidden>
+                    <p class="email-popover-label">Email</p>
+                    <p id="emailAddress" class="email-popover-address">zejunli@umich.edu</p>
                     <div class="email-popover-actions">
-                        <button id="copyEmailButton" class="email-popover-action" type="button">
-                            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
-                            <span id="copyEmailText">Copy</span>
-                        </button>
-                        <a id="openEmailLink" class="email-popover-action" href="mailto:zejunli@umich.edu">
-                            <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
-                            <span>Open email</span>
-                        </a>
+                        <button id="copyEmailButton" class="email-popover-button" type="button">Copy</button>
+                        <button id="openEmailButton" class="email-popover-button" type="button">Open email</button>
                     </div>
                 </div>
             </div>
 
-            <a id="linkedinLink" href="https://www.linkedin.com/in/zejli/" target="_blank" class="social-icon" title="LinkedIn">
+            <a id="linkedinLink" href="https://www.linkedin.com/in/zejli/" target="_blank" class="social-icon" title="LinkedIn" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.5 2H3.5C2.67 2 2 2.67 2 3.5V20.5C2 21.33 2.67 22 3.5 22H20.5C21.33 22 22 21.33 22 20.5V3.5C22 2.67 21.33 2 20.5 2ZM8 19H5V9H8V19ZM6.5 7.5C5.5 7.5 4.7 6.7 4.7 5.8C4.7 4.9 5.5 4.1 6.5 4.1C7.5 4.1 8.3 4.9 8.3 5.8C8.3 6.7 7.5 7.5 6.5 7.5ZM19 19H16V13.5C16 12.5 15.5 11.7 14.5 11.7C13.7 11.7 13.2 12.2 13 12.7C12.9 12.9 12.9 13.2 12.9 13.5V19H9.9V9H12.9V10.2C13.3 9.5 14.3 8.5 16 8.5C18.5 8.5 19 10.2 19 12.5V19Z"/>
                 </svg>
             </a>
 
-            <a id="githubLink" href="https://github.com/zejun-l" target="_blank" class="social-icon" title="GitHub">
+            <a id="githubLink" href="https://github.com/zejun-l" target="_blank" class="social-icon" title="GitHub" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
@@ -1325,8 +874,8 @@
                 </svg>
             </button>
 
-            <button class="avatar" title="Profile" onclick="showPage('about')">
-                <img id="profilePhoto" src="profile photo.jpg" alt="Profile">
+            <button class="avatar" title="Profile" onclick="showPage('page-about')">
+                <img id="profileImage" src="profile photo.jpg" alt="Profile">
             </button>
         </div>
     </div>
@@ -1367,26 +916,32 @@
                     <!-- About Page -->
                     <div id="page-about" class="page" style="display: none;">
                         <h1 id="aboutTitle">About me</h1>
-                        <div style="margin-top: 32px;">
-                            <p id="aboutText" style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8;">
-                                Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)
-                            </p>
-                            <h3 id="skillsTitle" style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">Skills</h3>
-                            <div class="projects-grid" id="skillsGrid" style="margin-top: 16px;">
-                                <!-- Skills will be inserted here -->
+                        <div class="about-intro">
+                            <div id="aboutPhoto" class="about-photo-card" aria-label="Zejun photo placeholder">
+                                <div class="about-photo-placeholder">
+                                    <span class="material-symbols-outlined" aria-hidden="true">person</span>
+                                    <span>Photo coming soon</span>
+                                </div>
                             </div>
+                            <div id="aboutText" class="about-copy">
+                                <!-- About text will be inserted here -->
+                            </div>
+                        </div>
+                        <h3 id="skillsTitle" style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">Skills</h3>
+                        <div class="projects-grid" id="skillsGrid" style="margin-top: 16px;">
+                            <!-- Skills will be inserted here -->
                         </div>
                     </div>
 
                     <!-- Project Detail Page -->
                     <div id="page-project-detail" class="page" style="display: none;">
                         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
-                            <button id="backBtn" class="project-back-btn" aria-label="Back to projects"><span class="material-symbols-outlined">arrow_back</span></button>
+                            <button id="backBtn" style="background: none; border: none; cursor: pointer; padding: 8px; color: #5f6368; font-size: 20px; transition: color 0.2s; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined">arrow_back</span></button>
                             <h1 id="projectDetailTitle" style="margin: 0; flex: 1;"></h1>
                         </div>
                         <div>
                             <!-- Photo Placeholder -->
-                            <div id="projectPhoto" style="width: 100%; height: 300px; background-color: var(--drive-blue-container); border-radius: 12px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: #9aa0a6; font-size: 14px;">
+                            <div id="projectPhoto" style="width: 100%; height: 300px; background-color: #e8eef5; border-radius: 12px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: #9aa0a6; font-size: 14px;">
                                 Project photo
                             </div>
 
@@ -1418,8 +973,7 @@
                         <div style="margin-top: 32px;">
                             <div style="border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; background-color: #f8f9fa;">
                                 <iframe 
-                                    id="resumeFrame"
-                                    src="Li, Zejun Resume.pdf" 
+                                    id="resumeFrame" id="resumeFrame" src="Li, Zejun Resume.pdf" 
                                     style="width: 100%; height: 800px; border: none;"
                                     title="Zejun Resume PDF">
                                 </iframe>
@@ -1427,92 +981,42 @@
                         </div>
                     </div>
 
-
-                    <footer class="site-footer" aria-label="Portfolio disclaimer">
-                        <p id="siteFooterNote">This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.</p>
-                    </footer>
-
                 </div>
+                <footer class="site-footer" id="siteFooter">
+                    <p id="footerCopyright">© 2026 Zejun Li</p>
+                    <p id="footerNote">This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.</p>
+                </footer>
             </div>
         </div>
     </div>
 
     <script>
-        let portfolioData = {};
-        let navigationItems = [];
-        let projects = [];
-        let skills = [];
-
-        async function loadPortfolioData() {
-            try {
-                const response = await fetch('data.json', { cache: 'no-cache' });
-                if (!response.ok) {
-                    throw new Error(`Could not load data.json (${response.status})`);
-                }
-                portfolioData = await response.json();
-                navigationItems = portfolioData.navigationItems || [];
-                projects = portfolioData.projects || [];
-                skills = portfolioData.skills || [];
-                applyPortfolioData();
-                renderNavigation();
-                showPage('home');
-            } catch (error) {
-                console.error(error);
-                document.getElementById('featuredGrid').innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        Portfolio content could not load. Make sure data.json is uploaded in the same GitHub folder as index.html.
-                    </div>
-                `;
-            }
-        }
-
-        function applyPortfolioData() {
-            const profile = portfolioData.profile || {};
-            setText('siteBranding', profile.name || 'Zejun Li');
-            setText('homeTitle', profile.siteTitle || "Welcome to Zejun's Drive");
-            setText('homeSubtitle', profile.homeSubtitle || 'Suggested projects');
-            setText('aboutTitle', profile.aboutTitle || 'About me');
-            setText('aboutText', profile.aboutText || '');
-            setText('skillsTitle', profile.skillsTitle || 'Skills');
-            setText('resumeTitle', profile.resumeTitle || 'Resume');
-            setText('siteFooterNote', profile.footerNote || 'This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.');
-
-            updateEmailContact(profile.email || 'zejunli@umich.edu');
-
-            const linkedinLink = document.getElementById('linkedinLink');
-            if (linkedinLink && profile.linkedinUrl) {
-                linkedinLink.href = profile.linkedinUrl;
-            }
-
-            const githubLink = document.getElementById('githubLink');
-            if (githubLink && profile.githubUrl) {
-                githubLink.href = profile.githubUrl;
-            }
-
-            const profilePhoto = document.getElementById('profilePhoto');
-            if (profilePhoto && profile.profilePhotoUrl) {
-                profilePhoto.src = profile.profilePhotoUrl;
-                profilePhoto.alt = `${profile.name || 'Profile'} profile photo`;
-            }
-
-            const resumeFrame = document.getElementById('resumeFrame');
-            if (resumeFrame && profile.resumeUrl) {
-                resumeFrame.src = profile.resumeUrl;
-            }
-        }
-
-        function setText(id, value) {
-            const element = document.getElementById(id);
-            if (element) element.textContent = value;
-        }
+        const fallbackData = {"profile": {"name": "Zejun Li", "siteTitle": "Welcome to Zejun's Drive", "homeSubtitle": "Suggested projects", "aboutTitle": "About me", "aboutText": "Hi, I'm Zejun (aka Ting Ting)! I'm a senior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)\n\nOutside of academics and UX, I play a lot of ultimate frisbee, enjoy fishing (I'm trying to get into fly fishing this summer), birdwatching, reading looong fantasy and sci-fi books (check out The Priory of the Orange Tree), and watching food reviews on YouTube.", "skillsTitle": "Skills", "resumeTitle": "Resume", "profilePhotoUrl": "profile photo.jpg", "resumeUrl": "Li, Zejun Resume.pdf", "email": "zejunli@umich.edu", "linkedinUrl": "https://www.linkedin.com/in/zejli/", "githubUrl": "https://github.com/zejun-l", "aboutPhotoUrl": "", "aboutPhotoPlaceholder": "Photo coming soon", "footerNote": "This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google."}, "navigationItems": [{"icon": "home", "label": "Home", "id": "home"}, {"icon": "folder", "label": "Projects", "id": "projects"}, {"icon": "user", "label": "About", "id": "about"}, {"icon": "description", "label": "Resume", "id": "resume"}], "projects": [{"id": 1, "title": "U-M GPT", "description": "Redesigning Michigan's AI chatbot", "date": "Dec 2025", "status": "Completed", "tags": ["UXD", "UI/UX"], "role": "Product Designer", "teamSize": "1", "timeline": "Aug 2025 - Dec 2025", "image": "", "fullDescription": "This project centered on a redesign of the interface of U-M GPT, the University of Michigan's custom generative AI platform, including the implementation of a new feature to improve the user experience of students. Completed within a semester-long intro to UX course, this project progressed through the full UX design process, starting with the client brief and initial sketches to low- and high-fidelity wireframes, all underscored by an emphasis on strong storytelling and thoughtful design choices."}, {"id": 2, "title": "MotiMuse", "description": "Designing a mobile app to encourage music practice", "date": "Nov 2025", "status": "Completed", "tags": ["UXR", "UXD", "UI/UX"], "role": "Product Manager & UX Designer", "teamSize": "5", "timeline": "Oct 2025 - Nov 2025", "image": "", "fullDescription": "MotiMuse is a motivational music practice tool designed by a cross-functional team of five over the course of six weeks for the U-M Ross Business+Tech Innovation Jam. Our design won 1st place in the EdTech track and 2nd overall out of 72 teams, receiving a total of $4,500 in seed funding."}, {"id": 3, "title": "Stardew Valley Game Remake", "description": "Improving the co-op player experience", "date": "Mar 2025", "status": "Completed", "tags": ["UXR", "UXD"], "role": "UX Researcher & Designer", "teamSize": "4", "timeline": "Jan 2025 - Mar 2025", "image": "", "fullDescription": "This project was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. Our team identified areas for improvement and proposed design changes for a hypothetical remake/update of the game Stardew Valley based on insights from market research and user interviews."}, {"id": 4, "title": "Counter-Strike 2 Game UX Study", "description": "Analyzing CS2 using UX heuristics", "date": "Mar 2025", "status": "Completed", "tags": ["Article"], "image": "", "metaFields": [{"label": "Author", "value": "Zejun Li"}, {"label": "Date", "value": "March 16, 2025"}, {"label": "", "value": ""}], "fullDescription": "This case study article was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. I explored the effectiveness of Counter-Strike 2's UX and provided considerations for the developers if a game update were to be made."}], "skills": [{"id": 1, "title": "UI/UX Design"}, {"id": 2, "title": "Web Design"}, {"id": 3, "title": "Prototyping"}, {"id": 4, "title": "Front-end Development"}, {"id": 5, "title": "React"}, {"id": 6, "title": "HTML/CSS"}, {"id": 7, "title": "JavaScript"}, {"id": 8, "title": "Figma"}, {"id": 9, "title": "Adobe XD"}, {"id": 10, "title": "User Research"}, {"id": 11, "title": "Wireframing"}], "searchPages": [{"type": "page", "icon": "person", "title": "About me", "description": "Learn more about Zejun.", "date": "Page", "pageId": "about", "keywords": "About me Zejun Ting Ting senior University of Michigan User Experience Design UX design interdisciplinary problems spark joy ultimate frisbee fishing fly fishing birdwatching fantasy sci-fi The Priory of the Orange Tree food reviews YouTube skills"}, {"type": "page", "icon": "description", "title": "Resume", "description": "View Zejun's resume.", "date": "Page", "pageId": "resume", "keywords": "Resume CV experience education projects Zejun Li University of Michigan UX design"}, {"type": "page", "icon": "home", "title": "Home", "description": "Return to Zejun's Drive home page and suggested projects.", "date": "Page", "pageId": "home", "keywords": "Home Welcome Zejun Drive suggested projects portfolio"}, {"type": "page", "icon": "mail", "title": "Contact links", "description": "Find email, LinkedIn, GitHub, and profile shortcuts in the top bar.", "date": "Top bar", "pageId": "about", "keywords": "Email LinkedIn GitHub profile contact Zejun Li zejunli umich"}]};
+        let siteData = fallbackData;
+        let profile = siteData.profile || {};
+        let navigationItems = siteData.navigationItems || [];
+        let projects = siteData.projects || [];
+        let skills = siteData.skills || [];
+        let searchPages = siteData.searchPages || [];
+        let currentPageId = 'home';
 
         function escapeHTML(value) {
-            return String(value || '')
+            return String(value ?? '')
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
+                .replace(/'/g, '&#039;');
+        }
+
+        function setText(id, value) {
+            const element = document.getElementById(id);
+            if (element) element.textContent = value || '';
+        }
+
+        function setHref(id, value) {
+            const element = document.getElementById(id);
+            if (element && value) element.href = value;
         }
 
         function getIcon(iconName) {
@@ -1520,169 +1024,134 @@
                 home: '<span class="material-symbols-outlined">home</span>',
                 folder: '<span class="material-symbols-outlined">folder</span>',
                 user: '<span class="material-symbols-outlined">person</span>',
+                person: '<span class="material-symbols-outlined">person</span>',
                 info: '<span class="material-symbols-outlined">info</span>',
                 description: '<span class="material-symbols-outlined">description</span>',
                 mail: '<span class="material-symbols-outlined">mail</span>',
                 verified: '<span class="material-symbols-outlined">verified</span>',
             };
-            return icons[iconName] || '';
+            return icons[iconName] || `<span class="material-symbols-outlined">${escapeHTML(iconName || 'description')}</span>`;
         }
 
-        function getTagClass(tag) {
-            return String(tag || '')
+        function normalizeSearchText(value) {
+            return String(value || '')
                 .toLowerCase()
-                .replace(/[^a-z0-9]/g, '');
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, ' ')
+                .trim()
+                .replace(/\s+/g, ' ');
         }
 
-        function renderTags(tags = []) {
-            return tags.map(tag => `<span class="project-tag tag-${getTagClass(tag)}">${escapeHTML(tag)}</span>`).join('');
+        function applyProfileData() {
+            profile = siteData.profile || {};
+            navigationItems = siteData.navigationItems || [];
+            projects = siteData.projects || [];
+            skills = siteData.skills || [];
+            searchPages = siteData.searchPages || [];
+            document.title = `${profile.name || 'Zejun Li'} Portfolio`;
+            setText('siteBranding', profile.name || 'Zejun Li');
+            setText('homeTitle', profile.siteTitle || "Welcome to Zejun's Drive");
+            setText('homeSubtitle', profile.homeSubtitle || 'Suggested projects');
+            setText('aboutTitle', profile.aboutTitle || 'About me');
+            setText('skillsTitle', profile.skillsTitle || 'Skills');
+            setText('resumeTitle', profile.resumeTitle || 'Resume');
+            setText('emailAddress', profile.email || 'zejunli@umich.edu');
+            setText('footerCopyright', `© ${new Date().getFullYear()} ${profile.name || 'Zejun Li'}`);
+            setText('footerNote', profile.footerNote || '');
+            const profileImage = document.getElementById('profileImage');
+            if (profileImage && profile.profilePhotoUrl) {
+                profileImage.src = profile.profilePhotoUrl;
+                profileImage.alt = `${profile.name || 'Zejun'} profile`;
+            }
+            const resumeFrame = document.getElementById('resumeFrame');
+            if (resumeFrame && profile.resumeUrl) resumeFrame.src = profile.resumeUrl;
+            setHref('linkedinLink', profile.linkedinUrl);
+            setHref('githubLink', profile.githubUrl);
+            renderAbout();
         }
 
         function renderNavigation() {
             const nav = document.getElementById('nav');
             nav.innerHTML = navigationItems.map(item => `
-                <div class="nav-item ${item.id === 'home' ? 'active' : ''}" data-id="${escapeHTML(item.id)}">
+                <div class="nav-item ${item.id === currentPageId ? 'active' : ''}" data-id="${escapeHTML(item.id)}">
                     <div class="nav-icon">${getIcon(item.icon)}</div>
                     <span>${escapeHTML(item.label)}</span>
                 </div>
             `).join('');
-
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    showPage(item.dataset.id);
-                });
-            });
+            document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.dataset.id)));
         }
 
         function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.style.display = 'none';
-            });
+            currentPageId = pageId;
+            document.querySelectorAll('.page').forEach(page => { page.style.display = 'none'; });
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) targetPage.style.display = 'block';
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.id === pageId));
+            if (pageId === 'home') renderFeaturedProjects();
+            else if (pageId === 'projects') renderProjects(projects);
+            else if (pageId === 'about') { renderAbout(); renderSkills(); }
+        }
 
-            const page = document.getElementById(`page-${pageId}`);
-            if (!page) return;
-            page.style.display = 'block';
-
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-                if (item.dataset.id === pageId) {
-                    item.classList.add('active');
+        function renderAbout() {
+            const aboutText = document.getElementById('aboutText');
+            if (aboutText) {
+                const paragraphs = String(profile.aboutText || '').split(/\n\s*\n/).filter(Boolean);
+                aboutText.innerHTML = paragraphs.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join('');
+            }
+            const aboutPhoto = document.getElementById('aboutPhoto');
+            if (aboutPhoto) {
+                if (profile.aboutPhotoUrl) {
+                    aboutPhoto.innerHTML = `<img src="${escapeHTML(profile.aboutPhotoUrl)}" alt="${escapeHTML(profile.name || 'Zejun')}">`;
+                } else {
+                    aboutPhoto.innerHTML = `<div class="about-photo-placeholder"><span class="material-symbols-outlined" aria-hidden="true">person</span><span>${escapeHTML(profile.aboutPhotoPlaceholder || 'Photo coming soon')}</span></div>`;
                 }
-            });
-
-            if (pageId === 'home') {
-                renderFeaturedProjects();
-            } else if (pageId === 'projects') {
-                renderProjects(projects);
-            } else if (pageId === 'about') {
-                renderSkills();
             }
         }
+
+        function getTagClass(tag) { return `tag-${String(tag || '').toLowerCase().replace(/[^a-z0-9]/g, '')}`; }
+        function renderTags(tags = []) { return tags && tags.length > 0 ? tags.map(tag => `<span class="project-tag ${getTagClass(tag)}">${escapeHTML(tag)}</span>`).join('') : ''; }
 
         function renderProjects(filtered = projects) {
             const grid = document.getElementById('projectsGrid');
             const emptyState = document.getElementById('emptyState');
             const projectCount = document.getElementById('projectCount');
             const projectsPageTitle = document.getElementById('projectsPageTitle');
-
-            projectsPageTitle.textContent = 'Projects';
-            projectCount.textContent = `${filtered.length} project${filtered.length === 1 ? '' : 's'} found`;
-
+            if (projectsPageTitle) projectsPageTitle.textContent = 'Projects';
+            if (projectCount) projectCount.textContent = `${filtered.length} project${filtered.length === 1 ? '' : 's'} found`;
             if (filtered.length === 0) {
-                grid.style.display = 'none';
-                emptyState.style.display = 'block';
+                grid.style.display = 'none'; emptyState.style.display = 'block';
                 emptyState.innerHTML = `No projects found matching "<span id="searchTerm"></span>"`;
                 document.getElementById('searchTerm').textContent = document.getElementById('searchInput').value;
                 return;
             }
-
-            grid.style.display = 'grid';
-            emptyState.style.display = 'none';
+            grid.style.display = 'grid'; emptyState.style.display = 'none';
             grid.innerHTML = filtered.map(project => `
                 <div class="project-card" data-project-id="${project.id}" style="cursor: pointer;">
-                    <div class="project-icon">
-                        <span class="material-symbols-outlined">folder</span>
-                    </div>
-                    <h3>${escapeHTML(project.title)}</h3>
-                    <p>${escapeHTML(project.description)}</p>
-                    <div class="project-footer">
-                        <span>${escapeHTML(project.date)}</span>
-                        <div class="project-tags-footer">
-                            ${renderTags(project.tags || [])}
-                        </div>
-                    </div>
+                    <div class="project-icon"><span class="material-symbols-outlined">folder</span></div>
+                    <h3>${escapeHTML(project.title)}</h3><p>${escapeHTML(project.description)}</p>
+                    <div class="project-footer"><span>${escapeHTML(project.date)}</span><div class="project-tags-footer">${renderTags(project.tags)}</div></div>
                 </div>
             `).join('');
-
-            grid.querySelectorAll('.project-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const projectId = parseInt(card.dataset.projectId, 10);
-                    const project = projects.find(p => p.id === projectId);
-                    if (project) {
-                        showProjectDetail(project);
-                    }
-                });
-            });
-        }
-
-        function normalizeSearchText(value) {
-            return String(value || '')
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, ' ')
-                .trim();
+            grid.querySelectorAll('.project-card').forEach(card => card.addEventListener('click', () => {
+                const project = projects.find(p => p.id === parseInt(card.dataset.projectId, 10));
+                if (project) showProjectDetail(project);
+            }));
         }
 
         function getProjectSearchText(project) {
-            const metaText = project.metaFields
-                ? project.metaFields.map(field => `${field.label} ${field.value}`).join(' ')
-                : '';
-            return normalizeSearchText([
-                project.title,
-                project.description,
-                project.fullDescription,
-                project.date,
-                project.status,
-                project.role,
-                project.teamSize,
-                project.timeline,
-                metaText,
-                project.tags ? project.tags.join(' ') : '',
-                'project case study portfolio'
-            ].join(' '));
+            const metaText = project.metaFields ? project.metaFields.map(field => `${field.label} ${field.value}`).join(' ') : '';
+            return normalizeSearchText([project.title, project.description, project.fullDescription, project.date, project.status, project.role, project.teamSize, project.timeline, metaText, project.tags ? project.tags.join(' ') : '', 'project case study portfolio'].join(' '));
         }
 
         function getSearchResults(query) {
             const normalizedQuery = normalizeSearchText(query);
             if (!normalizedQuery) return [];
-
             const searchableItems = [
-                ...projects.map(project => ({
-                    type: 'project',
-                    icon: 'folder',
-                    title: project.title,
-                    description: project.description,
-                    date: project.date,
-                    tags: project.tags || [],
-                    projectId: project.id,
-                    searchText: getProjectSearchText(project),
-                })),
-                ...skills.map(skill => ({
-                    type: 'skill',
-                    icon: 'verified',
-                    title: skill.title,
-                    description: '',
-                    date: 'Skill',
-                    tags: [],
-                    pageId: 'about',
-                    searchText: normalizeSearchText(`${skill.title} skill expertise`),
-                })),
-                ...(portfolioData.searchPages || []).map(page => ({
-                    ...page,
-                    tags: page.tags || [],
-                    searchText: normalizeSearchText(`${page.title} ${page.description} ${page.keywords}`),
-                })),
+                ...projects.map(project => ({ type: 'project', icon: 'folder', title: project.title, description: project.description, date: project.date, tags: project.tags || [], projectId: project.id, searchText: getProjectSearchText(project) })),
+                ...skills.map(skill => ({ type: 'skill', icon: 'verified', title: skill.title, description: '', date: 'Skill', tags: [], pageId: 'about', searchText: normalizeSearchText(`${skill.title} skill expertise`) })),
+                ...searchPages.map(page => ({ ...page, tags: page.tags || [], searchText: normalizeSearchText(`${page.title} ${page.description} ${page.keywords || ''}`) })),
             ];
-
             return searchableItems.filter(item => item.searchText.includes(normalizedQuery));
         }
 
@@ -1691,252 +1160,128 @@
             const emptyState = document.getElementById('emptyState');
             const projectCount = document.getElementById('projectCount');
             const projectsPageTitle = document.getElementById('projectsPageTitle');
-
             projectsPageTitle.textContent = 'Search results';
             projectCount.textContent = `${results.length} result${results.length === 1 ? '' : 's'} found in Drive`;
-
             if (results.length === 0) {
-                grid.style.display = 'none';
-                emptyState.style.display = 'block';
+                grid.style.display = 'none'; emptyState.style.display = 'block';
                 emptyState.innerHTML = `No results found matching "<span id="searchTerm"></span>"`;
                 document.getElementById('searchTerm').textContent = query;
                 return;
             }
-
-            grid.style.display = 'grid';
-            emptyState.style.display = 'none';
+            grid.style.display = 'grid'; emptyState.style.display = 'none';
             grid.innerHTML = results.map((result, index) => `
                 <div class="project-card" data-result-index="${index}" style="cursor: pointer;">
-                    <div class="project-icon">
-                        <span class="material-symbols-outlined">${escapeHTML(result.icon)}</span>
-                    </div>
-                    <h3>${escapeHTML(result.title)}</h3>
-                    ${result.description ? `<p>${escapeHTML(result.description)}</p>` : ''}
-                    <div class="project-footer">
-                        <span>${escapeHTML(result.date)}</span>
-                        <div class="project-tags-footer">
-                            ${renderTags(result.tags || [])}
-                        </div>
-                    </div>
+                    <div class="project-icon"><span class="material-symbols-outlined">${escapeHTML(result.icon || 'description')}</span></div>
+                    <h3>${escapeHTML(result.title)}</h3>${result.description ? `<p>${escapeHTML(result.description)}</p>` : ''}
+                    <div class="project-footer"><span>${escapeHTML(result.date)}</span><div class="project-tags-footer">${renderTags(result.tags)}</div></div>
                 </div>
             `).join('');
-
-            grid.querySelectorAll('.project-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const result = results[parseInt(card.dataset.resultIndex, 10)];
-                    if (result.type === 'project') {
-                        const project = projects.find(p => p.id === result.projectId);
-                        if (project) showProjectDetail(project);
-                    } else if (result.pageId) {
-                        showPage(result.pageId);
-                    }
-                });
-            });
+            grid.querySelectorAll('.project-card').forEach(card => card.addEventListener('click', () => {
+                const result = results[parseInt(card.dataset.resultIndex, 10)];
+                if (result.type === 'project') {
+                    const project = projects.find(p => p.id === result.projectId);
+                    if (project) showProjectDetail(project);
+                } else if (result.pageId) showPage(result.pageId);
+            }));
         }
 
         function showProjectDetail(project) {
+            currentPageId = 'project-detail';
             document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
             document.getElementById('page-project-detail').style.display = 'block';
-
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             document.getElementById('projectDetailTitle').textContent = project.title;
-
-            const metaFields = project.metaFields || [
-                { label: 'Role', value: project.role || 'N/A' },
-                { label: 'Team Size', value: project.teamSize || 'N/A' },
-                { label: 'Timeline', value: project.timeline || 'N/A' },
-            ];
-
+            const projectPhoto = document.getElementById('projectPhoto');
+            projectPhoto.innerHTML = project.image ? `<img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">` : 'Project photo';
+            const metaFields = project.metaFields || [{ label: 'Role', value: project.role || 'N/A' }, { label: 'Team Size', value: project.teamSize || 'N/A' }, { label: 'Timeline', value: project.timeline || 'N/A' }];
             const metaLabelIds = ['projectMetaLabel1', 'projectMetaLabel2', 'projectMetaLabel3'];
             const metaValueIds = ['projectRole', 'projectTeamSize', 'projectTimeline'];
-
-            metaLabelIds.forEach((labelId, index) => {
-                const field = metaFields[index] || { label: '', value: '' };
-                document.getElementById(labelId).textContent = field.label || '';
-                document.getElementById(metaValueIds[index]).textContent = field.value || '';
+            metaFields.forEach((field, index) => {
+                const label = document.getElementById(metaLabelIds[index]); const value = document.getElementById(metaValueIds[index]);
+                if (label) label.textContent = field.label || ''; if (value) value.textContent = field.value || '';
             });
-
-            document.getElementById('projectDetailDescription').textContent = project.fullDescription || project.description || '';
-
-            const projectPhoto = document.getElementById('projectPhoto');
-            if (project.image) {
-                projectPhoto.innerHTML = `<img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)} project image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">`;
-            } else {
-                projectPhoto.textContent = 'Project photo';
-            }
+            document.getElementById('projectDetailDescription').textContent = project.fullDescription || project.description;
         }
 
-        document.getElementById('backBtn').addEventListener('click', () => {
-            showPage('projects');
-        });
-
         function renderFeaturedProjects() {
-            const featured = projects.slice(0, 3);
             const grid = document.getElementById('featuredGrid');
-            grid.innerHTML = featured.map(project => `
+            grid.innerHTML = projects.slice(0, 3).map(project => `
                 <div class="project-card" data-project-id="${project.id}" style="cursor: pointer;">
-                    <div class="project-icon">
-                        <span class="material-symbols-outlined">folder</span>
-                    </div>
-                    <h3>${escapeHTML(project.title)}</h3>
-                    <p>${escapeHTML(project.description)}</p>
-                    <div class="project-footer">
-                        <span>${escapeHTML(project.date)}</span>
-                        <div class="project-tags-footer">
-                            ${renderTags(project.tags || [])}
-                        </div>
-                    </div>
+                    <div class="project-icon"><span class="material-symbols-outlined">folder</span></div>
+                    <h3>${escapeHTML(project.title)}</h3><p>${escapeHTML(project.description)}</p>
+                    <div class="project-footer"><span>${escapeHTML(project.date)}</span><div class="project-tags-footer">${renderTags(project.tags)}</div></div>
                 </div>
             `).join('');
-
-            grid.querySelectorAll('.project-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const projectId = parseInt(card.dataset.projectId, 10);
-                    const project = projects.find(p => p.id === projectId);
-                    if (project) {
-                        showProjectDetail(project);
-                    }
-                });
-            });
+            grid.querySelectorAll('.project-card').forEach(card => card.addEventListener('click', () => {
+                const project = projects.find(p => p.id === parseInt(card.dataset.projectId, 10)); if (project) showProjectDetail(project);
+            }));
         }
 
         function renderSkills() {
             const grid = document.getElementById('skillsGrid');
-            grid.innerHTML = skills.map(skill => `
-                <div class="project-card">
-                    <div class="project-icon">
-                        <span class="material-symbols-outlined">verified</span>
-                    </div>
-                    <h3>${escapeHTML(skill.title)}</h3>
-                </div>
-            `).join('');
+            grid.innerHTML = skills.map(skill => `<div class="project-card"><div class="project-icon"><span class="material-symbols-outlined">verified</span></div><h3>${escapeHTML(skill.title)}</h3></div>`).join('');
         }
 
-        function updateEmailContact(email) {
-            const emailButton = document.getElementById('emailButton');
-            const emailPopoverAddress = document.getElementById('emailPopoverAddress');
-            const openEmailLink = document.getElementById('openEmailLink');
-
-            if (emailButton) {
-                emailButton.title = `Email ${email}`;
-                emailButton.setAttribute('aria-label', `Show email address: ${email}`);
-            }
-
-            if (emailPopoverAddress) {
-                emailPopoverAddress.textContent = email;
-            }
-
-            if (openEmailLink) {
-                openEmailLink.href = `mailto:${email}`;
-            }
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const sunIcon = themeToggle.querySelector('.sun-icon');
+            const moonIcon = themeToggle.querySelector('.moon-icon');
+            const applyThemeIcon = () => {
+                if (document.body.classList.contains('dark-mode')) { sunIcon.style.display = 'none'; moonIcon.style.display = 'block'; }
+                else { sunIcon.style.display = 'block'; moonIcon.style.display = 'none'; }
+            };
+            if ((localStorage.getItem('theme') || 'light') === 'dark') document.body.classList.add('dark-mode');
+            applyThemeIcon();
+            themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light'); applyThemeIcon(); });
         }
 
-        function setEmailPopoverOpen(isOpen) {
-            const emailButton = document.getElementById('emailButton');
-            const emailPopover = document.getElementById('emailPopover');
-
-            if (!emailButton || !emailPopover) return;
-
-            emailPopover.hidden = !isOpen;
-            emailButton.setAttribute('aria-expanded', String(isOpen));
-        }
-
-        function toggleEmailPopover() {
-            const emailPopover = document.getElementById('emailPopover');
-            setEmailPopoverOpen(emailPopover ? emailPopover.hidden : true);
+        function setupSearch() {
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const query = e.target.value.trim();
+                if (query === '') {
+                    if (document.getElementById('page-home').style.display === 'block') renderFeaturedProjects();
+                    else if (document.getElementById('page-projects').style.display === 'block') renderProjects(projects);
+                    else if (document.getElementById('page-about').style.display === 'block') renderSkills();
+                    return;
+                }
+                showPage('projects'); renderSearchResults(getSearchResults(query), query);
+            });
         }
 
         function setupEmailPopover() {
             const emailButton = document.getElementById('emailButton');
             const emailPopover = document.getElementById('emailPopover');
             const copyEmailButton = document.getElementById('copyEmailButton');
-            const copyEmailText = document.getElementById('copyEmailText');
-
-            if (!emailButton || !emailPopover) return;
-
-            emailButton.addEventListener('click', (event) => {
-                event.stopPropagation();
-                toggleEmailPopover();
+            const openEmailButton = document.getElementById('openEmailButton');
+            const closePopover = () => { emailPopover.hidden = true; emailButton.setAttribute('aria-expanded', 'false'); };
+            const openPopover = () => { emailPopover.hidden = false; emailButton.setAttribute('aria-expanded', 'true'); };
+            emailButton.addEventListener('click', (event) => { event.stopPropagation(); emailPopover.hidden ? openPopover() : closePopover(); });
+            emailPopover.addEventListener('click', event => event.stopPropagation());
+            document.addEventListener('click', closePopover);
+            document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopover(); });
+            copyEmailButton.addEventListener('click', async () => {
+                const email = profile.email || 'zejunli@umich.edu';
+                try { await navigator.clipboard.writeText(email); copyEmailButton.textContent = 'Copied'; setTimeout(() => copyEmailButton.textContent = 'Copy', 1400); }
+                catch (error) { window.prompt('Copy email address:', email); }
             });
-
-            emailPopover.addEventListener('click', (event) => {
-                event.stopPropagation();
-            });
-
-            document.addEventListener('click', () => {
-                setEmailPopoverOpen(false);
-            });
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    setEmailPopoverOpen(false);
-                    emailButton.focus();
-                }
-            });
-
-            if (copyEmailButton && copyEmailText) {
-                copyEmailButton.addEventListener('click', async () => {
-                    const email = document.getElementById('emailPopoverAddress')?.textContent?.trim() || 'zejunli@umich.edu';
-
-                    try {
-                        await navigator.clipboard.writeText(email);
-                        copyEmailText.textContent = 'Copied';
-                    } catch (error) {
-                        copyEmailText.textContent = 'Copy failed';
-                    }
-
-                    window.setTimeout(() => {
-                        copyEmailText.textContent = 'Copy';
-                    }, 1600);
-                });
-            }
+            openEmailButton.addEventListener('click', () => { window.location.href = `mailto:${profile.email || 'zejunli@umich.edu'}`; });
         }
 
-        setupEmailPopover();
-
-        // Dark mode toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const sunIcon = themeToggle.querySelector('.sun-icon');
-        const moonIcon = themeToggle.querySelector('.moon-icon');
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
+        async function loadPortfolioData() {
+            try {
+                const response = await fetch('data.json', { cache: 'no-cache' });
+                if (!response.ok) throw new Error(`Could not load data.json: ${response.status}`);
+                siteData = await response.json();
+            } catch (error) {
+                console.warn('Using built-in fallback portfolio data.', error);
+                siteData = fallbackData;
+            }
+            applyProfileData(); renderNavigation(); showPage('home');
         }
 
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-
-            if (document.body.classList.contains('dark-mode')) {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const query = e.target.value.trim();
-            if (query === '') {
-                if (document.getElementById('page-home').style.display === 'block') {
-                    renderFeaturedProjects();
-                } else if (document.getElementById('page-projects').style.display === 'block') {
-                    renderProjects(projects);
-                } else if (document.getElementById('page-about').style.display === 'block') {
-                    renderSkills();
-                }
-                return;
-            }
-
-            showPage('projects');
-            renderSearchResults(getSearchResults(query), query);
-        });
-
-        loadPortfolioData();
+        document.getElementById('backBtn').addEventListener('click', () => showPage('projects'));
+        document.querySelector('.avatar').addEventListener('click', () => showPage('about'));
+        setupThemeToggle(); setupSearch(); setupEmailPopover(); loadPortfolioData();
     </script>
 </body>
 </html>
