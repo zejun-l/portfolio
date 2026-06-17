@@ -103,22 +103,22 @@
         }
 
         .nav-item.active {
-            color: #1e3a8a;
-            background-color: #e3f2fd;
+            color: var(--drive-blue);
+            background-color: var(--drive-blue-container);
         }
 
         .nav-item.active .nav-icon .material-symbols-outlined {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            color: #1e3a8a;
+            color: var(--drive-blue);
         }
 
         .nav-item:hover:not(.active) {
-            background-color: #e8eef5;
-            color: #0d47a1;
+            background-color: var(--drive-blue-container);
+            color: var(--drive-blue);
         }
 
         .nav-item:hover:not(.active) .nav-icon {
-            color: #0d47a1;
+            color: var(--drive-blue);
         }
 
         .nav-icon {
@@ -396,7 +396,7 @@
         }
 
         .project-back-btn:focus-visible {
-            outline: 2px solid #1a73e8;
+            outline: 2px solid var(--drive-blue-focus);
             outline-offset: 2px;
         }
 
@@ -450,7 +450,7 @@
         }
 
         #projectPhoto {
-            background-color: #e8eef5;
+            background-color: var(--drive-blue-container);
         }
 
         body.dark-mode #projectPhoto {
@@ -477,25 +477,25 @@
 
         body.dark-mode .nav-item:hover:not(.active) {
             background-color: #383838;
-            color: #bbdefb;
+            color: var(--drive-blue-dark);
         }
 
         body.dark-mode .nav-item:hover:not(.active) .nav-icon {
-            color: #bbdefb;
+            color: var(--drive-blue-dark);
         }
 
         body.dark-mode .nav-item.active {
-            background-color: #0d47a1;
-            color: #cce0f7;
+            background-color: var(--drive-blue);
+            color: var(--drive-blue-container);
         }
 
         body.dark-mode .nav-item.active .nav-icon {
-            color: #cce0f7;
+            color: var(--drive-blue-container);
         }
 
         body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            color: #cce0f7;
+            color: var(--drive-blue-container);
         }
 
         body.dark-mode .content-area {
@@ -530,8 +530,8 @@
         }
 
         body.dark-mode .status-active {
-            background-color: #1a3a52 !important;
-            color: #90caf9 !important;
+            background-color: var(--drive-blue-dark-container) !important;
+            color: var(--drive-blue-dark) !important;
         }
 
         body.dark-mode .status-completed {
@@ -727,8 +727,8 @@
 
         .project-tag {
             display: inline-block;
-            background-color: #e8eef5;
-            color: #1565c0;
+            background-color: var(--drive-blue-container);
+            color: var(--drive-blue);
             font-size: 11px;
             font-weight: 500;
             padding: 3px 10px;
@@ -736,8 +736,8 @@
         }
 
         .project-tag.tag-uxd {
-            background-color: #e3f2fd;
-            color: #1565c0;
+            background-color: var(--drive-blue-container);
+            color: var(--drive-blue);
         }
 
         .project-tag.tag-uxr {
@@ -756,8 +756,8 @@
         }
 
         body.dark-mode .project-tag.tag-uxd {
-            background-color: #1a3a52;
-            color: #90caf9;
+            background-color: var(--drive-blue-dark-container);
+            color: var(--drive-blue-dark);
         }
 
         body.dark-mode .project-tag.tag-uxr {
@@ -793,7 +793,7 @@
         }
 
         .status-active {
-            background-color: #e3f2fd;
+            background-color: var(--drive-blue-container);
             color: #1f2937;
         }
 
@@ -819,11 +819,16 @@
         }
 
 
-        /* Cohesive Google Drive / Material interaction styling */
+        /* Cohesive Google Drive / Material interaction styling and blue tokens */
         :root {
+            --drive-blue: #0b57d0;
+            --drive-blue-container: #d3e3fd;
+            --drive-blue-focus: #1a73e8;
+            --drive-blue-dark: #8ab4f8;
+            --drive-blue-dark-container: rgba(138, 180, 248, 0.24);
             --material-hover: rgba(60, 64, 67, 0.08);
             --material-pressed: rgba(60, 64, 67, 0.12);
-            --material-focus: #1a73e8;
+            --material-focus: var(--drive-blue-focus);
             --material-elevation: 0 1px 2px rgba(60, 64, 67, 0.24), 0 1px 3px rgba(60, 64, 67, 0.12);
             --material-card-border-hover: #c4c7c5;
         }
@@ -831,7 +836,7 @@
         body.dark-mode {
             --material-hover: rgba(232, 234, 237, 0.08);
             --material-pressed: rgba(232, 234, 237, 0.12);
-            --material-focus: #8ab4f8;
+            --material-focus: var(--drive-blue-dark);
             --material-elevation: 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.28);
             --material-card-border-hover: #5f6368;
         }
@@ -938,13 +943,13 @@
         }
 
         .nav-item.active {
-            background-color: #e8f0fe;
-            color: #0b57d0;
+            background-color: var(--drive-blue-container);
+            color: var(--drive-blue);
         }
 
         .nav-item.active .nav-icon,
         .nav-item.active .nav-icon .material-symbols-outlined {
-            color: #0b57d0;
+            color: var(--drive-blue);
         }
 
         body.dark-mode .nav-item {
@@ -965,13 +970,13 @@
         }
 
         body.dark-mode .nav-item.active {
-            background-color: rgba(138, 180, 248, 0.24);
-            color: #d3e3fd;
+            background-color: var(--drive-blue-dark-container);
+            color: var(--drive-blue-container);
         }
 
         body.dark-mode .nav-item.active .nav-icon,
         body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
-            color: #d3e3fd;
+            color: var(--drive-blue-container);
         }
 
         .project-card {
@@ -1202,7 +1207,7 @@
                         </div>
                         <div>
                             <!-- Photo Placeholder -->
-                            <div id="projectPhoto" style="width: 100%; height: 300px; background-color: #e8eef5; border-radius: 12px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: #9aa0a6; font-size: 14px;">
+                            <div id="projectPhoto" style="width: 100%; height: 300px; background-color: var(--drive-blue-container); border-radius: 12px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: #9aa0a6; font-size: 14px;">
                                 Project photo
                             </div>
 
@@ -1492,7 +1497,7 @@
                     type: 'page',
                     icon: 'description',
                     title: 'Resume',
-                    description: "View Zejun Li\'s resume PDF.",
+                    description: "View Zejun Li's resume PDF.",
                     date: 'Page',
                     tags: [],
                     pageId: 'resume',
@@ -1502,7 +1507,7 @@
                     type: 'page',
                     icon: 'home',
                     title: 'Home',
-                    description: "Return to Zejun\'s Drive home page and suggested projects.",
+                    description: "Return to Zejun's Drive home page and suggested projects.",
                     date: 'Page',
                     tags: [],
                     pageId: 'home',
