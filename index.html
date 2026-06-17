@@ -233,11 +233,11 @@
         }
 
         body.dark-mode .theme-toggle {
-            color: #b0b0b0;
+            color: #e8e8e8;
         }
 
         body.dark-mode .theme-toggle:hover {
-            color: #e8e8e8;
+            color: #ffffff;
         }
 
         body.dark-mode .avatar {
@@ -382,7 +382,7 @@
 
         .project-icon .material-symbols-outlined {
             font-size: 28px;
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 28;
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 28;
         }
 
         .project-card h3 {
@@ -469,8 +469,8 @@
                     <line x1="3" y1="17" x2="4.5" y2="15.5"></line>
                     <line x1="15.5" y1="4.5" x2="17" y2="3"></line>
                 </svg>
-                <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="display: none;">
-                    <path d="M17 10.5A7.5 7.5 0 0 1 2.5 10a7.5 7.5 0 0 0 14.5.5z"></path>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
             </button>
 
@@ -532,8 +532,32 @@
                         </div>
                     </div>
 
-                    <!-- Contact Page -->
-                    <div id="page-contact" class="page" style="display: none;">
+                    <!-- Project Detail Page -->
+                    <div id="page-project-detail" class="page" style="display: none;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
+                            <button id="backBtn" style="background: none; border: none; cursor: pointer; padding: 8px; color: #5f6368; font-size: 20px;">←</button>
+                            <h1 id="projectDetailTitle" style="margin: 0; flex: 1;"></h1>
+                        </div>
+                        <div style="max-width: 800px;">
+                            <div style="background-color: #f8f9fa; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+                                <p id="projectDetailDescription" style="font-size: 16px; color: #5f6368; line-height: 1.6; margin: 0 0 16px 0;"></p>
+                                <div style="display: flex; gap: 16px; align-items: center;">
+                                    <div>
+                                        <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 4px 0; text-transform: uppercase;">Date</p>
+                                        <p id="projectDetailDate" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                    </div>
+                                    <div>
+                                        <p style="font-size: 12px; color: #9aa0a6; margin: 0 0 4px 0; text-transform: uppercase;">Status</p>
+                                        <p id="projectDetailStatus" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 style="font-size: 18px; font-weight: 600; color: #202124; margin: 0 0 16px 0;">About this project</h3>
+                            <p style="font-size: 16px; color: #5f6368; line-height: 1.8;">
+                                Add more details about your project here. You can customize this section to include information about the project's goals, technologies used, challenges overcome, and results achieved.
+                            </p>
+                        </div>
+                    </div>
                         <h1>Contact</h1>
                         <div style="max-width: 600px; margin-top: 32px;">
                             <p style="font-size: 16px; color: #5f6368; margin: 0 0 32px 0; line-height: 1.8;">
@@ -668,7 +692,7 @@
                 grid.style.display = 'grid';
                 emptyState.style.display = 'none';
                 grid.innerHTML = filtered.map(project => `
-                    <div class="project-card">
+                    <div class="project-card" data-project-id="${project.id}" style="cursor: pointer;">
                         <div class="project-icon">
                             <span class="material-symbols-outlined">folder</span>
                         </div>
@@ -680,14 +704,39 @@
                         </div>
                     </div>
                 `).join('');
+
+                // Add click handlers
+                grid.querySelectorAll('.project-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const projectId = parseInt(card.dataset.projectId);
+                        const project = projects.find(p => p.id === projectId);
+                        if (project) {
+                            showProjectDetail(project);
+                        }
+                    });
+                });
             }
         }
+
+        function showProjectDetail(project) {
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+            document.getElementById('page-project-detail').style.display = 'block';
+            
+            document.getElementById('projectDetailTitle').textContent = project.title;
+            document.getElementById('projectDetailDescription').textContent = project.description;
+            document.getElementById('projectDetailDate').textContent = project.date;
+            document.getElementById('projectDetailStatus').textContent = project.status;
+        }
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+            showPage('projects');
+        });
 
         function renderFeaturedProjects() {
             const featured = projects.slice(0, 3);
             const grid = document.getElementById('featuredGrid');
             grid.innerHTML = featured.map(project => `
-                <div class="project-card">
+                <div class="project-card" data-project-id="${project.id}" style="cursor: pointer;">
                     <div class="project-icon">
                         <span class="material-symbols-outlined">folder</span>
                     </div>
@@ -699,6 +748,17 @@
                     </div>
                 </div>
             `).join('');
+
+            // Add click handlers
+            grid.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const projectId = parseInt(card.dataset.projectId);
+                    const project = projects.find(p => p.id === projectId);
+                    if (project) {
+                        showProjectDetail(project);
+                    }
+                });
+            });
         }
 
         let sidebarOpen = true;
