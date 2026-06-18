@@ -370,6 +370,50 @@
             color: #b0b0b0 !important;
         }
 
+        .about-intro {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .about-photo-placeholder {
+            width: 180px;
+            min-width: 180px;
+            height: 220px;
+            border: 1px solid #dadce0;
+            border-radius: 12px;
+            background-color: #f8f9fa;
+            color: #9aa0a6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .about-copy {
+            flex: 1;
+            min-width: 0;
+        }
+
+        body.dark-mode .about-photo-placeholder {
+            background-color: #1e1e1e;
+            border-color: #333333;
+            color: #9aa0a6;
+        }
+
+        @media (max-width: 700px) {
+            .about-intro {
+                flex-direction: column;
+            }
+
+            .about-photo-placeholder {
+                width: 100%;
+                max-width: 240px;
+            }
+        }
+
         .project-back-btn {
             background: none;
             border: none;
@@ -591,6 +635,13 @@
 
         .content-wrapper {
             max-width: 1200px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            flex: 1;
         }
 
         .content-area h1 {
@@ -1080,7 +1131,8 @@
 
         .site-footer p {
             margin: 0;
-            max-width: 760px;
+            max-width: none;
+            white-space: nowrap;
         }
 
         body.dark-mode .site-footer {
@@ -1367,14 +1419,19 @@
                     <!-- About Page -->
                     <div id="page-about" class="page" style="display: none;">
                         <h1 id="aboutTitle">About me</h1>
-                        <div style="margin-top: 32px;">
-                            <p id="aboutText" style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8;">
-                                Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)
-                            </p>
-                            <h3 id="skillsTitle" style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">Skills</h3>
-                            <div class="projects-grid" id="skillsGrid" style="margin-top: 16px;">
-                                <!-- Skills will be inserted here -->
+                        <div class="about-intro">
+                            <div class="about-photo-placeholder" aria-label="About photo placeholder">
+                                Photo placeholder
                             </div>
+                            <div class="about-copy">
+                                <p id="aboutText" style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8; white-space: pre-line;">Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)
+
+Outside of school and design, I play a lot of ultimate frisbee! I also enjoy fishing (trying to get into fly fishing this summer), birdwatching, reading looong fantasy and sci-fi books (check out The Priory of the Orange Tree), and watching food reviews on YouTube.</p>
+                            </div>
+                        </div>
+                        <h3 id="skillsTitle" style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">Skills</h3>
+                        <div class="projects-grid" id="skillsGrid" style="margin-top: 16px;">
+                            <!-- Skills will be inserted here -->
                         </div>
                     </div>
 
@@ -1429,7 +1486,7 @@
 
 
                     <footer class="site-footer" aria-label="Portfolio disclaimer">
-                        <p id="siteFooterNote">This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.</p>
+                        <p>&copy; <span id="siteFooterYear">2026</span> <span id="siteFooterName">Zejun Li</span> · <span id="siteFooterNote">This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.</span></p>
                     </footer>
 
                 </div>
@@ -1475,6 +1532,8 @@
             setText('aboutText', profile.aboutText || '');
             setText('skillsTitle', profile.skillsTitle || 'Skills');
             setText('resumeTitle', profile.resumeTitle || 'Resume');
+            setText('siteFooterYear', new Date().getFullYear());
+            setText('siteFooterName', profile.name || 'Zejun Li');
             setText('siteFooterNote', profile.footerNote || 'This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.');
 
             updateEmailContact(profile.email || 'zejunli@umich.edu');
@@ -1632,6 +1691,19 @@
                 .trim();
         }
 
+        function getCompactSearchText(value) {
+            return normalizeSearchText(value).replace(/\s+/g, '');
+        }
+
+        function searchTextMatches(searchText, query) {
+            const normalizedSearchText = normalizeSearchText(searchText);
+            const normalizedQuery = normalizeSearchText(query);
+            const compactSearchText = getCompactSearchText(searchText);
+            const compactQuery = getCompactSearchText(query);
+
+            return normalizedSearchText.includes(normalizedQuery) || compactSearchText.includes(compactQuery);
+        }
+
         function getProjectSearchText(project) {
             const metaText = project.metaFields
                 ? project.metaFields.map(field => `${field.label} ${field.value}`).join(' ')
@@ -1683,7 +1755,7 @@
                 })),
             ];
 
-            return searchableItems.filter(item => item.searchText.includes(normalizedQuery));
+            return searchableItems.filter(item => searchTextMatches(item.searchText, normalizedQuery));
         }
 
         function renderSearchResults(results, query) {

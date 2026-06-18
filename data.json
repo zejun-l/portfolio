@@ -4,7 +4,7 @@
     "siteTitle": "Welcome to Zejun's Drive",
     "homeSubtitle": "Suggested projects",
     "aboutTitle": "About me",
-    "aboutText": "Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)",
+    "aboutText": "Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)\n\nOutside of school and design, I play a lot of ultimate frisbee! I also enjoy fishing (trying to get into fly fishing this summer), birdwatching, reading looong fantasy and sci-fi books (check out The Priory of the Orange Tree), and watching food reviews on YouTube.",
     "skillsTitle": "Skills",
     "resumeTitle": "Resume",
     "profilePhotoUrl": "profile photo.jpg",
@@ -167,7 +167,7 @@
       "description": "Learn more about Zejun.",
       "date": "Page",
       "pageId": "about",
-      "keywords": "About me Zejun Ting Ting junior University of Michigan User Experience Design UX design interdisciplinary problems spark joy skills"
+      "keywords": "About me Zejun Ting Ting junior University of Michigan User Experience Design UX design interdisciplinary problems spark joy ultimate frisbee fishing fly fishing birdwatching reading fantasy sci-fi books The Priory of the Orange Tree food reviews YouTube"
     },
     {
       "type": "page",
