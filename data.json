@@ -4,14 +4,17 @@
     "siteTitle": "Welcome to Zejun's Drive",
     "homeSubtitle": "Suggested projects",
     "aboutTitle": "About me",
-    "aboutText": "Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)",
+    "aboutText": "Hi, I'm Zejun (aka Ting Ting)! I'm a senior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)\n\nOutside of academics and UX, I play a lot of ultimate frisbee, enjoy fishing (I'm trying to get into fly fishing this summer), birdwatching, reading looong fantasy and sci-fi books (check out The Priory of the Orange Tree), and watching food reviews on YouTube.",
     "skillsTitle": "Skills",
     "resumeTitle": "Resume",
     "profilePhotoUrl": "profile photo.jpg",
     "resumeUrl": "Li, Zejun Resume.pdf",
     "email": "zejunli@umich.edu",
     "linkedinUrl": "https://www.linkedin.com/in/zejli/",
-    "githubUrl": "https://github.com/zejun-l"
+    "githubUrl": "https://github.com/zejun-l",
+    "aboutPhotoUrl": "",
+    "aboutPhotoPlaceholder": "Photo coming soon",
+    "footerNote": "This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google."
   },
   "navigationItems": [
     {
@@ -166,7 +169,7 @@
       "description": "Learn more about Zejun.",
       "date": "Page",
       "pageId": "about",
-      "keywords": "About me Zejun Ting Ting junior University of Michigan User Experience Design UX design interdisciplinary problems spark joy skills"
+      "keywords": "About me Zejun Ting Ting senior University of Michigan User Experience Design UX design interdisciplinary problems spark joy ultimate frisbee fishing fly fishing birdwatching fantasy sci-fi The Priory of the Orange Tree food reviews YouTube skills"
     },
     {
       "type": "page",
