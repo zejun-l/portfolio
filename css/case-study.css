@@ -346,6 +346,70 @@ body.dark-mode .case-study-tag:not(:last-child)::after { color: var(--drive-blue
 body.dark-mode .case-study-quote-grid blockquote { background: #1e2a3a; color: #d2e3fc; }
 body.dark-mode .case-study-flow li { background: #1e1e1e; border-color: #444; color: #b0b0b0; }
 
+.case-study-section a {
+    color: var(--drive-blue);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.case-study-loop {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.case-study-loop p {
+    margin: 0;
+    padding: 22px;
+    border: 1px solid #dadce0;
+    border-radius: 14px;
+    color: #5f6368;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.case-study-loop strong { display: block; margin-bottom: 6px; color: #202124; }
+
+.case-study-credit {
+    margin: -36px 0 0;
+    color: #9aa0a6;
+    font-size: 12px;
+}
+
+.case-study-heuristic {
+    margin: 0 0 22px;
+    padding: 20px 24px;
+    border-left: 4px solid var(--drive-blue);
+    background: var(--drive-blue-container);
+    color: #3c4043;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+.case-study-recommendations {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.case-study-recommendations section {
+    padding: 28px;
+    border: 1px solid #dadce0;
+    border-radius: 16px;
+}
+
+.case-study-recommendations span { color: var(--drive-blue); font-size: 30px; font-weight: 600; }
+.case-study-recommendations h2 { margin: 14px 0; font-size: 23px; }
+.case-study-recommendations p { margin: 0; color: #5f6368; font-size: 16px; line-height: 1.75; }
+
+body.dark-mode .case-study-section a { color: var(--drive-blue-dark); }
+body.dark-mode .case-study-loop p,
+body.dark-mode .case-study-recommendations section { background: #1e1e1e; border-color: #444; color: #b0b0b0; }
+body.dark-mode .case-study-loop strong { color: #e8eaed; }
+body.dark-mode .case-study-heuristic { background: #1e2a3a; color: #d2e3fc; }
+body.dark-mode .case-study-recommendations p { color: #b0b0b0; }
+
 body.dark-mode .case-study-insights section,
 body.dark-mode .case-study-feature-grid > section,
 body.dark-mode .case-study-steps li { background: #1e1e1e; border-color: #444; }
@@ -373,16 +437,29 @@ body.dark-mode .case-study-steps li { color: #b0b0b0; }
 }
 
 body.dark-mode .case-study-shell { background: #121212; }
-body.dark-mode .case-study-body { color: #e8eaed; }
+body.case-study-body.dark-mode { color: #e8eaed; }
 body.dark-mode .case-study-hero,
 body.dark-mode .case-study-footer { border-color: #333; }
 body.dark-mode .case-study-deck,
 body.dark-mode .case-study-section p,
 body.dark-mode .case-study-back { color: #b0b0b0; }
+body.dark-mode .case-study-hero h1,
+body.dark-mode .case-study-section h2,
+body.dark-mode .case-study-section h3,
+body.dark-mode .case-study-meta dd,
+body.dark-mode .case-study-insights h3,
+body.dark-mode .case-study-feature-grid h3,
+body.dark-mode .case-study-recommendations h2 { color: #f1f3f4; }
+body.dark-mode .case-study-kicker,
+body.dark-mode .case-study-insights span,
+body.dark-mode .case-study-steps span,
+body.dark-mode .case-study-recommendations span { color: #8ab4f8 !important; }
 body.dark-mode .case-study-meta div { background: #1e1e1e; border-color: #333; }
 body.dark-mode .case-study-placeholder { background: #1e1e1e; border-color: #555; }
 body.dark-mode .case-study-media-slot { background: #1e1e1e; border-color: #555; color: #b0b0b0; }
 body.dark-mode .case-study-cover { background: #1e2a3a; color: var(--drive-blue-dark); }
+body.dark-mode .case-study-cta { background: #8ab4f8; color: #121212; }
+body.dark-mode .case-study-cta:hover { background: #aecbfa; color: #121212; }
 
 @media (max-width: 700px) {
     .case-study-main { width: min(100% - 32px, 960px); padding-top: 24px; }
@@ -397,5 +474,7 @@ body.dark-mode .case-study-cover { background: #1e2a3a; color: var(--drive-blue-
     .case-study-steps { grid-template-columns: 1fr; }
     .case-study-quote-grid { grid-template-columns: 1fr; }
     .case-study-flow { flex-direction: column; }
+    .case-study-loop,
+    .case-study-recommendations { grid-template-columns: 1fr; }
     .case-study-pov-labels { grid-template-columns: repeat(2, 1fr); }
 }

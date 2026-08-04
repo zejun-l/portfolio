@@ -40,6 +40,38 @@
             position: relative;
         }
 
+        /* Final dark-mode contrast safeguards shared by the portfolio shell. */
+        body.dark-mode .nav-item.active {
+            background-color: #174ea6;
+            color: #ffffff;
+        }
+
+        body.dark-mode .nav-item.active .nav-icon,
+        body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-tag {
+            background-color: #303134;
+            color: #e8eaed;
+        }
+
+        body.dark-mode .project-tag.tag-uxd,
+        body.dark-mode .project-tag.tag-uiux {
+            background-color: #174ea6;
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-tag.tag-uxr {
+            background-color: #1b5e20;
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-tag.tag-article {
+            background-color: #a63c00;
+            color: #ffffff;
+        }
+
         .search-suggestions {
             position: absolute;
             top: calc(100% + 8px);
