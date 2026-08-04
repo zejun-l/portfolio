@@ -37,7 +37,57 @@
             flex: 1;
             max-width: 500px;
             margin-left: 120px;
+            position: relative;
         }
+
+        .search-suggestions {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            z-index: 1200;
+            padding: 8px;
+            background: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(60, 64, 67, 0.18);
+        }
+
+        .search-suggestion {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: #202124;
+            font: inherit;
+            text-align: left;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .search-suggestion:hover,
+        .search-suggestion:focus-visible {
+            background: var(--drive-blue-container);
+            outline: none;
+        }
+
+        .search-suggestion .material-symbols-outlined { color: #5f6368; font-size: 21px; }
+        .search-suggestion-copy { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+        .search-suggestion-title { font-size: 14px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .search-suggestion-meta { color: #80868b; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .search-suggestion-empty { padding: 12px; color: #80868b; font-size: 13px; }
+
+        body.dark-mode .search-suggestions { background: #252525; border-color: #444; box-shadow: 0 8px 24px rgba(0,0,0,.45); }
+        body.dark-mode .search-suggestion { color: #e8eaed; }
+        body.dark-mode .search-suggestion:hover,
+        body.dark-mode .search-suggestion:focus-visible { background: #383838; }
+        body.dark-mode .search-suggestion .material-symbols-outlined,
+        body.dark-mode .search-suggestion-meta,
+        body.dark-mode .search-suggestion-empty { color: #b0b0b0; }
 
         .top-bar-actions {
             display: flex;

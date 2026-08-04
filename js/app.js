@@ -3,28 +3,76 @@ let portfolioData = {};
         let projects = [];
         let skills = [];
 
+        const localPortfolioFallback = {
+            profile: {
+                name: 'Zejun Li',
+                siteTitle: "Welcome to Zejun's Drive",
+                homeSubtitle: 'Suggested projects',
+                aboutTitle: 'About me',
+                aboutText: "Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)\n\nOutside of school and design, I play a lot of ultimate frisbee! I also enjoy fishing (trying to get into fly fishing this summer), birdwatching, reading looong fantasy and sci-fi books (check out The Priory of the Orange Tree), and watching food reviews on YouTube.",
+                skillsTitle: 'Skills',
+                resumeTitle: 'Resume',
+                profilePhotoUrl: 'assets/images/profile-photo.jpg',
+                resumeUrl: 'assets/documents/zejun-li-resume.pdf',
+                email: 'zejunli@umich.edu',
+                linkedinUrl: 'https://www.linkedin.com/in/zejli/',
+                githubUrl: 'https://github.com/zejun-l',
+                footerNote: 'This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.'
+            },
+            navigationItems: [
+                { icon: 'home', label: 'Home', id: 'home' },
+                { icon: 'folder', label: 'Projects', id: 'projects' },
+                { icon: 'user', label: 'About', id: 'about' },
+                { icon: 'description', label: 'Resume', id: 'resume' }
+            ],
+            projects: [
+                { id: 1, title: 'U-M GPT', url: 'projects/um-gpt.html', description: "Redesigning Michigan's AI chatbot", date: 'Dec 2025', status: 'Completed', tags: ['UXD', 'UI/UX'], role: 'Product Designer', teamSize: '1', timeline: 'Aug 2025 - Dec 2025' },
+                { id: 2, title: 'MotiMuse', url: 'projects/motimuse.html', description: 'Designing a mobile app to encourage music practice', date: 'Nov 2025', status: 'Completed', tags: ['UXR', 'UXD', 'UI/UX'], role: 'Product Manager & UX Designer', teamSize: '5', timeline: 'Oct 2025 - Nov 2025' },
+                { id: 3, title: 'Stardew Valley Game Remake', url: 'projects/stardew-valley.html', description: 'Improving the co-op player experience', date: 'Mar 2025', status: 'Completed', tags: ['UXR', 'UXD'], role: 'UX Researcher & Designer', teamSize: '4', timeline: 'Jan 2025 - Mar 2025' },
+                { id: 4, title: 'Counter-Strike 2 Game UX Study', url: 'projects/counter-strike-2.html', description: 'Analyzing CS2 using UX heuristics', date: 'Mar 2025', status: 'Completed', tags: ['Article'], metaFields: [{ label: 'Author', value: 'Zejun Li' }, { label: 'Date', value: 'March 16, 2025' }, { label: '', value: '' }] }
+            ],
+            skills: ['UI/UX Design', 'Web Design', 'Prototyping', 'Front-end Development', 'React', 'HTML/CSS', 'JavaScript', 'Figma', 'Adobe XD', 'User Research', 'Wireframing'].map((title, index) => ({ id: index + 1, title })),
+            searchPages: [
+                { type: 'page', icon: 'person', title: 'About me', description: 'Learn more about Zejun.', date: 'Page', pageId: 'about', keywords: 'About me Zejun Ting Ting University of Michigan User Experience Design' },
+                { type: 'page', icon: 'description', title: 'Resume', description: "View Zejun's resume.", date: 'Page', pageId: 'resume', keywords: 'Resume CV experience education projects' },
+                { type: 'page', icon: 'home', title: 'Home', description: "Return to Zejun's Drive home page and suggested projects.", date: 'Page', pageId: 'home', keywords: 'Home Welcome Zejun Drive suggested projects portfolio' }
+            ]
+        };
+
+        function initializePortfolio(data) {
+            portfolioData = data;
+            navigationItems = portfolioData.navigationItems || [];
+            projects = portfolioData.projects || [];
+            skills = portfolioData.skills || [];
+            applyPortfolioData();
+            renderNavigation();
+            updateStickyOffsets();
+            const initialPage = window.location.hash.replace('#', '');
+            showPage(['projects', 'about', 'resume'].includes(initialPage) ? initialPage : 'home');
+            const initialSearch = new URLSearchParams(window.location.search).get('search');
+            if (initialSearch) {
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) searchInput.value = initialSearch;
+                showPage('projects');
+                renderSearchResults(getSearchResults(initialSearch), initialSearch);
+            }
+        }
+
         async function loadPortfolioData() {
+            if (window.location.protocol === 'file:') {
+                initializePortfolio(localPortfolioFallback);
+                return;
+            }
+
             try {
                 const response = await fetch('data.json', { cache: 'no-cache' });
                 if (!response.ok) {
                     throw new Error(`Could not load data.json (${response.status})`);
                 }
-                portfolioData = await response.json();
-                navigationItems = portfolioData.navigationItems || [];
-                projects = portfolioData.projects || [];
-                skills = portfolioData.skills || [];
-                applyPortfolioData();
-                renderNavigation();
-                updateStickyOffsets();
-                const initialPage = window.location.hash.replace('#', '');
-                showPage(['projects', 'about', 'resume'].includes(initialPage) ? initialPage : 'home');
+                initializePortfolio(await response.json());
             } catch (error) {
-                console.error(error);
-                document.getElementById('featuredGrid').innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        Portfolio content could not load. Make sure data.json is uploaded in the same GitHub folder as index.html.
-                    </div>
-                `;
+                console.info('Using embedded portfolio data because data.json could not be fetched.', error);
+                initializePortfolio(localPortfolioFallback);
             }
         }
 
@@ -134,7 +182,11 @@ let portfolioData = {};
             if (!page) return;
             page.style.display = 'block';
             if (window.location.hash !== `#${pageId}`) {
-                history.replaceState(null, '', `#${pageId}`);
+                try {
+                    history.replaceState(null, '', `#${pageId}`);
+                } catch (error) {
+                    window.location.hash = pageId;
+                }
             }
 
             document.querySelectorAll('.nav-item').forEach(item => {
@@ -263,6 +315,8 @@ let portfolioData = {};
             const emptyState = document.getElementById('emptyState');
             const projectCount = document.getElementById('projectCount');
             const projectsPageTitle = document.getElementById('projectsPageTitle');
+
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
 
             projectsPageTitle.textContent = 'Search results';
             projectCount.textContent = `${results.length} result${results.length === 1 ? '' : 's'} found in Drive`;
@@ -454,21 +508,78 @@ let portfolioData = {};
             }
         });
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const query = e.target.value.trim();
-            if (query === '') {
-                if (document.getElementById('page-home').style.display === 'block') {
-                    renderFeaturedProjects();
-                } else if (document.getElementById('page-projects').style.display === 'block') {
-                    renderProjects(projects);
-                } else if (document.getElementById('page-about').style.display === 'block') {
-                    renderSkills();
-                }
+        const searchInput = document.getElementById('searchInput');
+        const searchContainer = searchInput.closest('.top-bar-search');
+        const searchSuggestions = document.createElement('div');
+        searchSuggestions.className = 'search-suggestions';
+        searchSuggestions.id = 'searchSuggestions';
+        searchSuggestions.setAttribute('role', 'listbox');
+        searchSuggestions.hidden = true;
+        searchContainer.appendChild(searchSuggestions);
+
+        function closeSearchSuggestions() {
+            searchSuggestions.hidden = true;
+            searchSuggestions.innerHTML = '';
+            searchInput.setAttribute('aria-expanded', 'false');
+        }
+
+        function openSearchResult(result) {
+            if (result.type === 'project') {
+                const project = projects.find(item => item.id === result.projectId);
+                if (project?.url) window.location.href = project.url;
+            } else if (result.pageId) {
+                showPage(result.pageId);
+                closeSearchSuggestions();
+            }
+        }
+
+        function updateSearchSuggestions(query) {
+            if (!query) {
+                closeSearchSuggestions();
                 return;
             }
+            const results = getSearchResults(query).slice(0, 6);
+            searchSuggestions.hidden = false;
+            searchInput.setAttribute('aria-expanded', 'true');
+            if (!results.length) {
+                searchSuggestions.innerHTML = '<div class="search-suggestion-empty">No suggestions found</div>';
+                return;
+            }
+            searchSuggestions.innerHTML = results.map((result, index) => `
+                <button class="search-suggestion" type="button" role="option" data-suggestion-index="${index}">
+                    <span class="material-symbols-outlined" aria-hidden="true">${escapeHTML(result.icon)}</span>
+                    <span class="search-suggestion-copy"><span class="search-suggestion-title">${escapeHTML(result.title)}</span><span class="search-suggestion-meta">${escapeHTML(result.description || result.date || '')}</span></span>
+                </button>`).join('');
+            searchSuggestions.querySelectorAll('.search-suggestion').forEach(button => {
+                button.addEventListener('click', () => openSearchResult(results[Number(button.dataset.suggestionIndex)]));
+            });
+        }
 
-            showPage('projects');
-            renderSearchResults(getSearchResults(query), query);
+        searchInput.setAttribute('role', 'combobox');
+        searchInput.setAttribute('aria-autocomplete', 'list');
+        searchInput.setAttribute('aria-controls', 'searchSuggestions');
+        searchInput.setAttribute('aria-expanded', 'false');
+        searchInput.addEventListener('input', event => updateSearchSuggestions(event.target.value.trim()));
+        searchInput.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeSearchSuggestions();
+            if (event.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (!query) return;
+                event.preventDefault();
+                showPage('projects');
+                renderSearchResults(getSearchResults(query), query);
+                closeSearchSuggestions();
+            }
+        });
+        searchContainer.addEventListener('click', event => event.stopPropagation());
+        document.addEventListener('click', closeSearchSuggestions);
+
+        document.addEventListener('click', event => {
+            const projectLink = event.target.closest('a.project-card');
+            if (!projectLink) return;
+            const visiblePage = Array.from(document.querySelectorAll('.page')).find(page => page.style.display === 'block');
+            const returnPage = visiblePage?.id === 'page-home' ? 'home' : 'projects';
+            sessionStorage.setItem('caseStudyReturnPage', returnPage);
         });
 
         window.addEventListener('resize', updateStickyOffsets);
