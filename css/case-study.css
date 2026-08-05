@@ -458,8 +458,8 @@ body.dark-mode .case-study-meta div { background: #1e1e1e; border-color: #333; }
 body.dark-mode .case-study-placeholder { background: #1e1e1e; border-color: #555; }
 body.dark-mode .case-study-media-slot { background: #1e1e1e; border-color: #555; color: #b0b0b0; }
 body.dark-mode .case-study-cover { background: #1e2a3a; color: var(--drive-blue-dark); }
-body.dark-mode .case-study-cta { background: #8ab4f8; color: #121212; }
-body.dark-mode .case-study-cta:hover { background: #aecbfa; color: #121212; }
+body.dark-mode .case-study-section .case-study-cta { background: #8ab4f8; color: #121212; }
+body.dark-mode .case-study-section .case-study-cta:hover { background: #aecbfa; color: #121212; }
 
 @media (max-width: 700px) {
     .case-study-main { width: min(100% - 32px, 960px); padding-top: 24px; }
