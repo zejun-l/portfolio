@@ -754,6 +754,16 @@
             transition: all 0.3s ease;
         }
 
+        body:not(.dark-mode) #featuredGrid .project-card,
+        body:not(.dark-mode) #projectsGrid .project-card {
+            box-shadow: 0 2px 5px rgba(60, 64, 67, 0.16), 0 6px 14px rgba(60, 64, 67, 0.12);
+        }
+
+        body:not(.dark-mode) #featuredGrid .project-card:hover,
+        body:not(.dark-mode) #projectsGrid .project-card:hover {
+            box-shadow: 0 4px 10px rgba(60, 64, 67, 0.2), 0 10px 24px rgba(60, 64, 67, 0.16);
+        }
+
         body.dark-mode .project-card {
             background-color: #1e1e1e;
             border-color: #333;

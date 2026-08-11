@@ -117,13 +117,13 @@ let portfolioData = {};
 
             const profilePhoto = document.getElementById('profilePhoto');
             if (profilePhoto && profile.profilePhotoUrl) {
-                profilePhoto.src = profile.profilePhotoUrl;
+                profilePhoto.src = resolvePortfolioUrl(profile.profilePhotoUrl);
                 profilePhoto.alt = `${profile.name || 'Profile'} profile photo`;
             }
 
             const resumeFrame = document.getElementById('resumeFrame');
             if (resumeFrame && profile.resumeUrl) {
-                resumeFrame.src = profile.resumeUrl;
+                resumeFrame.src = resolvePortfolioUrl(profile.resumeUrl);
             }
         }
 
@@ -146,6 +146,10 @@ let portfolioData = {};
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#39;');
+        }
+
+        function resolvePortfolioUrl(path) {
+            return new URL(String(path || ''), portfolioRootUrl).href;
         }
 
         function getIcon(iconName) {
@@ -173,7 +177,7 @@ let portfolioData = {};
 
         function renderProjectCover(project) {
             if (!project?.image) return '';
-            return `<div class="project-cover"><img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)} cover"></div>`;
+            return `<div class="project-cover"><img src="${escapeHTML(resolvePortfolioUrl(project.image))}" alt="${escapeHTML(project.title)} cover"></div>`;
         }
 
         function renderNavigation() {
@@ -246,7 +250,7 @@ let portfolioData = {};
             grid.style.display = 'grid';
             emptyState.style.display = 'none';
             grid.innerHTML = filtered.map(project => `
-                <a class="project-card" href="${escapeHTML(project.url)}">
+                <a class="project-card" href="${escapeHTML(resolvePortfolioUrl(project.url))}">
                     ${renderProjectCover(project)}
                     <h3>${escapeHTML(project.title)}</h3>
                     <p>${escapeHTML(project.description)}</p>
@@ -380,7 +384,7 @@ let portfolioData = {};
         }
 
         function showProjectDetail(project) {
-            if (project?.url) window.location.href = project.url;
+            if (project?.url) window.location.href = resolvePortfolioUrl(project.url);
         }
 
         document.getElementById('backBtn')?.addEventListener('click', () => {
@@ -391,7 +395,7 @@ let portfolioData = {};
             const featured = projects.slice(0, 3);
             const grid = document.getElementById('featuredGrid');
             grid.innerHTML = featured.map(project => `
-                <a class="project-card" href="${escapeHTML(project.url)}">
+                <a class="project-card" href="${escapeHTML(resolvePortfolioUrl(project.url))}">
                     ${renderProjectCover(project)}
                     <h3>${escapeHTML(project.title)}</h3>
                     <p>${escapeHTML(project.description)}</p>
@@ -543,7 +547,7 @@ let portfolioData = {};
         function openSearchResult(result) {
             if (result.type === 'project') {
                 const project = projects.find(item => item.id === result.projectId);
-                if (project?.url) window.location.href = project.url;
+                if (project?.url) window.location.href = resolvePortfolioUrl(project.url);
             } else if (result.pageId) {
                 showPage(result.pageId);
                 closeSearchSuggestions();

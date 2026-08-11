@@ -405,6 +405,10 @@ body.dark-mode .case-study-media { background: transparent; }
     border-radius: 12px;
 }
 
+body:not(.dark-mode) .case-study-meta div {
+    box-shadow: 0 2px 5px rgba(60, 64, 67, .16), 0 6px 14px rgba(60, 64, 67, .12);
+}
+
 .case-study-meta dt {
     color: #9aa0a6;
     font-size: 12px;
