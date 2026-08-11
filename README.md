@@ -1,7 +1,6 @@
-# Zejun Li Portfolio
+# Portfolio
 
-A static, Google Drive–inspired UX portfolio. The homepage shell provides project browsing, search, profile information, contact links, dark mode, and an embedded résumé. Each case study also has a standalone, shareable URL.
-
+A static, Google Drive–inspired UX portfolio. 
 ## Project structure
 
 ```text
