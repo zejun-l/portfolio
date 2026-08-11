@@ -34,6 +34,7 @@ let portfolioData = {};
                 { icon: 'description', label: 'Resume', id: 'resume' }
             ],
             projects: [
+                { id: 5, title: 'Snap Finance Internship', url: 'projects/snap-finance/', image: 'assets/images/snap-finance/Snap_logo337X150.jpg', description: 'Coming soon', date: 'Aug 2026', status: 'In progress', timeline: 'May 18 - Aug 13, 2026', tags: ['UXR'], fullDescription: 'Case study details coming soon.' },
                 { id: 1, title: 'U-M GPT', url: 'projects/um-gpt/', image: 'assets/images/um-gpt/umgpt cover slide.png', description: "Redesigning Michigan's AI chatbot", date: 'Dec 2025', status: 'Completed', tags: ['UXD', 'UI/UX'], role: 'Product Designer', teamSize: '1', timeline: 'Aug 2025 - Dec 2025' },
                 { id: 2, title: 'MotiMuse', url: 'projects/motimuse/', image: 'assets/images/motimuse/motimuse cover slide.png', description: 'Designing a mobile app to encourage music practice', date: 'Nov 2025', status: 'Completed', tags: ['UXR', 'UXD', 'UI/UX'], role: 'Product Manager & UX Designer', teamSize: '5', timeline: 'Oct 2025 - Nov 2025' },
                 { id: 3, title: 'Stardew Valley Game Remake', url: 'projects/stardew-valley/', image: 'assets/images/stardew-valley/stardew valley cover slide.jpg', description: 'Improving the co-op player experience', date: 'Mar 2025', status: 'Completed', tags: ['UXR', 'UXD'], role: 'UX Researcher & Designer', teamSize: '4', timeline: 'Jan 2025 - Mar 2025' },
@@ -176,7 +177,7 @@ let portfolioData = {};
         }
 
         function renderProjectCover(project) {
-            if (!project?.image) return '';
+            if (!project?.image) return '<div class="project-icon"><span class="material-symbols-outlined">folder</span></div>';
             return `<div class="project-cover"><img src="${escapeHTML(resolvePortfolioUrl(project.image))}" alt="${escapeHTML(project.title)} cover"></div>`;
         }
 
@@ -392,7 +393,7 @@ let portfolioData = {};
         });
 
         function renderFeaturedProjects() {
-            const featured = projects.slice(0, 3);
+            const featured = projects.slice(0, 4);
             const grid = document.getElementById('featuredGrid');
             grid.innerHTML = featured.map(project => `
                 <a class="project-card" href="${escapeHTML(resolvePortfolioUrl(project.url))}">

@@ -38,6 +38,20 @@
   ],
   "projects": [
     {
+      "id": 5,
+      "title": "Snap Finance Internship",
+      "url": "projects/snap-finance/",
+      "description": "Coming soon",
+      "date": "Aug 2026",
+      "status": "In progress",
+      "timeline": "May 18 - Aug 13, 2026",
+      "tags": [
+        "UXR"
+      ],
+      "image": "assets/images/snap-finance/Snap_logo337X150.jpg",
+      "fullDescription": "Case study details coming soon."
+    },
+    {
       "id": 1,
       "title": "U-M GPT",
       "url": "projects/um-gpt/",

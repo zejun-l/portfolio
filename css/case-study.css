@@ -166,6 +166,11 @@ body.dark-mode .case-study-tag:not(:last-child)::after { color: var(--drive-blue
     border-radius: 0;
 }
 
+.snap-finance-logo {
+    width: min(100%, 420px);
+    margin: 16px 0 var(--case-study-section-gap);
+}
+
 body:not(.dark-mode) :is(.case-study-cover-image, .case-study-media) > img {
     filter: drop-shadow(0 2px 5px rgba(60, 64, 67, .2)) drop-shadow(0 6px 14px rgba(60, 64, 67, .14));
 }

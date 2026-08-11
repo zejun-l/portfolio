@@ -664,7 +664,8 @@
         }
 
         .content-wrapper {
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1600px;
             min-height: 100%;
             display: flex;
             flex-direction: column;
@@ -689,7 +690,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
             gap: 16px;
         }
 
@@ -1389,6 +1390,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .project-cover img[src*="Snap_logo"] {
+            object-fit: contain;
         }
 
         body.dark-mode .project-cover {
