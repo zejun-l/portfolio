@@ -447,6 +447,33 @@ body.dark-mode .case-study-media { background: transparent; }
     margin-top: calc(var(--case-study-text-media-gap) - var(--case-study-section-gap));
 }
 
+.case-study-content > .case-study-media + .case-study-section:not(:has(h2, .case-study-kicker, .case-study-heuristic)) {
+    margin-top: calc(var(--case-study-text-media-gap) - var(--case-study-section-gap));
+}
+
+.cs2-case-study .case-study-content > .case-study-section + .case-study-loop,
+.cs2-case-study .case-study-content > .case-study-credit + .case-study-section {
+    margin-top: calc(var(--case-study-text-media-gap) - var(--case-study-section-gap));
+}
+
+/* CS2 image widths follow the proportions used by the original Wix case study. */
+.cs2-case-study .case-study-media:has(img[src*="core gameplay loop"]),
+.cs2-case-study .case-study-media:has(img[src*="/store.jpg"]) {
+    width: 77.3%;
+    margin-inline: auto;
+}
+.cs2-case-study .case-study-media:has(img[src*="/cs.jpg"]),
+.cs2-case-study .case-study-media:has(img[src*="inventory"]),
+.cs2-case-study .case-study-media:has(img[src*="comparison"]),
+.cs2-case-study .case-study-media:has(img[src*="game modes"]),
+.cs2-case-study .case-study-media:has(img[src*="practice mode"]) {
+    width: 91%;
+    margin-inline: auto;
+}
+.cs2-case-study .case-study-cover-image {
+    margin-bottom: var(--case-study-section-gap);
+}
+
 .case-study-early-sketches {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -697,6 +724,36 @@ body.dark-mode .motimuse-pov-pair { color: #b0b0b0; }
     margin-bottom: 10px !important;
     text-transform: uppercase;
 }
+.case-study-kicker.cs2-section-heading {
+    margin: 0 0 14px;
+    font-size: 28px !important;
+    line-height: 1.25;
+    text-transform: none;
+}
+.cs2-case-study .case-study-section > h2:not(:has(+ .case-study-heuristic)),
+.cs2-case-study .case-study-section > p.case-study-kicker {
+    margin: 0 0 14px;
+    color: #202124 !important;
+    font-size: 28px !important;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-transform: none;
+}
+.cs2-case-study .case-study-section:has(> h2 + .case-study-heuristic) > h2 {
+    font-size: 24px;
+    line-height: 1.25;
+}
+body.dark-mode.cs2-case-study .case-study-section > h2:not(:has(+ .case-study-heuristic)),
+body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
+    color: #f1f3f4 !important;
+}
+.cs2-case-study .case-study-content > .case-study-section + .case-study-section:has(> h2 + .case-study-heuristic) {
+    margin-top: calc(var(--case-study-text-media-gap) - var(--case-study-section-gap));
+}
+.cs2-case-study .case-study-content > .case-study-section:has(> .case-study-kicker) + .case-study-section:has(> .case-study-heuristic:first-child) {
+    margin-top: calc(var(--case-study-text-media-gap) - var(--case-study-section-gap));
+}
 
 .case-study-media-grid {
     display: grid;
@@ -896,6 +953,15 @@ body.dark-mode .case-study-flow li { background: #1e1e1e; border-color: #444; co
     font-weight: 500;
     line-height: 1.65;
 }
+.cs2-case-study .case-study-heuristic {
+    border-left-color: #74eeb6;
+    background: rgba(116, 238, 182, .2);
+}
+body.dark-mode.cs2-case-study .case-study-heuristic {
+    border-left-color: #74eeb6;
+    background: rgba(116, 238, 182, .14);
+    color: #f1f3f4;
+}
 
 .case-study-recommendations {
     display: grid;
@@ -919,6 +985,49 @@ body.dark-mode .case-study-recommendations section { background: #1e1e1e; border
 body.dark-mode .case-study-loop strong { color: #e8eaed; }
 body.dark-mode .case-study-heuristic { background: #1e2a3a; color: #d2e3fc; }
 body.dark-mode .case-study-recommendations p { color: #b0b0b0; }
+
+.cs2-case-study .case-study-content > .case-study-section + .case-study-recommendations {
+    margin-top: calc(var(--case-study-text-media-gap) - var(--case-study-section-gap));
+}
+.cs2-case-study .case-study-recommendations {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+}
+.cs2-case-study .case-study-recommendations section,
+body.dark-mode.cs2-case-study .case-study-recommendations section {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+.cs2-case-study .case-study-recommendations span {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    background: #74eeb6;
+    color: #111;
+    font-size: 30px;
+    font-weight: 700;
+}
+.cs2-case-study .case-study-recommendations h2 {
+    margin: 0;
+    color: #202124;
+    font-size: 23px;
+    line-height: 1.25;
+    text-transform: none;
+}
+.cs2-case-study .case-study-recommendations p {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.8;
+}
+body.dark-mode.cs2-case-study .case-study-recommendations h2 { color: #f1f3f4; }
 
 body.dark-mode .case-study-insights section,
 body.dark-mode .case-study-feature-grid > section,
@@ -1047,6 +1156,11 @@ body.dark-mode .case-study-section .case-study-cta:hover { background: #aecbfa; 
     .image-lightbox-controls { bottom: 12px; }
     .image-lightbox-help { display: none; }
     .case-study-media:has(img[src*="task flow"]) { padding-inline: 8px; }
+    .cs2-case-study .case-study-media:has(img) { width: 100%; }
+    .cs2-case-study .case-study-recommendations { gap: 28px; }
+    .cs2-case-study .case-study-recommendations section { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
+    .cs2-case-study .case-study-recommendations span { width: 52px; height: 52px; font-size: 24px; }
+    .cs2-case-study .case-study-recommendations h2 { font-size: 20px; }
     .case-study-final-views { gap: 20px; }
     .case-study-insights,
     .case-study-feature-grid,
