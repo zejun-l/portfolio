@@ -453,6 +453,152 @@ body.dark-mode .case-study-media { background: transparent; }
     gap: 32px;
 }
 
+/* MotiMuse follows the alternating text-and-device composition of the Wix case study. */
+.motimuse-section-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--case-study-text-media-gap);
+}
+
+.motimuse-split,
+.motimuse-feature-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 48px;
+}
+
+.motimuse-split-narrow { grid-template-columns: minmax(0, 1.35fr) minmax(220px, .65fr); }
+.motimuse-split-narrow .motimuse-phone { width: 197px; }
+.motimuse-split .motimuse-phone { justify-self: center; }
+.motimuse-split-reverse > .case-study-section { grid-column: 2; grid-row: 1; }
+.motimuse-split-reverse > div { grid-column: 1; grid-row: 1; }
+
+.motimuse-phone { width: min(100%, 240px); }
+.motimuse-centered-wide { width: 72%; margin-inline: auto; }
+.motimuse-user-flow { width: 33%; margin-inline: auto; }
+
+.motimuse-wireframes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    justify-items: center;
+}
+.motimuse-wireframes > :first-child { width: 100%; }
+.motimuse-wireframes > :nth-child(2) { width: 80.4%; }
+.motimuse-wireframes > :nth-child(3) { width: 83.6%; }
+
+.motimuse-feature-rows { display: grid; gap: 40px; }
+.motimuse-feature-row { min-height: 410px; }
+.motimuse-feature-row > div:first-child { max-width: 430px; }
+.motimuse-feature-row h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.25; }
+.motimuse-feature-row p { margin: 0; color: #5f6368; font-size: 17px; line-height: 1.8; }
+.motimuse-feature-row-reverse > div:first-child { grid-column: 2; grid-row: 1; }
+.motimuse-feature-row-reverse > div:last-child { grid-column: 1; grid-row: 1; }
+
+.motimuse-phone-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px;
+    width: min(100%, 440px);
+    margin-inline: auto;
+}
+.motimuse-phone-single { width: min(100%, 210px); margin-inline: auto; }
+.motimuse-pov-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    width: min(100%, 440px);
+    margin: 12px auto 0;
+    color: #5f6368;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+.motimuse-prototype-layout {
+    grid-template-columns: 300px minmax(240px, 1fr);
+    gap: 24px;
+}
+.motimuse-prototype-layout .motimuse-phone { width: 240px; justify-self: start; }
+.motimuse-next-heading { color: var(--drive-blue); }
+.case-study-steps.motimuse-next-steps {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.case-study-steps.motimuse-next-steps li {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+    min-height: 64px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #202124;
+    font-size: 20px;
+    line-height: 1.4;
+}
+.case-study-steps.motimuse-next-steps span {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    background: #74eeb6;
+    color: #111;
+    font-size: 30px;
+    font-weight: 700;
+}
+body.dark-mode .motimuse-next-heading { color: #8ab4f8; }
+body.dark-mode .case-study-steps.motimuse-next-steps li { background: transparent; border: 0; color: #f1f3f4; }
+body.dark-mode .case-study-steps.motimuse-next-steps span { color: #111 !important; }
+
+/* Stardew Valley preserves the paired research, findings, and feature layouts from Wix. */
+.stardew-section-group,
+.stardew-solution-group { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--case-study-text-media-gap); }
+.stardew-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 40px; }
+.stardew-problem-layout { grid-template-columns: minmax(0, 1.556fr) minmax(300px, 1fr); }
+.stardew-context-images { display: grid; gap: 24px; }
+.stardew-research-docs { display: grid; grid-template-columns: minmax(0, 1.078fr) minmax(0, 1fr); align-items: start; gap: 18px; }
+.stardew-survey-results { width: 81.5%; margin-inline: auto; }
+.stardew-synthesis-layout { grid-template-columns: minmax(0, 282px) minmax(0, 1fr); }
+.stardew-synthesis-layout > .case-study-media { align-self: center; }
+.stardew-findings { display: grid; gap: 24px; }
+.stardew-findings > section { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); align-items: center; gap: 48px; }
+.stardew-findings blockquote { margin: 0; padding: 0; border: 0; color: #3c4043; font-size: 18px; line-height: 1.55; }
+.stardew-findings blockquote + blockquote { margin-top: 28px; }
+.stardew-pigeon-feature { width: 100%; }
+.stardew-timing-row { display: grid; align-items: center; gap: 32px; }
+.stardew-timing-row:has(img[src*="day length feature"]) { grid-template-columns: 298px minmax(0, 1fr); }
+.stardew-timing-row:has(img[src*="pause feature"]) { grid-template-columns: 414px minmax(0, 1fr); }
+.stardew-timing-row > div { display: grid; gap: 24px; }
+.stardew-next-heading { color: var(--drive-blue); }
+.case-study-steps.stardew-next-steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; margin: 0; padding: 0; list-style: none; }
+.case-study-steps.stardew-next-steps li { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 16px; min-height: 64px; padding: 0; border: 0; background: transparent; color: #202124; font-size: 20px; line-height: 1.4; }
+.case-study-steps.stardew-next-steps span { width: 64px; height: 64px; display: grid; place-items: center; background: #dfa4ef; color: #111; font-size: 30px; font-weight: 700; }
+body.dark-mode .stardew-findings blockquote { color: #f1f3f4; }
+body.dark-mode .stardew-next-heading { color: #8ab4f8; }
+body.dark-mode .case-study-steps.stardew-next-steps li { background: transparent; border: 0; color: #f1f3f4; }
+body.dark-mode .case-study-steps.stardew-next-steps span { color: #111 !important; }
+.case-study-cover-image:has(img[src*="motimuse cover slide"]) {
+    aspect-ratio: 979 / 552;
+    overflow: hidden;
+}
+.case-study-cover-image:has(img[src*="motimuse cover slide"]) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+body.dark-mode .motimuse-feature-row h3 { color: #f1f3f4; }
+body.dark-mode .motimuse-feature-row p,
+body.dark-mode .motimuse-pov-pair { color: #b0b0b0; }
+
 .case-study-section { width: 100%; max-width: none; }
 .case-study-section h2 { font-size: 28px; margin: 0 0 14px; }
 .case-study-section p { color: #5f6368; font-size: 17px; line-height: 1.8; margin: 0; }
@@ -753,6 +899,36 @@ body.dark-mode .case-study-section .case-study-cta:hover { background: #aecbfa; 
         --case-study-grid-gap: 12px;
     }
     .case-study-early-sketches { gap: 24px; }
+    .motimuse-section-group { gap: var(--case-study-text-media-gap); }
+    .motimuse-split,
+    .motimuse-feature-row,
+    .motimuse-split-narrow,
+    .motimuse-prototype-layout { grid-template-columns: 1fr; gap: 28px; }
+    .motimuse-split-reverse > .case-study-section,
+    .motimuse-feature-row-reverse > div:first-child { grid-column: 1; grid-row: 1; }
+    .motimuse-split-reverse > div,
+    .motimuse-feature-row-reverse > div:last-child { grid-column: 1; grid-row: 2; }
+    .motimuse-feature-row { min-height: 0; }
+    .motimuse-centered-wide { width: 100%; }
+    .motimuse-user-flow { width: min(70%, 320px); }
+    .motimuse-next-steps { gap: 28px; }
+    .motimuse-next-steps li { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; min-height: 52px; font-size: 17px; }
+    .motimuse-next-steps span { width: 52px; height: 52px; font-size: 24px; }
+    .stardew-split,
+    .stardew-problem-layout,
+    .stardew-synthesis-layout,
+    .stardew-findings > section,
+    .stardew-timing-row,
+    .stardew-timing-row:has(img[src*="day length feature"]),
+    .stardew-timing-row:has(img[src*="pause feature"]) { grid-template-columns: 1fr; gap: 28px; }
+    .stardew-research-docs { grid-template-columns: 1fr; gap: 24px; }
+    .stardew-survey-results { width: 100%; }
+    .stardew-findings blockquote { font-size: 17px; }
+    .case-study-steps.stardew-next-steps { gap: 28px; }
+    .case-study-steps.stardew-next-steps li { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; min-height: 52px; font-size: 17px; }
+    .case-study-steps.stardew-next-steps span { width: 52px; height: 52px; font-size: 24px; }
+    .motimuse-wireframes > :nth-child(2),
+    .motimuse-wireframes > :nth-child(3) { width: 100%; }
     .case-study-main { width: min(100% - 32px, 960px); padding-top: 24px; }
     .case-study-meta { grid-template-columns: 1fr; }
     .case-study-cover { min-height: 240px; }
