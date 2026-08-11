@@ -173,12 +173,23 @@ body.dark-mode .case-study-tag:not(:last-child)::after { color: var(--drive-blue
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
+    padding: 48px;
+    background: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(60, 64, 67, .18), 0 10px 24px rgba(60, 64, 67, .12);
 }
 
 .snap-finance-logo img {
-    width: min(55%, 520px);
+    width: min(45%, 337px);
     height: auto;
+    filter: none !important;
+}
+
+body.dark-mode .case-study-cover-image.snap-finance-logo {
+    background: #fff;
+    border-color: #5f6368;
 }
 
 body:not(.dark-mode) :is(.case-study-cover-image, .case-study-media) > img {
