@@ -1365,6 +1365,27 @@
             object-fit: cover;
         }
 
+        .project-cover {
+            aspect-ratio: 16 / 9;
+            margin: 0 0 16px;
+            overflow: hidden;
+            border: 1px solid #dadce0;
+            border-radius: 10px;
+            background: #f1f3f4;
+        }
+
+        .project-cover img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        body.dark-mode .project-cover {
+            border-color: #333;
+            background: #181818;
+        }
+
         .about-copy {
             min-width: 0;
         }

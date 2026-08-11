@@ -1,16 +1,18 @@
 const caseStudyTags = {
-    'um-gpt.html': ['UXD', 'UI/UX'],
-    'motimuse.html': ['UXR', 'UXD', 'UI/UX'],
-    'stardew-valley.html': ['UXR', 'UXD'],
-    'counter-strike-2.html': ['ARTICLE']
+    'um-gpt': ['UXD', 'UI/UX'],
+    'motimuse': ['UXR', 'UXD', 'UI/UX'],
+    'stardew-valley': ['UXR', 'UXD'],
+    'counter-strike-2': ['ARTICLE']
 };
+const portfolioRootUrl = new URL('../', document.currentScript.src);
+const portfolioRoot = portfolioRootUrl.href;
 
 function renderSharedTopBar() {
     const topBar = document.querySelector('.top-bar');
     if (!topBar) return;
 
     topBar.innerHTML = `
-        <a class="top-bar-branding" href="../index.html#home" style="text-decoration: none;">Zejun Li</a>
+        <a class="top-bar-branding" href="${portfolioRoot}" style="text-decoration: none;">Zejun Li</a>
         <form class="top-bar-search search-bar" id="caseStudySearch" role="search">
             <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
             <input type="search" id="searchInput" placeholder="Search in Drive" aria-label="Search in Drive">
@@ -21,14 +23,14 @@ function renderSharedTopBar() {
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/></svg>
                 </button>
                 <div id="emailPopover" class="email-popover" role="dialog" aria-label="Email contact" hidden>
-                    <div class="email-popover-header"><div class="email-popover-icon" aria-hidden="true"><span class="material-symbols-outlined">mail</span></div><div><p class="email-popover-title">Email</p><p class="email-popover-address">zejunli@umich.edu</p></div></div>
+                    <div class="email-popover-header"><div class="email-popover-icon" aria-hidden="true"><span class="material-symbols-outlined">mail</span></div><div><p class="email-popover-title">Shoot me an email at:</p><p class="email-popover-address">zejunli@umich.edu</p></div></div>
                     <div class="email-popover-actions"><button id="copyEmailButton" class="email-popover-action" type="button"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span id="copyEmailText">Copy</span></button><a class="email-popover-action" href="mailto:zejunli@umich.edu"><span class="material-symbols-outlined" aria-hidden="true">open_in_new</span><span>Open email</span></a></div>
                 </div>
             </div>
             <a href="https://www.linkedin.com/in/zejli/" target="_blank" rel="noopener" class="social-icon" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2H3.5C2.67 2 2 2.67 2 3.5V20.5C2 21.33 2.67 22 3.5 22H20.5C21.33 22 22 21.33 22 20.5V3.5C22 2.67 21.33 2 20.5 2ZM8 19H5V9H8V19ZM6.5 7.5C5.5 7.5 4.7 6.7 4.7 5.8C4.7 4.9 5.5 4.1 6.5 4.1C7.5 4.1 8.3 4.9 8.3 5.8C8.3 6.7 7.5 7.5 6.5 7.5ZM19 19H16V13.5C16 12.5 15.5 11.7 14.5 11.7C13.7 11.7 13.2 12.2 13 12.7C12.9 12.9 12.9 13.2 12.9 13.5V19H9.9V9H12.9V10.2C13.3 9.5 14.3 8.5 16 8.5C18.5 8.5 19 10.2 19 12.5V19Z"/></svg></a>
             <a href="https://github.com/zejun-l" target="_blank" rel="noopener" class="social-icon" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
             <button id="themeToggle" class="theme-toggle" title="Toggle dark mode" type="button" aria-label="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg></button>
-            <a class="avatar" href="../index.html#about" title="Profile" aria-label="Zejun Li profile"><img src="../assets/images/profile-photo.jpg" alt="Zejun Li profile photo"></a>
+            <a class="avatar" href="${portfolioRoot}about/" title="Profile" aria-label="Zejun Li profile"><img src="${portfolioRoot}assets/images/profile-photo.jpg" alt="Zejun Li profile photo"></a>
         </div>`;
 }
 
@@ -44,10 +46,10 @@ function renderSharedSidebar() {
     sidebar.innerHTML = `
         <div class="sidebar-content">
             <nav class="nav">
-                <a class="nav-item" href="../index.html#home"><div class="nav-icon"><span class="material-symbols-outlined">home</span></div><span>Home</span></a>
-                <a class="nav-item active" href="../index.html#projects" aria-current="page"><div class="nav-icon"><span class="material-symbols-outlined">folder</span></div><span>Projects</span></a>
-                <a class="nav-item" href="../index.html#about"><div class="nav-icon"><span class="material-symbols-outlined">person</span></div><span>About</span></a>
-                <a class="nav-item" href="../index.html#resume"><div class="nav-icon"><span class="material-symbols-outlined">description</span></div><span>Resume</span></a>
+                <a class="nav-item" href="${portfolioRoot}"><div class="nav-icon"><span class="material-symbols-outlined">home</span></div><span>Home</span></a>
+                <a class="nav-item active" href="${portfolioRoot}projects/" aria-current="page"><div class="nav-icon"><span class="material-symbols-outlined">folder</span></div><span>Projects</span></a>
+                <a class="nav-item" href="${portfolioRoot}about/"><div class="nav-icon"><span class="material-symbols-outlined">person</span></div><span>About</span></a>
+                <a class="nav-item" href="${portfolioRoot}resume/"><div class="nav-icon"><span class="material-symbols-outlined">description</span></div><span>Resume</span></a>
             </nav>
         </div>`;
 
@@ -57,8 +59,9 @@ function renderSharedSidebar() {
 }
 
 function renderCaseStudyTags() {
-    const fileName = window.location.pathname.split('/').pop() || '';
-    const tags = caseStudyTags[fileName];
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const routeName = pathParts[pathParts.length - 1] === 'index.html' ? pathParts[pathParts.length - 2] : pathParts[pathParts.length - 1];
+    const tags = caseStudyTags[routeName];
     const hero = document.querySelector('.case-study-hero');
     const title = hero?.querySelector('h1');
     if (!tags || !hero || !title) return;
@@ -274,16 +277,16 @@ themeToggle?.addEventListener('click', () => {
 document.getElementById('caseStudySearch')?.addEventListener('submit', event => {
     event.preventDefault();
     const query = document.getElementById('searchInput')?.value.trim() || '';
-    window.location.href = `../index.html?search=${encodeURIComponent(query)}#projects`;
+    window.location.href = `${portfolioRoot}?search=${encodeURIComponent(query)}`;
 });
 
 const caseStudySearchItems = [
-    { icon: 'folder', title: 'U-M GPT', meta: "Redesigning Michigan's AI chatbot", keywords: 'um gpt ai chatbot uxd ui ux', url: 'um-gpt.html' },
-    { icon: 'folder', title: 'MotiMuse', meta: 'Designing a mobile app to encourage music practice', keywords: 'motimuse music practice uxr uxd ui ux', url: 'motimuse.html' },
-    { icon: 'folder', title: 'Stardew Valley Game Remake', meta: 'Improving the co-op player experience', keywords: 'stardew valley games ux research uxr uxd', url: 'stardew-valley.html' },
-    { icon: 'article', title: 'Counter-Strike 2 Game UX Study', meta: 'Analyzing CS2 using UX heuristics', keywords: 'counter strike cs2 article games ux heuristics', url: 'counter-strike-2.html' },
-    { icon: 'person', title: 'About me', meta: 'Learn more about Zejun', keywords: 'about profile skills zejun', url: '../index.html#about' },
-    { icon: 'description', title: 'Resume', meta: "View Zejun's resume", keywords: 'resume cv experience education', url: '../index.html#resume' }
+    { icon: 'folder', title: 'U-M GPT', meta: "Redesigning Michigan's AI chatbot", keywords: 'um gpt ai chatbot uxd ui ux', url: `${portfolioRoot}projects/um-gpt/` },
+    { icon: 'folder', title: 'MotiMuse', meta: 'Designing a mobile app to encourage music practice', keywords: 'motimuse music practice uxr uxd ui ux', url: `${portfolioRoot}projects/motimuse/` },
+    { icon: 'folder', title: 'Stardew Valley Game Remake', meta: 'Improving the co-op player experience', keywords: 'stardew valley games ux research uxr uxd', url: `${portfolioRoot}projects/stardew-valley/` },
+    { icon: 'article', title: 'Counter-Strike 2 Game UX Study', meta: 'Analyzing CS2 using UX heuristics', keywords: 'counter strike cs2 article games ux heuristics', url: `${portfolioRoot}projects/counter-strike-2/` },
+    { icon: 'person', title: 'About me', meta: 'Learn more about Zejun', keywords: 'about profile skills zejun', url: `${portfolioRoot}about/` },
+    { icon: 'description', title: 'Resume', meta: "View Zejun's resume", keywords: 'resume cv experience education', url: `${portfolioRoot}resume/` }
 ];
 
 const caseStudySearchInput = document.getElementById('searchInput');
@@ -365,5 +368,5 @@ document.querySelector('.case-study-back')?.addEventListener('click', event => {
     }
 
     const returnPage = sessionStorage.getItem('caseStudyReturnPage');
-    window.location.href = `../index.html#${returnPage === 'home' ? 'home' : 'projects'}`;
+    window.location.href = returnPage === 'home' ? portfolioRoot : `${portfolioRoot}projects/`;
 });

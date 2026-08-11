@@ -2,6 +2,14 @@ let portfolioData = {};
         let navigationItems = [];
         let projects = [];
         let skills = [];
+        const appScriptUrl = new URL(document.currentScript.src);
+        const portfolioRootUrl = new URL('../', appScriptUrl);
+        const cleanPageUrls = {
+            home: portfolioRootUrl.pathname,
+            projects: `${portfolioRootUrl.pathname}projects/`,
+            about: `${portfolioRootUrl.pathname}about/`,
+            resume: `${portfolioRootUrl.pathname}resume/`
+        };
 
         const localPortfolioFallback = {
             profile: {
@@ -26,10 +34,10 @@ let portfolioData = {};
                 { icon: 'description', label: 'Resume', id: 'resume' }
             ],
             projects: [
-                { id: 1, title: 'U-M GPT', url: 'projects/um-gpt.html', description: "Redesigning Michigan's AI chatbot", date: 'Dec 2025', status: 'Completed', tags: ['UXD', 'UI/UX'], role: 'Product Designer', teamSize: '1', timeline: 'Aug 2025 - Dec 2025' },
-                { id: 2, title: 'MotiMuse', url: 'projects/motimuse.html', description: 'Designing a mobile app to encourage music practice', date: 'Nov 2025', status: 'Completed', tags: ['UXR', 'UXD', 'UI/UX'], role: 'Product Manager & UX Designer', teamSize: '5', timeline: 'Oct 2025 - Nov 2025' },
-                { id: 3, title: 'Stardew Valley Game Remake', url: 'projects/stardew-valley.html', description: 'Improving the co-op player experience', date: 'Mar 2025', status: 'Completed', tags: ['UXR', 'UXD'], role: 'UX Researcher & Designer', teamSize: '4', timeline: 'Jan 2025 - Mar 2025' },
-                { id: 4, title: 'Counter-Strike 2 Game UX Study', url: 'projects/counter-strike-2.html', description: 'Analyzing CS2 using UX heuristics', date: 'Mar 2025', status: 'Completed', tags: ['Article'], metaFields: [{ label: 'Author', value: 'Zejun Li' }, { label: 'Date', value: 'March 16, 2025' }, { label: '', value: '' }] }
+                { id: 1, title: 'U-M GPT', url: 'projects/um-gpt/', image: 'assets/images/um-gpt/umgpt cover slide.png', description: "Redesigning Michigan's AI chatbot", date: 'Dec 2025', status: 'Completed', tags: ['UXD', 'UI/UX'], role: 'Product Designer', teamSize: '1', timeline: 'Aug 2025 - Dec 2025' },
+                { id: 2, title: 'MotiMuse', url: 'projects/motimuse/', image: 'assets/images/motimuse/motimuse cover slide.png', description: 'Designing a mobile app to encourage music practice', date: 'Nov 2025', status: 'Completed', tags: ['UXR', 'UXD', 'UI/UX'], role: 'Product Manager & UX Designer', teamSize: '5', timeline: 'Oct 2025 - Nov 2025' },
+                { id: 3, title: 'Stardew Valley Game Remake', url: 'projects/stardew-valley/', image: 'assets/images/stardew-valley/stardew valley cover slide.jpg', description: 'Improving the co-op player experience', date: 'Mar 2025', status: 'Completed', tags: ['UXR', 'UXD'], role: 'UX Researcher & Designer', teamSize: '4', timeline: 'Jan 2025 - Mar 2025' },
+                { id: 4, title: 'Counter-Strike 2 Game UX Study', url: 'projects/counter-strike-2/', image: 'assets/images/counter-strike-2/player status.jpg', description: 'Analyzing CS2 using UX heuristics', date: 'Mar 2025', status: 'Completed', tags: ['Article'], metaFields: [{ label: 'Author', value: 'Zejun Li' }, { label: 'Date', value: 'March 16, 2025' }, { label: '', value: '' }] }
             ],
             skills: ['UI/UX Design', 'Web Design', 'Prototyping', 'Front-end Development', 'React', 'HTML/CSS', 'JavaScript', 'Figma', 'Adobe XD', 'User Research', 'Wireframing'].map((title, index) => ({ id: index + 1, title })),
             searchPages: [
@@ -47,9 +55,15 @@ let portfolioData = {};
             applyPortfolioData();
             renderNavigation();
             updateStickyOffsets();
-            const initialPage = window.location.hash.replace('#', '');
-            showPage(['projects', 'about', 'resume'].includes(initialPage) ? initialPage : 'home');
-            const initialSearch = new URLSearchParams(window.location.search).get('search');
+            const initialParams = new URLSearchParams(window.location.search);
+            const initialSearch = initialParams.get('search');
+            const recoveredRoute = initialParams.get('route');
+            const pathRoute = window.location.pathname.startsWith(portfolioRootUrl.pathname)
+                ? window.location.pathname.slice(portfolioRootUrl.pathname.length).split('/').filter(Boolean)[0]
+                : '';
+            const hashRoute = window.location.hash.replace('#', '');
+            const requestedPage = initialSearch ? 'projects' : (recoveredRoute || pathRoute || hashRoute);
+            showPage(['projects', 'about', 'resume'].includes(requestedPage) ? requestedPage : 'home');
             if (initialSearch) {
                 const searchInput = document.getElementById('searchInput');
                 if (searchInput) searchInput.value = initialSearch;
@@ -157,17 +171,23 @@ let portfolioData = {};
             return tags.map(tag => `<span class="project-tag tag-${getTagClass(tag)}">${escapeHTML(tag)}</span>`).join('');
         }
 
+        function renderProjectCover(project) {
+            if (!project?.image) return '';
+            return `<div class="project-cover"><img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)} cover"></div>`;
+        }
+
         function renderNavigation() {
             const nav = document.getElementById('nav');
             nav.innerHTML = navigationItems.map(item => `
-                <a class="nav-item ${item.id === 'home' ? 'active' : ''}" data-id="${escapeHTML(item.id)}" href="#${escapeHTML(item.id)}">
+                <a class="nav-item ${item.id === 'home' ? 'active' : ''}" data-id="${escapeHTML(item.id)}" href="${escapeHTML(cleanPageUrls[item.id] || cleanPageUrls.home)}">
                     <div class="nav-icon">${getIcon(item.icon)}</div>
                     <span>${escapeHTML(item.label)}</span>
                 </a>
             `).join('');
 
             document.querySelectorAll('.nav-item').forEach(item => {
-                item.addEventListener('click', () => {
+                item.addEventListener('click', event => {
+                    event.preventDefault();
                     showPage(item.dataset.id);
                 });
             });
@@ -181,11 +201,12 @@ let portfolioData = {};
             const page = document.getElementById(`page-${pageId}`);
             if (!page) return;
             page.style.display = 'block';
-            if (window.location.hash !== `#${pageId}`) {
+            const targetUrl = cleanPageUrls[pageId] || cleanPageUrls.home;
+            if (window.location.pathname !== targetUrl || window.location.hash || window.location.search) {
                 try {
-                    history.replaceState(null, '', `#${pageId}`);
+                    history.replaceState(null, '', targetUrl);
                 } catch (error) {
-                    window.location.hash = pageId;
+                    window.location.href = targetUrl;
                 }
             }
 
@@ -226,9 +247,7 @@ let portfolioData = {};
             emptyState.style.display = 'none';
             grid.innerHTML = filtered.map(project => `
                 <a class="project-card" href="${escapeHTML(project.url)}">
-                    <div class="project-icon">
-                        <span class="material-symbols-outlined">folder</span>
-                    </div>
+                    ${renderProjectCover(project)}
                     <h3>${escapeHTML(project.title)}</h3>
                     <p>${escapeHTML(project.description)}</p>
                     <div class="project-footer">
@@ -373,9 +392,7 @@ let portfolioData = {};
             const grid = document.getElementById('featuredGrid');
             grid.innerHTML = featured.map(project => `
                 <a class="project-card" href="${escapeHTML(project.url)}">
-                    <div class="project-icon">
-                        <span class="material-symbols-outlined">folder</span>
-                    </div>
+                    ${renderProjectCover(project)}
                     <h3>${escapeHTML(project.title)}</h3>
                     <p>${escapeHTML(project.description)}</p>
                     <div class="project-footer">

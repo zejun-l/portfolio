@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading portfolio…</title>
+</head>
+<body>
+    <script>
+        (() => {
+            const isGitHubPages = window.location.hostname.endsWith('.github.io');
+            const segments = window.location.pathname.split('/').filter(Boolean);
+            const basePath = isGitHubPages && segments.length ? `/${segments[0]}/` : '/';
+            const relativeParts = window.location.pathname.slice(basePath.length).split('/').filter(Boolean);
+            const route = relativeParts[0];
+            const legacyCaseStudies = new Map([
+                ['um-gpt.html', 'um-gpt'],
+                ['motimuse.html', 'motimuse'],
+                ['stardew-valley.html', 'stardew-valley'],
+                ['counter-strike-2.html', 'counter-strike-2']
+            ]);
+            if (route === 'projects' && legacyCaseStudies.has(relativeParts[1])) {
+                window.location.replace(`${basePath}projects/${legacyCaseStudies.get(relativeParts[1])}/`);
+                return;
+            }
+            const supportedRoutes = new Set(['projects', 'about', 'resume']);
+            if (supportedRoutes.has(route)) {
+                window.location.replace(`${basePath}?route=${encodeURIComponent(route)}`);
+            } else {
+                window.location.replace(basePath);
+            }
+        })();
+    </script>
+</body>
+</html>
