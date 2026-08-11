@@ -1264,7 +1264,7 @@
         }
 
         .email-popover-address {
-            font-size: 13px;
+            font-size: 15px !important;
             color: #5f6368;
             margin: 0;
             line-height: 1.4;
@@ -1355,16 +1355,14 @@
         }
 
         .about-photo-placeholder {
-            min-height: 260px;
+            display: block;
+            width: 100%;
+            max-width: 260px;
+            min-height: 0;
+            height: auto;
             border: 1px solid var(--surface-border);
             border-radius: 12px;
-            background-color: #f1f3f4;
-            color: #9aa0a6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            text-align: center;
+            object-fit: cover;
         }
 
         .about-copy {
@@ -1372,8 +1370,6 @@
         }
 
         body.dark-mode .about-photo-placeholder {
-            background-color: #2a2a2a;
-            color: #b0b0b0;
             border-color: var(--surface-border);
         }
 
@@ -1645,9 +1641,8 @@
             }
 
             .about-photo-placeholder {
-                width: 100%;
-                min-height: 220px;
-                font-size: 13px;
+                min-height: 0;
+                justify-self: center;
             }
 
             #aboutText,
@@ -1789,7 +1784,7 @@
             }
 
             .about-photo-placeholder {
-                min-height: 200px;
+                min-height: 0;
             }
 
             #aboutText,
