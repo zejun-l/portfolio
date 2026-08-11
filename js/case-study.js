@@ -79,6 +79,165 @@ function renderCaseStudyFooter() {
     if (footer) footer.textContent = '© 2026 Zejun Li · This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.';
 }
 
+function setupImageLightbox() {
+    const images = document.querySelectorAll('.case-study-media img, .case-study-cover-image img');
+    if (!images.length) return;
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'image-lightbox';
+    lightbox.hidden = true;
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Expanded project image');
+    lightbox.innerHTML = `
+        <div class="image-lightbox-viewport">
+            <img class="image-lightbox-image" alt="" draggable="false">
+        </div>
+        <div class="image-lightbox-controls" aria-label="Image zoom controls">
+            <button type="button" data-lightbox-action="zoom-out" aria-label="Zoom out"><span class="material-symbols-outlined" aria-hidden="true">remove</span></button>
+            <output class="image-lightbox-level" aria-live="polite">100%</output>
+            <button type="button" data-lightbox-action="zoom-in" aria-label="Zoom in"><span class="material-symbols-outlined" aria-hidden="true">add</span></button>
+            <button type="button" data-lightbox-action="reset" aria-label="Reset zoom"><span class="material-symbols-outlined" aria-hidden="true">fit_screen</span></button>
+        </div>
+        <p class="image-lightbox-help">Scroll or pinch to zoom · Drag to move · Double-click to zoom in</p>
+        <button class="image-lightbox-close" type="button" aria-label="Close expanded image"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>`;
+    document.body.appendChild(lightbox);
+
+    const expandedImage = lightbox.querySelector('.image-lightbox-image');
+    const viewport = lightbox.querySelector('.image-lightbox-viewport');
+    const zoomLevel = lightbox.querySelector('.image-lightbox-level');
+    const closeButton = lightbox.querySelector('.image-lightbox-close');
+    let triggerImage = null;
+    let zoom = 1;
+    let panX = 0;
+    let panY = 0;
+    let dragStart = null;
+    let pinchStart = null;
+    const pointers = new Map();
+
+    function clampPan() {
+        const maxX = Math.max(0, (expandedImage.offsetWidth * zoom - viewport.clientWidth) / 2) + 40;
+        const maxY = Math.max(0, (expandedImage.offsetHeight * zoom - viewport.clientHeight) / 2) + 40;
+        panX = Math.max(-maxX, Math.min(maxX, panX));
+        panY = Math.max(-maxY, Math.min(maxY, panY));
+    }
+
+    function renderTransform() {
+        clampPan();
+        expandedImage.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoom})`;
+        zoomLevel.textContent = `${Math.round(zoom * 100)}%`;
+        viewport.classList.toggle('is-zoomed', zoom > 1);
+    }
+
+    function setZoom(nextZoom, clientX, clientY) {
+        const oldZoom = zoom;
+        const rect = viewport.getBoundingClientRect();
+        const focusX = (clientX ?? rect.left + rect.width / 2) - (rect.left + rect.width / 2);
+        const focusY = (clientY ?? rect.top + rect.height / 2) - (rect.top + rect.height / 2);
+        zoom = Math.max(1, Math.min(8, nextZoom));
+        if (zoom !== oldZoom) {
+            panX = focusX - ((focusX - panX) * zoom / oldZoom);
+            panY = focusY - ((focusY - panY) * zoom / oldZoom);
+        }
+        if (zoom === 1) panX = panY = 0;
+        renderTransform();
+    }
+
+    function resetView() {
+        zoom = 1;
+        panX = panY = 0;
+        renderTransform();
+    }
+
+    function closeLightbox() {
+        lightbox.hidden = true;
+        expandedImage.removeAttribute('src');
+        resetView();
+        document.body.classList.remove('lightbox-open');
+        triggerImage?.focus();
+    }
+
+    function openLightbox(image) {
+        triggerImage = image;
+        expandedImage.src = image.currentSrc || image.src;
+        expandedImage.alt = image.alt;
+        lightbox.hidden = false;
+        document.body.classList.add('lightbox-open');
+        expandedImage.addEventListener('load', resetView, { once: true });
+        closeButton.focus();
+    }
+
+    images.forEach(image => {
+        image.classList.add('case-study-zoomable');
+        image.tabIndex = 0;
+        image.setAttribute('role', 'button');
+        image.setAttribute('aria-label', `Expand image: ${image.alt || 'project image'}`);
+        image.addEventListener('click', () => openLightbox(image));
+        image.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openLightbox(image);
+            }
+        });
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); });
+    lightbox.querySelector('[data-lightbox-action="zoom-in"]').addEventListener('click', () => setZoom(zoom * 1.3));
+    lightbox.querySelector('[data-lightbox-action="zoom-out"]').addEventListener('click', () => setZoom(zoom / 1.3));
+    lightbox.querySelector('[data-lightbox-action="reset"]').addEventListener('click', resetView);
+
+    viewport.addEventListener('wheel', event => {
+        event.preventDefault();
+        setZoom(zoom * Math.exp(-event.deltaY * .002), event.clientX, event.clientY);
+    }, { passive: false });
+
+    viewport.addEventListener('dblclick', event => {
+        event.preventDefault();
+        setZoom(zoom > 1 ? 1 : 2.5, event.clientX, event.clientY);
+    });
+
+    viewport.addEventListener('pointerdown', event => {
+        pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        viewport.setPointerCapture(event.pointerId);
+        if (pointers.size === 1) dragStart = { x: event.clientX, y: event.clientY, panX, panY };
+        if (pointers.size === 2) {
+            const [a, b] = [...pointers.values()];
+            pinchStart = { distance: Math.hypot(a.x - b.x, a.y - b.y), zoom };
+        }
+    });
+
+    viewport.addEventListener('pointermove', event => {
+        if (!pointers.has(event.pointerId)) return;
+        pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        if (pointers.size === 2 && pinchStart) {
+            const [a, b] = [...pointers.values()];
+            const distance = Math.hypot(a.x - b.x, a.y - b.y);
+            setZoom(pinchStart.zoom * distance / Math.max(1, pinchStart.distance), (a.x + b.x) / 2, (a.y + b.y) / 2);
+        } else if (dragStart && zoom > 1) {
+            panX = dragStart.panX + event.clientX - dragStart.x;
+            panY = dragStart.panY + event.clientY - dragStart.y;
+            renderTransform();
+        }
+    });
+
+    function endPointer(event) {
+        pointers.delete(event.pointerId);
+        dragStart = null;
+        pinchStart = null;
+    }
+    viewport.addEventListener('pointerup', endPointer);
+    viewport.addEventListener('pointercancel', endPointer);
+
+    document.addEventListener('keydown', event => {
+        if (lightbox.hidden) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === '+' || event.key === '=') setZoom(zoom * 1.3);
+        if (event.key === '-') setZoom(zoom / 1.3);
+        if (event.key === '0') resetView();
+    });
+}
+
 renderSharedTopBar();
 renderSharedSidebar();
 
@@ -104,6 +263,7 @@ function setEmailPopoverOpen(open) {
 applyTheme(localStorage.getItem('theme') || 'light');
 renderCaseStudyTags();
 renderCaseStudyFooter();
+setupImageLightbox();
 
 themeToggle?.addEventListener('click', () => {
     const theme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';

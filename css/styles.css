@@ -2479,7 +2479,7 @@
         }
 
         body.dark-mode .project-tag { background-color: #303134; color: #e8eaed; }
-        body.dark-mode .project-tag.tag-uxd,
-        body.dark-mode .project-tag.tag-uiux { background-color: #174ea6; color: #ffffff; }
+        body.dark-mode .project-tag.tag-uxd { background-color: #174ea6; color: #ffffff; }
         body.dark-mode .project-tag.tag-uxr { background-color: #1b5e20; color: #ffffff; }
+        body.dark-mode .project-tag.tag-uiux { background-color: #6a1b9a; color: #ffffff; }
         body.dark-mode .project-tag.tag-article { background-color: #a63c00; color: #ffffff; }
