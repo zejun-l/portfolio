@@ -690,8 +690,9 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 300px));
             gap: 16px;
+            justify-content: start;
         }
 
         #skillsGrid {

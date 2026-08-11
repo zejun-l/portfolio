@@ -286,7 +286,7 @@ const caseStudySearchItems = [
     { icon: 'folder', title: 'MotiMuse', meta: 'Designing a mobile app to encourage music practice', keywords: 'motimuse music practice uxr uxd ui ux', url: `${portfolioRoot}projects/motimuse/` },
     { icon: 'folder', title: 'Stardew Valley Game Remake', meta: 'Improving the co-op player experience', keywords: 'stardew valley games ux research uxr uxd', url: `${portfolioRoot}projects/stardew-valley/` },
     { icon: 'article', title: 'Counter-Strike 2 Game UX Study', meta: 'Analyzing CS2 using UX heuristics', keywords: 'counter strike cs2 article games ux heuristics', url: `${portfolioRoot}projects/counter-strike-2/` },
-    { icon: 'folder', title: 'Snap Finance Internship', meta: 'Coming soon', keywords: 'snap finance internship ux research uxr', url: `${portfolioRoot}projects/snap-finance/` },
+    { icon: 'folder', title: 'Snap Finance UXR Internship', meta: 'Coming soon', keywords: 'snap finance internship ux research uxr', url: `${portfolioRoot}projects/snap-finance/` },
     { icon: 'person', title: 'About me', meta: 'Learn more about Zejun', keywords: 'about profile skills zejun', url: `${portfolioRoot}about/` },
     { icon: 'description', title: 'Resume', meta: "View Zejun's resume", keywords: 'resume cv experience education', url: `${portfolioRoot}resume/` }
 ];
