@@ -168,12 +168,12 @@ body.dark-mode .case-study-tag:not(:last-child)::after { color: var(--drive-blue
 
 .snap-finance-logo {
     width: 100%;
-    min-height: 320px;
-    margin: 0 0 var(--case-study-related-gap);
+    min-height: 360px;
+    margin: 16px 0 var(--case-study-section-gap);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 48px;
+    padding: 32px;
     background: #fff;
     border: 1px solid #dadce0;
     border-radius: 12px;
