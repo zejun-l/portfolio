@@ -9,6 +9,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="../css/case-study.css?v=20260812-1">
+    <style>
+        .snap-password-gate {
+            min-height: calc(100vh - 160px);
+            display: grid;
+            place-items: center;
+            padding: 40px 0 80px;
+        }
+        .snap-password-card {
+            width: min(100%, 440px);
+            padding: 32px;
+            border: 1px solid #dadce0;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(60, 64, 67, .18), 0 8px 24px rgba(60, 64, 67, .12);
+        }
+        .snap-password-icon {
+            color: var(--drive-blue);
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .snap-password-card h1 { margin: 0 0 12px; font-size: 28px; line-height: 1.25; }
+        .snap-password-card p { margin: 0 0 24px; color: #5f6368; font-size: 16px; line-height: 1.6; }
+        .snap-password-field { display: grid; gap: 8px; }
+        .snap-password-field label { font-size: 14px; font-weight: 500; }
+        .snap-password-field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #bdc1c6;
+            border-radius: 8px;
+            background: #fff;
+            color: #202124;
+            font: inherit;
+        }
+        .snap-password-field input:focus { border-color: var(--drive-blue); outline: 2px solid rgba(26, 115, 232, .2); }
+        .snap-password-submit {
+            width: 100%;
+            margin-top: 16px;
+            padding: 12px 18px;
+            border: 0;
+            border-radius: 24px;
+            background: var(--drive-blue);
+            color: #fff;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .snap-password-submit:hover { background: #1557b0; }
+        .snap-password-error { min-height: 20px; margin: 10px 0 0 !important; color: #d93025 !important; font-size: 14px !important; }
+        .snap-protected-content[hidden], .snap-password-gate[hidden] { display: none; }
+        body.dark-mode .snap-password-card { background: #1e1e1e; border-color: #444; }
+        body.dark-mode .snap-password-card h1 { color: #f1f3f4; }
+        body.dark-mode .snap-password-card p { color: #b0b0b0; }
+        body.dark-mode .snap-password-field input { background: #121212; border-color: #5f6368; color: #f1f3f4; }
+        @media (max-width: 700px) {
+            .snap-password-gate { padding-top: 24px; }
+            .snap-password-card { padding: 24px; }
+        }
+    </style>
 </head>
 <body class="case-study-body">
     <header class="top-bar">
@@ -20,6 +78,20 @@
     <div class="case-study-shell">
         <main class="case-study-main">
             <a class="case-study-back" href="../projects/"><span class="material-symbols-outlined">arrow_back</span>Go Back</a>
+            <section class="snap-password-gate" id="snapPasswordGate" aria-labelledby="snapPasswordTitle">
+                <form class="snap-password-card" id="snapPasswordForm">
+                    <span class="material-symbols-outlined snap-password-icon" aria-hidden="true">lock</span>
+                    <h1 id="snapPasswordTitle">Protected case study</h1>
+                    <p>Enter the password to view the Snap Finance UXR Internship case study.</p>
+                    <div class="snap-password-field">
+                        <label for="snapPassword">Password</label>
+                        <input id="snapPassword" name="password" type="password" autocomplete="current-password" required>
+                    </div>
+                    <button class="snap-password-submit" type="submit">View case study</button>
+                    <p class="snap-password-error" id="snapPasswordError" role="alert" aria-live="polite"></p>
+                </form>
+            </section>
+            <div class="snap-protected-content" id="snapProtectedContent" hidden>
             <article>
                 <header class="case-study-hero"><h1>Snap Finance UXR Internship</h1></header>
                 <figure class="case-study-cover case-study-cover-image"><img src="../assets/images/snap-finance/Snap_logo337X150.jpg" alt="Snap Finance logo"></figure>
@@ -32,8 +104,46 @@
                 </div>
             </article>
             <footer class="case-study-footer">© 2026 Zejun Li · This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.</footer>
+            </div>
         </main>
     </div>
+    <script>
+        (() => {
+            const accessKey = 'snap-finance-access';
+            const expectedHash = 'ce06092fb948d9ffac7d1a376e404b26b7575bcc11ee05a4615fef4fec3a308b';
+            const gate = document.getElementById('snapPasswordGate');
+            const content = document.getElementById('snapProtectedContent');
+            const form = document.getElementById('snapPasswordForm');
+            const input = document.getElementById('snapPassword');
+            const error = document.getElementById('snapPasswordError');
+
+            function unlock() {
+                gate.hidden = true;
+                content.hidden = false;
+                sessionStorage.setItem(accessKey, 'granted');
+            }
+
+            if (sessionStorage.getItem(accessKey) === 'granted') {
+                unlock();
+            } else {
+                input.focus();
+            }
+
+            form.addEventListener('submit', async event => {
+                event.preventDefault();
+                error.textContent = '';
+                const bytes = new TextEncoder().encode(input.value);
+                const digest = await crypto.subtle.digest('SHA-256', bytes);
+                const hash = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+                if (hash === expectedHash) {
+                    unlock();
+                } else {
+                    error.textContent = 'Incorrect password. Please try again.';
+                    input.select();
+                }
+            });
+        })();
+    </script>
     <script src="../js/case-study.js?v=20260812-1"></script>
 </body>
 </html>
