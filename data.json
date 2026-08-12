@@ -65,7 +65,7 @@
       "role": "Product Designer",
       "teamSize": "1",
       "timeline": "Aug 2025 - Dec 2025",
-      "image": "assets/images/um-gpt/umgpt cover slide.png",
+      "image": "assets/images/um-gpt/card-cover.webp",
       "fullDescription": "This project centered on a redesign of the interface of U-M GPT, the University of Michigan's custom generative AI platform, including the implementation of a new feature to improve the user experience of students. Completed within a semester-long intro to UX course, this project progressed through the full UX design process, starting with the client brief and initial sketches to low- and high-fidelity wireframes, all underscored by an emphasis on strong storytelling and thoughtful design choices."
     },
     {
@@ -83,7 +83,7 @@
       "role": "Product Manager & UX Designer",
       "teamSize": "5",
       "timeline": "Oct 2025 - Nov 2025",
-      "image": "assets/images/motimuse/motimuse cover slide.png",
+      "image": "assets/images/motimuse/card-cover.webp",
       "fullDescription": "MotiMuse is a motivational music practice tool designed by a cross-functional team of five over the course of six weeks for the U-M Ross Business+Tech Innovation Jam. Our design won 1st place in the EdTech track and 2nd overall out of 72 teams, receiving a total of $4,500 in seed funding."
     },
     {
@@ -100,7 +100,7 @@
       "role": "UX Researcher & Designer",
       "teamSize": "4",
       "timeline": "Jan 2025 - Mar 2025",
-      "image": "assets/images/stardew-valley/stardew valley cover slide.jpg",
+      "image": "assets/images/stardew-valley/card-cover.webp",
       "fullDescription": "This project was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. Our team identified areas for improvement and proposed design changes for a hypothetical remake/update of the game Stardew Valley based on insights from market research and user interviews."
     },
     {
@@ -113,7 +113,7 @@
       "tags": [
         "Article"
       ],
-      "image": "assets/images/counter-strike-2/player status.jpg",
+      "image": "assets/images/counter-strike-2/card-cover.webp",
       "metaFields": [
         {
           "label": "Author",

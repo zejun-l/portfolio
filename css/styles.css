@@ -749,7 +749,7 @@
             border-radius: 12px;
             padding: 20px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
             display: flex;
             flex-direction: column;
             text-decoration: none;
@@ -767,7 +767,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-color: #888888;
             background-color: #f5f5f5;
-            transition: all 0.3s ease;
         }
 
         body:not(.dark-mode) #featuredGrid .project-card,
@@ -789,7 +788,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             border-color: #999999;
             background-color: #2a2a2a;
-            transition: all 0.3s ease;
         }
 
         .interactive-item {

@@ -35,10 +35,10 @@ let portfolioData = {};
             ],
             projects: [
                 { id: 5, title: 'Snap Finance UXR Internship', url: 'projects/snap-finance/', image: 'assets/images/snap-finance/Snap_logo337X150.jpg', description: 'Coming soon', date: 'Aug 2026', status: 'In progress', timeline: 'May 18, 2026 - August 13, 2026', tags: ['UXR'], fullDescription: 'Case study details coming soon.' },
-                { id: 1, title: 'U-M GPT', url: 'projects/um-gpt/', image: 'assets/images/um-gpt/umgpt cover slide.png', description: "Redesigning Michigan's AI chatbot", date: 'Dec 2025', status: 'Completed', tags: ['UXD', 'UI/UX'], role: 'Product Designer', teamSize: '1', timeline: 'Aug 2025 - Dec 2025' },
-                { id: 2, title: 'MotiMuse', url: 'projects/motimuse/', image: 'assets/images/motimuse/motimuse cover slide.png', description: 'Designing a mobile app to encourage music practice', date: 'Nov 2025', status: 'Completed', tags: ['UXR', 'UXD', 'UI/UX'], role: 'Product Manager & UX Designer', teamSize: '5', timeline: 'Oct 2025 - Nov 2025' },
-                { id: 3, title: 'Stardew Valley Game Remake', url: 'projects/stardew-valley/', image: 'assets/images/stardew-valley/stardew valley cover slide.jpg', description: 'Improving the co-op player experience', date: 'Mar 2025', status: 'Completed', tags: ['UXR', 'UXD'], role: 'UX Researcher & Designer', teamSize: '4', timeline: 'Jan 2025 - Mar 2025' },
-                { id: 4, title: 'Counter-Strike 2 Game UX Study', url: 'projects/counter-strike-2/', image: 'assets/images/counter-strike-2/player status.jpg', description: 'Analyzing CS2 using UX heuristics', date: 'Mar 2025', status: 'Completed', tags: ['Article'], metaFields: [{ label: 'Author', value: 'Zejun Li' }, { label: 'Date', value: 'March 16, 2025' }, { label: '', value: '' }] }
+                { id: 1, title: 'U-M GPT', url: 'projects/um-gpt/', image: 'assets/images/um-gpt/card-cover.webp', description: "Redesigning Michigan's AI chatbot", date: 'Dec 2025', status: 'Completed', tags: ['UXD', 'UI/UX'], role: 'Product Designer', teamSize: '1', timeline: 'Aug 2025 - Dec 2025' },
+                { id: 2, title: 'MotiMuse', url: 'projects/motimuse/', image: 'assets/images/motimuse/card-cover.webp', description: 'Designing a mobile app to encourage music practice', date: 'Nov 2025', status: 'Completed', tags: ['UXR', 'UXD', 'UI/UX'], role: 'Product Manager & UX Designer', teamSize: '5', timeline: 'Oct 2025 - Nov 2025' },
+                { id: 3, title: 'Stardew Valley Game Remake', url: 'projects/stardew-valley/', image: 'assets/images/stardew-valley/card-cover.webp', description: 'Improving the co-op player experience', date: 'Mar 2025', status: 'Completed', tags: ['UXR', 'UXD'], role: 'UX Researcher & Designer', teamSize: '4', timeline: 'Jan 2025 - Mar 2025' },
+                { id: 4, title: 'Counter-Strike 2 Game UX Study', url: 'projects/counter-strike-2/', image: 'assets/images/counter-strike-2/card-cover.webp', description: 'Analyzing CS2 using UX heuristics', date: 'Mar 2025', status: 'Completed', tags: ['Article'], metaFields: [{ label: 'Author', value: 'Zejun Li' }, { label: 'Date', value: 'March 16, 2025' }, { label: '', value: '' }] }
             ],
             skills: ['UI/UX Design', 'Web Design', 'Prototyping', 'Front-end Development', 'React', 'HTML/CSS', 'JavaScript', 'Figma', 'Adobe XD', 'User Research', 'Wireframing'].map((title, index) => ({ id: index + 1, title })),
             searchPages: [
@@ -178,7 +178,7 @@ let portfolioData = {};
 
         function renderProjectCover(project) {
             if (!project?.image) return '<div class="project-icon"><span class="material-symbols-outlined">folder</span></div>';
-            return `<div class="project-cover"><img src="${escapeHTML(resolvePortfolioUrl(project.image))}" alt="${escapeHTML(project.title)} cover" loading="lazy" decoding="async"></div>`;
+            return `<div class="project-cover"><img src="${escapeHTML(resolvePortfolioUrl(project.image))}" alt="${escapeHTML(project.title)} cover" loading="lazy" decoding="async" fetchpriority="low" width="1200" height="675"></div>`;
         }
 
         function renderNavigation() {

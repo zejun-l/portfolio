@@ -8,6 +8,28 @@ const caseStudyTags = {
 const portfolioRootUrl = new URL('../', document.currentScript.src);
 const portfolioRoot = portfolioRootUrl.href;
 
+function setupDeferredMedia() {
+    const deferredImages = document.querySelectorAll('img[data-src]');
+    if (!deferredImages.length) return;
+    const loadImage = image => {
+        if (!image.dataset.src) return;
+        image.src = image.dataset.src;
+        image.removeAttribute('data-src');
+    };
+    if (!('IntersectionObserver' in window)) {
+        deferredImages.forEach(loadImage);
+        return;
+    }
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            loadImage(entry.target);
+            observer.unobserve(entry.target);
+        });
+    }, { rootMargin: '200px 0px' });
+    deferredImages.forEach(image => observer.observe(image));
+}
+
 function renderSharedTopBar() {
     const topBar = document.querySelector('.top-bar');
     if (!topBar) return;
@@ -267,6 +289,7 @@ function setEmailPopoverOpen(open) {
 applyTheme(localStorage.getItem('theme') || 'light');
 renderCaseStudyTags();
 renderCaseStudyFooter();
+setupDeferredMedia();
 setupImageLightbox();
 
 themeToggle?.addEventListener('click', () => {
