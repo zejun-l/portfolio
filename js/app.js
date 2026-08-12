@@ -178,7 +178,7 @@ let portfolioData = {};
 
         function renderProjectCover(project) {
             if (!project?.image) return '<div class="project-icon"><span class="material-symbols-outlined">folder</span></div>';
-            return `<div class="project-cover"><img src="${escapeHTML(resolvePortfolioUrl(project.image))}" alt="${escapeHTML(project.title)} cover"></div>`;
+            return `<div class="project-cover"><img src="${escapeHTML(resolvePortfolioUrl(project.image))}" alt="${escapeHTML(project.title)} cover" loading="lazy" decoding="async"></div>`;
         }
 
         function renderNavigation() {

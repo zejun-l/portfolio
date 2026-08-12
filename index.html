@@ -72,7 +72,7 @@
             </button>
 
             <button class="avatar" title="Profile" onclick="showPage('about')">
-                <img id="profilePhoto" src="assets/images/profile-photo.jpg" alt="Profile">
+                <img id="profilePhoto" src="assets/images/profile-photo.jpg" alt="Profile" decoding="async">
             </button>
         </div>
     </div>
@@ -129,7 +129,7 @@
                     <div id="page-about" class="page" style="display: none;">
                         <h1 id="aboutTitle">About me</h1>
                         <div class="about-intro">
-                            <img class="about-photo-placeholder" src="assets/images/profile-photo.jpg" alt="Zejun Li smiling beneath cherry blossoms">
+                            <img class="about-photo-placeholder" src="assets/images/profile-photo.jpg" alt="Zejun Li smiling beneath cherry blossoms" loading="lazy" decoding="async">
                             <div class="about-copy">
                                 <p id="aboutText" style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8; white-space: pre-line;">Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)
 
@@ -200,6 +200,6 @@ Outside of school and design, I play a lot of ultimate frisbee! I also enjoy fis
             </div>
         </div>
     </div>
-    <script src="js/app.js?v=20260811-3" defer></script>
+    <script src="js/app.js?v=20260812-1" defer></script>
 </body>
 </html>
