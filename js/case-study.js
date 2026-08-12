@@ -84,7 +84,7 @@ function renderCaseStudyFooter() {
 }
 
 function setupImageLightbox() {
-    const images = document.querySelectorAll('.case-study-media img, .case-study-cover-image img');
+    const images = document.querySelectorAll('.case-study-media img');
     if (!images.length) return;
 
     const lightbox = document.createElement('div');
