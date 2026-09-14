@@ -973,6 +973,8 @@ body.dark-mode .snap-case-study .snap-project-group .case-study-kicker {
     display: grid;
     gap: 8px;
 }
+.snap-project-servicing .snap-finding-quotes { margin-top: 18px; }
+.snap-project-servicing .snap-finding-quotes .snap-participant-quote { margin: 0; }
 .snap-case-study .snap-finding-card > .snap-finding-quotes,
 .snap-case-study .snap-finding-card > .snap-participant-quote {
     width: 100%;
