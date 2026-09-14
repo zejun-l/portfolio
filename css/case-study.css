@@ -853,6 +853,9 @@ body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
     width: min(100%, 320px);
     margin: var(--case-study-text-media-gap) auto;
 }
+.snap-case-study .snap-rastrack-screen {
+    margin-bottom: var(--case-study-text-media-gap);
+}
 .snap-case-study .case-study-media figcaption {
     margin-top: 12px;
     color: #5f6368;
