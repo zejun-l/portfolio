@@ -850,8 +850,6 @@ body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
     line-height: 1.8;
 }
 .snap-case-study .snap-learning-list strong { color: #202124; }
-.snap-case-study .snap-learning-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.snap-case-study .snap-learning-grid > :last-child:nth-child(odd) { grid-column: 2; }
 .snap-case-study .snap-study-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--case-study-text-media-gap); }
 .snap-case-study .snap-analysis-flow { margin-top: var(--case-study-text-media-gap); }
 .snap-case-study .snap-findings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1227,12 +1225,10 @@ body.dark-mode .case-study-section .case-study-cta:hover { background: #aecbfa; 
     .case-study-feature-grid,
     .case-study-steps { grid-template-columns: 1fr; }
     .snap-case-study .snap-project-overview,
-    .snap-case-study .snap-learning-grid,
     .snap-case-study .snap-findings,
     .snap-case-study .snap-recommendations,
     .snap-case-study .snap-ras-grid,
     .snap-case-study .snap-study-flow { grid-template-columns: 1fr; }
-    .snap-case-study .snap-learning-grid > :last-child:nth-child(odd) { grid-column: auto; }
     .snap-case-study .snap-analysis-flow { display: flex; }
     .case-study-quote-grid { grid-template-columns: 1fr; }
     .case-study-flow { flex-direction: column; }
