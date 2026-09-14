@@ -858,49 +858,116 @@ body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
 .snap-case-study .snap-analysis-flow { margin-top: var(--case-study-text-media-gap); }
 .snap-case-study .snap-study-flow li,
 .snap-case-study .snap-analysis-flow li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 18px 20px;
+    display: block;
+    padding: 18px 20px 18px 48px;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
 }
 .snap-case-study .snap-study-flow li::before,
 .snap-case-study .snap-analysis-flow li::before {
-    position: static;
+    position: absolute;
+    top: 18px;
+    left: 18px;
     transform: none;
 }
 .snap-case-study .snap-findings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .snap-case-study .snap-findings strong { color: #202124; font-weight: 600; }
 .snap-case-study .snap-numbered-findings {
     counter-reset: finding;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 24px;
 }
 .snap-case-study .snap-numbered-findings > section {
     counter-increment: finding;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    justify-content: center;
-    padding: 18px 20px;
-    border-radius: 12px;
-    text-align: center;
+    gap: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
 }
-.snap-case-study .snap-numbered-findings > section::before {
+.snap-case-study .snap-numbered-findings > section:has(blockquote) {
+    grid-template-columns: minmax(0, 1fr);
+}
+.snap-case-study .snap-finding-card {
+    display: grid;
+    height: 100%;
+    box-sizing: border-box;
+    align-content: start;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 12px;
+    padding: 18px 20px;
+    border: 1px solid #dadce0;
+    border-radius: 12px;
+    text-align: left;
+}
+.snap-case-study .snap-finding-card::before {
     content: counter(finding);
     color: var(--drive-blue);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 1.5;
-    margin-bottom: 8px;
+    grid-column: 1;
+    grid-row: 1;
 }
+.snap-case-study .snap-finding-card > h3 { grid-column: 2; grid-row: 1; }
+.snap-case-study .snap-finding-card > :not(h3) { grid-column: 1 / -1; }
 .snap-case-study .snap-numbered-findings h3 { margin-top: 0; }
 .snap-case-study .snap-numbered-findings p { font-size: 16px; }
+.snap-case-study .snap-numbered-findings .snap-participant-quote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #3c4043;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.55;
+    text-align: left;
+}
+.snap-case-study .snap-finding-quotes {
+    display: grid;
+    gap: 8px;
+}
+.snap-case-study .snap-finding-card > .snap-finding-quotes,
+.snap-case-study .snap-finding-card > .snap-participant-quote {
+    width: 100%;
+    margin-top: 24px;
+}
+body.dark-mode .snap-case-study .snap-numbered-findings > section { background: transparent; }
+body.dark-mode .snap-case-study .snap-finding-card { background: #1e1e1e; border-color: #444; }
+body.dark-mode .snap-case-study .snap-numbered-findings .snap-participant-quote { color: #f1f3f4; }
+@media (max-width: 700px) {
+    .snap-case-study .snap-numbered-findings > section:has(blockquote) { grid-template-columns: 1fr; }
+}
 .snap-case-study .snap-recommendations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .snap-case-study .snap-recommendations section { display: block; }
 .snap-case-study .snap-recommendations h2 { font-size: 20px; }
+.snap-case-study .snap-project-overview > section,
+.snap-case-study .snap-recommendations > section {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-content: start;
+    align-items: baseline;
+    column-gap: 12px;
+}
+.snap-case-study .snap-project-overview > section > span,
+.snap-case-study .snap-recommendations > section > span {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.snap-case-study .snap-project-overview h3,
+.snap-case-study .snap-recommendations h2 {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+}
+.snap-case-study .snap-project-overview p,
+.snap-case-study .snap-recommendations p { grid-column: 1 / -1; }
 .snap-case-study .snap-ras-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 body.dark-mode .snap-case-study .case-study-insights section,
 body.dark-mode .snap-case-study .case-study-feature-grid > section,

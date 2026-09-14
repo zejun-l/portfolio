@@ -57,11 +57,15 @@
         }
         .snap-password-submit:hover { background: #1557b0; }
         .snap-password-error { min-height: 20px; margin: 10px 0 0 !important; color: #d93025 !important; font-size: 14px !important; }
+        .snap-participant-quote { margin: 18px 0 0; padding-left: 16px; border-left: 3px solid #dadce0; color: #5f6368; font-style: italic; line-height: 1.6; }
+        .snap-participant-quote cite { display: block; margin-top: 6px; color: #80868b; font-size: 14px; font-style: normal; }
         .snap-protected-content[hidden], .snap-password-gate[hidden] { display: none; }
         body.dark-mode .snap-password-card { background: #1e1e1e; border-color: #444; }
         body.dark-mode .snap-password-card h1 { color: #f1f3f4; }
         body.dark-mode .snap-password-card p { color: #b0b0b0; }
         body.dark-mode .snap-password-field input { background: #121212; border-color: #5f6368; color: #f1f3f4; }
+        body.dark-mode .snap-participant-quote { border-left-color: #5f6368; color: #bdc1c6; }
+        body.dark-mode .snap-participant-quote cite { color: #9aa0a6; }
         @media (max-width: 700px) {
             .snap-password-gate { padding-top: 24px; }
             .snap-password-card { padding: 24px; }
@@ -117,7 +121,8 @@
                     </section>
 
                     <section class="case-study-section">
-                        <h2>Featured Project: Spending Power Education</h2>
+                        <p class="case-study-kicker">Featured Project</p>
+                        <h2>Spending Power Education</h2>
                         <p>New and returning customers can receive an estimated Spending Power amount that represents how much they may be able to spend with Snap at participating stores.</p>
                         <p>Customers can also see how that amount differs by financing option and open an education screen to learn more. The team wanted to know whether that content actually helped customers understand what Spending Power was and how to use it.</p>
                     </section>
@@ -147,7 +152,7 @@
                         <p>I ran an unmoderated usability study with 15 participants through Askable. The study combined prototype tasks with open-ended questions about what participants thought the information meant.</p>
                         <p>Since I was testing comprehension, I asked participants to explain Spending Power in their own words before and after exploring the education experience.</p>
                         <ol class="case-study-flow snap-study-flow">
-                            <li>Explore the initial experience</li><li>Explain Spending Power</li><li>Review the education screen</li><li>Explain it again</li><li>Interpret the financing breakdown</li><li>Discuss confidence and open questions</li>
+                            <li>Explore the initial experience</li><li>Explain Spending Power</li><li>Review the education screen</li><li>Explain it again</li><li>Interpret the financing breakdown</li><li>Open questions</li>
                         </ol>
                     </section>
 
@@ -162,33 +167,30 @@
                         <p class="case-study-kicker">Findings</p>
                         <h2 class="snap-featured-subheading">The education improved understanding, but some questions remained</h2>
                         <div class="case-study-feature-grid snap-findings snap-numbered-findings">
-                            <section><h3>Initial mental models of Spending Power varied</h3><p>Participants understood that Spending Power was connected to financing a purchase, but described it in different ways. Some saw it as a loan, credit amount, spending limit, approved amount, or estimate.</p></section>
-                            <section><h3>Interest and fees were still unclear</h3><p>Participants naturally connected Spending Power with the cost of financing and wanted to know more about interest and fees.</p><p>When that information was not available, some participants filled the gap with their own assumptions.</p></section>
-                            <section><h3>The education experience improved overall understanding</h3><p>After reviewing the education content, participants generally had a clearer understanding that Spending Power was an estimate and that the amount could differ by store or financing option.</p></section>
-                            <section><h3>Some users misinterpreted the financing breakdown</h3><p>A small group interpreted the lease-to-own and installment-loan amounts as combined, sequential, or as the amount borrowed compared with the amount repaid.</p></section>
-                            <section><h3>The estimate did not significantly reduce shopping confidence</h3><p>Most participants said they would continue shopping even if their final Spending Power changed. Many expected some variation or wanted to see the final amount before deciding.</p><p>A large or unclear change was more likely to create hesitation.</p></section>
+                            <section class="snap-finding-pair"><div class="snap-finding-card"><h3>Initial mental models of Spending Power varied</h3><p>Participants understood that Spending Power was connected to financing a purchase, but described it in different ways. Some saw it as a loan, credit amount, spending limit, approved amount, or estimate.</p><div class="snap-finding-quotes"><blockquote class="snap-participant-quote">“Spending power is how much credit you can get" (P1).</blockquote><blockquote class="snap-participant-quote">“[It's an] estimated amount for you to use on the purchase” (P10).</blockquote></div></div></section>
+                            <section class="snap-finding-pair"><div class="snap-finding-card"><h3>Interest and fees were still unclear</h3><p>Participants naturally connected Spending Power with the cost of financing and wanted to know more about interest and fees. When that information wasn't available, some participants filled the gap with their own assumptions.</p><div class="snap-finding-quotes"><blockquote class="snap-participant-quote">“I would want to know the interest on the loan over the 12 months” (P15).</blockquote><blockquote class="snap-participant-quote">“What [are] the interest percentages on any borrowed money?” (P11)</blockquote></div></div></section>
+                            <section class="snap-finding-pair"><div class="snap-finding-card"><h3>The education experience improved overall understanding</h3><p>After reviewing the education content, participants generally had a clearer understanding that Spending Power was an estimate and that the amount could differ by store or financing option.</p><div class="snap-finding-quotes"><blockquote class="snap-participant-quote">Before: “It's an amount that you get financed for based on the amount wanting to be spent” (P7).</blockquote><blockquote class="snap-participant-quote">After: “It's the amount that is given to you based on a few different factors. Based off credit and amount being spent and where” (P7).</blockquote></div></div></section>
+                            <section class="snap-finding-pair"><div class="snap-finding-card"><h3>Some users misinterpreted the financing breakdown</h3><p>A small group interpreted the lease-to-own and installment-loan amounts as combined, sequential, or as the amount borrowed compared with the amount repaid.</p><div class="snap-finding-quotes"><blockquote class="snap-participant-quote">“I can spend $5,000 first and receive another $3,500 afterward.” (P3).</blockquote><blockquote class="snap-participant-quote">“It feels like I have $3,500 to spend and will have to pay back $5,000 which would be a 30% interest” (P11).</blockquote></div></div></section>
+                            <section class="snap-finding-pair"><div class="snap-finding-card"><h3>The estimate did not significantly reduce shopping confidence</h3><p>Most participants said they would continue shopping even if their final Spending Power changed. Many expected some variation or wanted to see the final amount before deciding. A large or unclear change was more likely to create hesitation.</p><div class="snap-finding-quotes"><blockquote class="snap-participant-quote">“I would use it because I would expect it to change and be based on different factors” (P12).</blockquote><blockquote class="snap-participant-quote">“It would depend on how much the added costs would be if they are much higher than I originally thought I probably would not continue with the loan as I might not be able to afford a higher payment” (P2)</blockquote></div></div></section>
                         </div>
                     </section>
 
                     <section class="case-study-section">
                         <p class="case-study-kicker">Recommendation</p>
                         <h2 class="snap-featured-subheading">Give customers an easier way to understand financing costs</h2>
-                        <div class="case-study-recommendations snap-recommendations">
-                            <section><span>01</span><h2>Add interest and fee information to the FAQ</h2><p>Interest and fees were the clearest unanswered questions in the study. I recommended adding this information to the FAQ so customers could find it without adding more content to the main education experience.</p></section>
-                        </div>
+                        <p><strong>Add interest and fee information to the FAQ:</strong> Interest and fees were the clearest unanswered questions in the study. I recommended adding this information to the FAQ so customers could find it without adding more content to the main education experience.</p>
                     </section>
 
                     <section class="case-study-section">
                         <p class="case-study-kicker">Outcomes</p>
                         <h2 class="snap-featured-subheading">What the study answered</h2>
-                        <p>The education experience helped customers build a clearer understanding of Spending Power. It also showed that the estimated nature of Spending Power was not the main source of hesitation.</p>
-                        <p>Instead, financing costs remained a key information gap. That gave the team a clearer picture of what the education experience was already doing well and where customers still needed more information.</p>
+                        <p>The education experience helped customers build a clearer understanding of Spending Power and showed that the estimated nature of Spending Power wasn't the main source of hesitation. Instead, financing costs remained a key information gap, which gave the team a clearer picture of what the education experience was already doing well and where customers still needed more information.</p>
                     </section>
 
                     <section class="case-study-section">
                         <p class="case-study-kicker">Project two</p>
                         <h2>Servicing Messages</h2>
-                        <p>Returning customers may see messages about their account and payment status when they return to the app after making a purchase.</p>
+                        <p>Returning customers may see messages about their account and payment status when they return to the Snap Finance app after making a purchase.</p>
                         <p>I ran two unmoderated usability studies with 30 total participants: one focused on urgent header alerts and the other on lower-priority banners.</p>
                         <p>The goal was to understand whether customers noticed the messages, interpreted them correctly, understood the intended urgency, and knew what to do next.</p>
                     </section>
@@ -197,7 +199,7 @@
                         <p class="case-study-kicker">Active header alerts</p>
                         <h2>Urgent payment alerts were clear and noticeable</h2>
                         <div class="case-study-feature-grid snap-findings">
-                            <section><h3>The alert was understood as payment-related and urgent</h3><p>Participants generally understood that a payment was due or past due. The red color, bold styling, and placement at the top of the screen helped the message stand out and communicate that action was needed.</p></section>
+                            <section><h3>The alert was understood as payment-related and urgent</h3><p>Participants generally understood that a payment was due or past due. The red color, bold styling, and placement at the top of the screen helped the message stand out and communicate that action was needed.</p><blockquote class="snap-participant-quote">“I feel like it was very urgent because it was at the top of the screen and highlighted in bright red.”<cite>— P4</cite></blockquote></section>
                             <section><h3>The alert also shaped how customers viewed Snap</h3><p>Participants saw the alert as evidence that Snap was proactive about communicating important account and payment information.</p><p>Overall, this created a neutral to positive impression of the brand.</p></section>
                         </div>
                     </section>
@@ -207,7 +209,7 @@
                         <h2>The banner communicated the topic, but not the account status</h2>
                         <div class="case-study-feature-grid snap-findings">
                             <section><h3>Customers read the banner as a payment reminder</h3><p>The banner was meant to confirm that a payment had already been scheduled. Instead, participants often described it as an upcoming due-date reminder.</p><p>They understood that the message was about a payment, but not the exact status it was trying to communicate.</p></section>
-                            <section><h3>Shopping content drew more attention</h3><p>Spending Power and shopping categories stood out more than the banner. Its lower visual salience made it easier to overlook unless participants were closely scanning the screen.</p><p>In first impressions, shopping opportunities were mentioned 14 times, Spending Power 10 times, and the payment banner 5 times.</p></section>
+                            <section><h3>Shopping content drew more attention</h3><p>Spending Power and shopping categories stood out more than the banner. Its lower visual salience made it easier to overlook unless participants were closely scanning the screen.</p><p>In first impressions, shopping opportunities were mentioned 14 times, Spending Power 10 times, and the payment banner 5 times.</p><blockquote class="snap-participant-quote">“[The banner] didn't catch my eye initially.”<cite>— P13</cite></blockquote></section>
                             <section><h3>Payment status raised questions about Spending Power</h3><p>Some participants wondered whether a missed or past-due payment would affect their available Spending Power and ability to keep shopping.</p></section>
                         </div>
                     </section>
