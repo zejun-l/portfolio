@@ -835,6 +835,27 @@ body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
 }
 
 /* Snap Finance case study: composed only from the shared case-study primitives. */
+.snap-project-spending-power { --project-label-color: #188038; }
+.snap-project-servicing { --project-label-color: #8430ce; }
+.snap-project-rastrack { --project-label-color: #b45309; }
+body.dark-mode .snap-project-spending-power { --project-label-color: #81c995; }
+body.dark-mode .snap-project-servicing { --project-label-color: #c58af9; }
+body.dark-mode .snap-project-rastrack { --project-label-color: #ffb74d; }
+.snap-case-study .snap-project-group .case-study-kicker,
+body.dark-mode .snap-case-study .snap-project-group .case-study-kicker {
+    color: var(--project-label-color) !important;
+}
+.snap-case-study .snap-project-group .case-study-flow li::before,
+.snap-case-study .snap-project-group .snap-finding-card::before,
+.snap-case-study .snap-project-servicing .snap-findings > section::before,
+.snap-case-study .snap-project-group .snap-ras-grid > section::before {
+    color: var(--project-label-color);
+}
+.snap-case-study .snap-project-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: calc(var(--case-study-text-media-gap) + 24px);
+}
 .snap-case-study .case-study-section > .snap-featured-subheading {
     font-size: 24px;
     line-height: 1.25;
@@ -872,6 +893,26 @@ body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
 }
 .snap-case-study .snap-findings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .snap-case-study .snap-findings strong { color: #202124; font-weight: 600; }
+.snap-project-servicing .snap-findings { counter-reset: servicing-finding; }
+.snap-project-servicing .snap-findings > section {
+    counter-increment: servicing-finding;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    align-content: start;
+    column-gap: 12px;
+}
+.snap-project-servicing .snap-findings > section::before {
+    content: counter(servicing-finding);
+    color: var(--drive-blue);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    grid-column: 1;
+    grid-row: 1;
+}
+.snap-project-servicing .snap-findings h3 { grid-column: 2; grid-row: 1; margin-top: 0; }
+.snap-project-servicing .snap-findings > section > :not(h3) { grid-column: 1 / -1; }
 .snap-case-study .snap-numbered-findings {
     counter-reset: finding;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -919,8 +960,9 @@ body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
 .snap-case-study .snap-numbered-findings p { font-size: 16px; }
 .snap-case-study .snap-numbered-findings .snap-participant-quote {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 16px;
     border: 0;
+    border-left: 3px solid #dadce0;
     color: #3c4043;
     font-size: 14px;
     font-style: italic;
@@ -968,7 +1010,30 @@ body.dark-mode .snap-case-study .snap-numbered-findings .snap-participant-quote 
 }
 .snap-case-study .snap-project-overview p,
 .snap-case-study .snap-recommendations p { grid-column: 1 / -1; }
-.snap-case-study .snap-ras-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.snap-case-study .snap-ras-grid {
+    counter-reset: rastrack;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: var(--case-study-text-media-gap);
+}
+.snap-case-study .snap-ras-grid > section {
+    counter-increment: rastrack;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    align-content: start;
+    column-gap: 12px;
+}
+.snap-case-study .snap-ras-grid > section::before {
+    content: counter(rastrack);
+    color: var(--drive-blue);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    grid-column: 1;
+    grid-row: 1;
+}
+.snap-case-study .snap-ras-grid h3 { grid-column: 2; grid-row: 1; margin-top: 0; }
+.snap-case-study .snap-ras-grid p { grid-column: 1 / -1; }
 body.dark-mode .snap-case-study .case-study-insights section,
 body.dark-mode .snap-case-study .case-study-feature-grid > section,
 body.dark-mode .snap-case-study .case-study-recommendations section { background: #1e1e1e; }
