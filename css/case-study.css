@@ -839,8 +839,17 @@ body.dark-mode.cs2-case-study .case-study-section > p.case-study-kicker {
 .snap-case-study .case-study-feature-grid > section,
 .snap-case-study .case-study-recommendations section { background: #fff; }
 .snap-case-study .snap-project-overview { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.snap-case-study .snap-project-overview .snap-featured-project { border-color: var(--drive-blue); }
 .snap-case-study .snap-project-overview p + p { margin-top: 12px; }
+.snap-case-study .snap-learning-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding-left: 24px;
+    color: #5f6368;
+    font-size: 17px;
+    line-height: 1.8;
+}
+.snap-case-study .snap-learning-list strong { color: #202124; }
 .snap-case-study .snap-learning-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .snap-case-study .snap-learning-grid > :last-child:nth-child(odd) { grid-column: 2; }
 .snap-case-study .snap-study-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--case-study-text-media-gap); }
@@ -855,6 +864,8 @@ body.dark-mode .snap-case-study .case-study-insights section,
 body.dark-mode .snap-case-study .case-study-feature-grid > section,
 body.dark-mode .snap-case-study .case-study-recommendations section { background: #1e1e1e; }
 body.dark-mode .snap-case-study .snap-findings strong { color: #f1f3f4; }
+body.dark-mode .snap-case-study .snap-learning-list { color: #b0b0b0; }
+body.dark-mode .snap-case-study .snap-learning-list strong { color: #f1f3f4; }
 
 
 .case-study-insights section,
