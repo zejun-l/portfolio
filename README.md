@@ -1,1 +1,1 @@
-A static, Google Drive–inspired UX portfolio. 
+Google Drive-inspired portfolio
