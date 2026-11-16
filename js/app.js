@@ -63,7 +63,7 @@ let portfolioData = {};
                 profilePhoto.alt = `${profile.name || 'Profile'} profile photo`;
             }
 
-            const resumeUrl = resolvePortfolioUrl(profile.resumeUrl || 'assets/zejun-li-resume.pdf');
+            const resumeUrl = resolvePortfolioUrl(profile.resumeUrl || 'assets/Li, Zejun Resume.pdf');
             const resumeFrame = document.getElementById('resumeFrame');
             if (resumeFrame) resumeFrame.src = resumeUrl;
             ['resumeOpenLink', 'resumeDownloadLink'].forEach(id => {

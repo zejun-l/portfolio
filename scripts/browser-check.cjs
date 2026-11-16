@@ -78,13 +78,13 @@ const server = http.createServer((req, res) => {
     const response = await page.goto(origin+prefix+'resume/');
     assert.equal(response.status(),200,'Direct routes must not rely on 404 recovery');
     await page.locator('#resumeDownloadLink').waitFor({state:'visible'});
-    const pdf = origin+prefix+'assets/zejun-li-resume.pdf';
+    const pdf = origin+prefix+encodeURI('assets/Li, Zejun Resume.pdf');
     for(const id of ['resumeFrame','resumeOpenLink','resumeDownloadLink']) assert.equal(await page.locator('#'+id).evaluate(el=>el.src||el.href),pdf);
     const downloadPromise = page.waitForEvent('download');
     await page.locator('#resumeDownloadLink').click();
     const download = await downloadPromise;
-    assert.equal(download.suggestedFilename(),'Zejun-Li-Resume.pdf');
-    assert.ok(fs.readFileSync(await download.path()).equals(fs.readFileSync(path.join(root,'assets/zejun-li-resume.pdf'))));
+    assert.equal(download.suggestedFilename(),'Li, Zejun Resume.pdf');
+    assert.ok(fs.readFileSync(await download.path()).equals(fs.readFileSync(path.join(root,'assets/Li, Zejun Resume.pdf'))));
    }
    assert.deepEqual(errors,[]);
    console.log('PASS: direct resume routes at root/subpath and exact PDF downloads');
