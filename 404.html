@@ -25,7 +25,9 @@
             }
             const supportedRoutes = new Set(['projects', 'about', 'resume']);
             if (supportedRoutes.has(route)) {
-                window.location.replace(`${basePath}?route=${encodeURIComponent(route)}`);
+                const params = new URLSearchParams(window.location.search);
+                params.set('route', route);
+                window.location.replace(`${basePath}?${params}${window.location.hash}`);
             } else {
                 window.location.replace(basePath);
             }

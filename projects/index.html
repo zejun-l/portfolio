@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="css/styles.css?v=20261116-1">
+
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="top-bar-branding" id="siteBranding">Zejun Li</div>
+        
+        <div class="top-bar-search search-bar">
+            <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
+            <input type="text" id="searchInput" placeholder="Search in Drive">
+        </div>
+
+        <div class="top-bar-actions">
+            <div class="email-popover-wrapper">
+                <button id="emailButton" class="social-icon" title="Email" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="emailPopover">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/>
+                    </svg>
+                </button>
+                <div id="emailPopover" class="email-popover" role="dialog" aria-label="Email contact" hidden>
+                    <div class="email-popover-header">
+                        <div class="email-popover-icon" aria-hidden="true">
+                            <span class="material-symbols-outlined">mail</span>
+                        </div>
+                        <div>
+                            <p class="email-popover-title">Shoot me an email at:</p>
+                            <p id="emailPopoverAddress" class="email-popover-address">zejunli@umich.edu</p>
+                        </div>
+                    </div>
+                    <div class="email-popover-actions">
+                        <button id="copyEmailButton" class="email-popover-action" type="button">
+                            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+                            <span id="copyEmailText">Copy</span>
+                        </button>
+                        <a id="openEmailLink" class="email-popover-action" href="mailto:zejunli@umich.edu">
+                            <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+                            <span>Open email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a id="linkedinLink" href="https://www.linkedin.com/in/zejli/" target="_blank" rel="noopener" class="social-icon" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.5 2H3.5C2.67 2 2 2.67 2 3.5V20.5C2 21.33 2.67 22 3.5 22H20.5C21.33 22 22 21.33 22 20.5V3.5C22 2.67 21.33 2 20.5 2ZM8 19H5V9H8V19ZM6.5 7.5C5.5 7.5 4.7 6.7 4.7 5.8C4.7 4.9 5.5 4.1 6.5 4.1C7.5 4.1 8.3 4.9 8.3 5.8C8.3 6.7 7.5 7.5 6.5 7.5ZM19 19H16V13.5C16 12.5 15.5 11.7 14.5 11.7C13.7 11.7 13.2 12.2 13 12.7C12.9 12.9 12.9 13.2 12.9 13.5V19H9.9V9H12.9V10.2C13.3 9.5 14.3 8.5 16 8.5C18.5 8.5 19 10.2 19 12.5V19Z"/>
+                </svg>
+            </a>
+
+            <a id="githubLink" href="https://github.com/zejun-l" target="_blank" rel="noopener" class="social-icon" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+
+            <button id="themeToggle" class="theme-toggle" title="Toggle dark mode">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+                </svg>
+            </button>
+
+            <button class="avatar" title="Profile" onclick="showPage('about')">
+                <img id="profilePhoto" src="assets/images/profile-photo.jpg" alt="Profile" decoding="async">
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <nav class="nav" id="nav">
+                    <a class="nav-item active" data-id="home" href="./">
+                        <div class="nav-icon"><span class="material-symbols-outlined">home</span></div>
+                        <span>Home</span>
+                    </a>
+                    <a class="nav-item" data-id="projects" href="projects/">
+                        <div class="nav-icon"><span class="material-symbols-outlined">folder</span></div>
+                        <span>Projects</span>
+                    </a>
+                    <a class="nav-item" data-id="about" href="about/">
+                        <div class="nav-icon"><span class="material-symbols-outlined">person</span></div>
+                        <span>About</span>
+                    </a>
+                    <a class="nav-item" data-id="resume" href="resume/">
+                        <div class="nav-icon"><span class="material-symbols-outlined">description</span></div>
+                        <span>Resume</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-area">
+                <div class="content-wrapper">
+                    <!-- Home Page -->
+                    <div id="page-home" class="page" style="display: block;">
+                        <h1 id="homeTitle">Welcome to Zejun's Drive</h1>
+                        <p id="homeSubtitle" style="font-size: 13px; color: #9aa0a6; margin: 0 0 32px 0;">Suggested projects</p>
+                        <div class="projects-grid" id="featuredGrid">
+                            <!-- Featured projects will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Projects Page -->
+                    <div id="page-projects" class="page" style="display: none;">
+                        <h1 id="projectsPageTitle">Projects</h1>
+                        <p style="font-size: 13px; color: #9aa0a6; margin: 0 0 32px 0;" id="projectCount">4 projects found</p>
+                        <div class="projects-grid" id="projectsGrid">
+                            <!-- Projects will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="emptyState" style="display: none;">
+                            No projects found matching "<span id="searchTerm"></span>"
+                        </div>
+                    </div>
+
+                    <!-- About Page -->
+                    <div id="page-about" class="page" style="display: none;">
+                        <h1 id="aboutTitle">About me</h1>
+                        <div class="about-intro">
+                            <img class="about-photo-placeholder" src="assets/images/profile-photo.jpg" alt="Zejun Li smiling beneath cherry blossoms" loading="lazy" decoding="async">
+                            <div class="about-copy">
+                                <p id="aboutText" style="font-size: 16px; color: #5f6368; margin: 0 0 20px 0; line-height: 1.8; white-space: pre-line;">Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)
+
+Outside of school and design, I play a lot of ultimate frisbee! I also enjoy fishing (trying to get into fly fishing this summer), birdwatching, reading looong fantasy and sci-fi books (check out The Priory of the Orange Tree), and watching food reviews on YouTube.</p>
+                            </div>
+                        </div>
+                        <h3 id="skillsTitle" style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">Skills</h3>
+                        <div class="projects-grid" id="skillsGrid" style="margin-top: 16px;">
+                            <!-- Skills will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Project Detail Page -->
+                    <div id="page-project-detail" class="page" style="display: none;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
+                            <button id="backBtn" class="project-back-btn" aria-label="Back to projects"><span class="material-symbols-outlined">arrow_back</span></button>
+                            <h1 id="projectDetailTitle" style="margin: 0; flex: 1;"></h1>
+                        </div>
+                        <div>
+                            <!-- Photo Placeholder -->
+                            <div id="projectPhoto" style="width: 100%; height: 300px; background-color: var(--drive-blue-container); border-radius: 12px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: #9aa0a6; font-size: 14px;">
+                                Project photo
+                            </div>
+
+                            <!-- Project Meta Information -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px;">
+                                <div style="padding: 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px;">
+                                    <p id="projectMetaLabel1" style="font-size: 12px; color: #9aa0a6; margin: 0 0 8px 0; text-transform: uppercase; font-weight: 500;">Role</p>
+                                    <p id="projectRole" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                </div>
+                                <div style="padding: 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px;">
+                                    <p id="projectMetaLabel2" style="font-size: 12px; color: #9aa0a6; margin: 0 0 8px 0; text-transform: uppercase; font-weight: 500;">Team Size</p>
+                                    <p id="projectTeamSize" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                </div>
+                                <div style="padding: 16px; background-color: #ffffff; border: 1px solid #dadce0; border-radius: 8px;">
+                                    <p id="projectMetaLabel3" style="font-size: 12px; color: #9aa0a6; margin: 0 0 8px 0; text-transform: uppercase; font-weight: 500;">Timeline</p>
+                                    <p id="projectTimeline" style="font-size: 16px; color: #202124; margin: 0; font-weight: 500;"></p>
+                                </div>
+                            </div>
+
+                            <!-- About Section -->
+                            <h3 style="font-size: 18px; font-weight: 600; color: #202124; margin: 32px 0 16px 0;">About</h3>
+                            <p id="projectDetailDescription" style="font-size: 16px; color: #5f6368; line-height: 1.8; margin: 0;"></p>
+                        </div>
+                    </div>
+
+                    <!-- Resume Page -->
+                    <div id="page-resume" class="page" style="display: none;">
+                        <h1 id="resumeTitle">Resume</h1>
+                        <div class="resume-actions" aria-label="Resume actions">
+                            <a id="resumeOpenLink" class="resume-action" href="assets/zejun-li-resume.pdf" target="_blank" rel="noopener">
+                                <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+                                Open resume
+                            </a>
+                            <a id="resumeDownloadLink" class="resume-action" href="assets/zejun-li-resume.pdf" download="Zejun-Li-Resume.pdf">
+                                <span class="material-symbols-outlined" aria-hidden="true">download</span>
+                                Download PDF
+                            </a>
+                        </div>
+                        <div style="margin-top: 32px;">
+                            <div style="border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; background-color: #f8f9fa;">
+                                <iframe 
+                                    id="resumeFrame"
+                                    src="assets/zejun-li-resume.pdf"
+                                    style="width: 100%; height: 800px; border: none;"
+                                    title="Zejun Resume PDF">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <footer class="site-footer" aria-label="Portfolio disclaimer">
+                        <p>&copy; <span id="siteFooterYear">2026</span> <span id="siteFooterName">Zejun Li</span> · <span id="siteFooterNote">This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.</span></p>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/data.js?v=20261116-1" defer></script>
+    <script src="js/shared.js?v=20261116-1" defer></script>
+    <script src="js/app.js?v=20261116-2" defer></script>
+</body>
+</html>

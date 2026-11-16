@@ -2,8 +2,9 @@ let portfolioData = {};
         let navigationItems = [];
         let projects = [];
         let skills = [];
-        const appScriptUrl = new URL(document.currentScript.src);
-        const portfolioRootUrl = new URL('../', appScriptUrl);
+        let searchIndex = [];
+        const portfolioRootUrl = window.Portfolio.root;
+        const { escapeHTML, resolveUrl: resolvePortfolioUrl, updateStickyOffsets } = window.Portfolio;
         const cleanPageUrls = {
             home: portfolioRootUrl.pathname,
             projects: `${portfolioRootUrl.pathname}projects/`,
@@ -11,84 +12,24 @@ let portfolioData = {};
             resume: `${portfolioRootUrl.pathname}resume/`
         };
 
-        const localPortfolioFallback = {
-            profile: {
-                name: 'Zejun Li',
-                siteTitle: "Welcome to Zejun's Drive",
-                homeSubtitle: 'Suggested projects',
-                aboutTitle: 'About me',
-                aboutText: "Hi, I'm Zejun (aka Ting Ting)! I'm a junior at the University of Michigan studying User Experience Design. I'm passionate about exploring the unique problems that arise from the convergence of different disciplines in UX and designing experiences that spark joy :)\n\nOutside of school and design, I play a lot of ultimate frisbee! I also enjoy fishing (trying to get into fly fishing this summer), birdwatching, reading looong fantasy and sci-fi books (check out The Priory of the Orange Tree), and watching food reviews on YouTube.",
-                skillsTitle: 'Skills',
-                resumeTitle: 'Resume',
-                profilePhotoUrl: 'assets/images/profile-photo.jpg',
-                resumeUrl: 'assets/documents/zejun-li-resume.pdf',
-                email: 'zejunli@umich.edu',
-                linkedinUrl: 'https://www.linkedin.com/in/zejli/',
-                githubUrl: 'https://github.com/zejun-l',
-                footerNote: 'This portfolio is inspired by Google Drive’s interaction patterns and Material Design. It is not affiliated with Google.'
-            },
-            navigationItems: [
-                { icon: 'home', label: 'Home', id: 'home' },
-                { icon: 'folder', label: 'Projects', id: 'projects' },
-                { icon: 'user', label: 'About', id: 'about' },
-                { icon: 'description', label: 'Resume', id: 'resume' }
-            ],
-            projects: [
-                { id: 5, title: 'Snap Finance UXR Internship', url: 'projects/snap-finance/', image: 'assets/images/snap-finance/Snap_logo337X150.jpg', description: 'Informing product decisions through UX research', date: 'Aug 2026', status: 'In progress', timeline: 'May 18, 2026 - August 13, 2026', tags: ['UXR'], fullDescription: 'Case study details coming soon.' },
-                { id: 1, title: 'U-M GPT', url: 'projects/um-gpt/', image: 'assets/images/um-gpt/card-cover.webp', description: "Redesigning Michigan's AI chatbot", date: 'Dec 2025', status: 'Completed', tags: ['UXD', 'UI/UX'], role: 'Product Designer', teamSize: '1', timeline: 'Aug 2025 - Dec 2025' },
-                { id: 2, title: 'MotiMuse', url: 'projects/motimuse/', image: 'assets/images/motimuse/card-cover.webp', description: 'Designing a mobile app to encourage music practice', date: 'Nov 2025', status: 'Completed', tags: ['UXR', 'UXD', 'UI/UX'], role: 'Product Manager & UX Designer', teamSize: '5', timeline: 'Oct 2025 - Nov 2025' },
-                { id: 3, title: 'Stardew Valley Game Remake', url: 'projects/stardew-valley/', image: 'assets/images/stardew-valley/card-cover.webp', description: 'Improving the co-op player experience', date: 'Mar 2025', status: 'Completed', tags: ['UXR', 'UXD'], role: 'UX Researcher & Designer', teamSize: '4', timeline: 'Jan 2025 - Mar 2025' },
-                { id: 4, title: 'Counter-Strike 2 Game UX Study', url: 'projects/counter-strike-2/', image: 'assets/images/counter-strike-2/card-cover.webp', description: 'Analyzing CS2 using UX heuristics', date: 'Mar 2025', status: 'Completed', tags: ['Article'], metaFields: [{ label: 'Author', value: 'Zejun Li' }, { label: 'Date', value: 'March 16, 2025' }, { label: '', value: '' }] }
-            ],
-            skills: ['UI/UX Design', 'Web Design', 'Prototyping', 'Front-end Development', 'React', 'HTML/CSS', 'JavaScript', 'Figma', 'Adobe XD', 'User Research', 'Wireframing'].map((title, index) => ({ id: index + 1, title })),
-            searchPages: [
-                { type: 'page', icon: 'person', title: 'About me', description: 'Learn more about Zejun.', date: 'Page', pageId: 'about', keywords: 'About me Zejun Ting Ting University of Michigan User Experience Design' },
-                { type: 'page', icon: 'description', title: 'Resume', description: "View Zejun's resume.", date: 'Page', pageId: 'resume', keywords: 'Resume CV experience education projects' },
-                { type: 'page', icon: 'home', title: 'Home', description: "Return to Zejun's Drive home page and suggested projects.", date: 'Page', pageId: 'home', keywords: 'Home Welcome Zejun Drive suggested projects portfolio' }
-            ]
-        };
-
         function initializePortfolio(data) {
             portfolioData = data;
             navigationItems = portfolioData.navigationItems || [];
             projects = portfolioData.projects || [];
             skills = portfolioData.skills || [];
+            searchIndex = buildSearchIndex();
             applyPortfolioData();
             renderNavigation();
             updateStickyOffsets();
-            const initialParams = new URLSearchParams(window.location.search);
-            const initialSearch = initialParams.get('search');
-            const recoveredRoute = initialParams.get('route');
-            const pathRoute = window.location.pathname.startsWith(portfolioRootUrl.pathname)
-                ? window.location.pathname.slice(portfolioRootUrl.pathname.length).split('/').filter(Boolean)[0]
-                : '';
-            const hashRoute = window.location.hash.replace('#', '');
-            const requestedPage = initialSearch ? 'projects' : (recoveredRoute || pathRoute || hashRoute);
-            showPage(['projects', 'about', 'resume'].includes(requestedPage) ? requestedPage : 'home');
-            if (initialSearch) {
-                const searchInput = document.getElementById('searchInput');
-                if (searchInput) searchInput.value = initialSearch;
-                showPage('projects');
-                renderSearchResults(getSearchResults(initialSearch), initialSearch);
-            }
+            restoreRoute();
         }
 
-        async function loadPortfolioData() {
-            if (window.location.protocol === 'file:') {
-                initializePortfolio(localPortfolioFallback);
-                return;
-            }
-
-            try {
-                const response = await fetch('data.json', { cache: 'no-cache' });
-                if (!response.ok) {
-                    throw new Error(`Could not load data.json (${response.status})`);
-                }
-                initializePortfolio(await response.json());
-            } catch (error) {
-                console.info('Using embedded portfolio data because data.json could not be fetched.', error);
-                initializePortfolio(localPortfolioFallback);
-            }
+        function restoreRoute() {
+            const params = new URLSearchParams(window.location.search);
+            const search = params.get('search') || '';
+            const route = params.get('route') || window.location.pathname.slice(portfolioRootUrl.pathname.length).split('/').filter(Boolean)[0] || window.location.hash.slice(1);
+            showPage(search ? 'projects' : (['projects', 'about', 'resume'].includes(route) ? route : 'home'), { replace: true, search });
+            document.getElementById('searchInput').value = search;
         }
 
         function applyPortfolioData() {
@@ -122,35 +63,18 @@ let portfolioData = {};
                 profilePhoto.alt = `${profile.name || 'Profile'} profile photo`;
             }
 
+            const resumeUrl = resolvePortfolioUrl(profile.resumeUrl || 'assets/zejun-li-resume.pdf');
             const resumeFrame = document.getElementById('resumeFrame');
-            if (resumeFrame && profile.resumeUrl) {
-                resumeFrame.src = resolvePortfolioUrl(profile.resumeUrl);
-            }
+            if (resumeFrame) resumeFrame.src = resumeUrl;
+            ['resumeOpenLink', 'resumeDownloadLink'].forEach(id => {
+                const link = document.getElementById(id);
+                if (link) link.href = resumeUrl;
+            });
         }
 
         function setText(id, value) {
             const element = document.getElementById(id);
             if (element) element.textContent = value;
-        }
-
-        function updateStickyOffsets() {
-            const topBar = document.querySelector('.top-bar');
-            if (topBar) {
-                document.documentElement.style.setProperty('--top-bar-height', `${topBar.offsetHeight}px`);
-            }
-        }
-
-        function escapeHTML(value) {
-            return String(value || '')
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function resolvePortfolioUrl(path) {
-            return new URL(String(path || ''), portfolioRootUrl).href;
         }
 
         function getIcon(iconName) {
@@ -198,7 +122,7 @@ let portfolioData = {};
             });
         }
 
-        function showPage(pageId) {
+        function showPage(pageId, { replace = false, search = '' } = {}) {
             document.querySelectorAll('.page').forEach(page => {
                 page.style.display = 'none';
             });
@@ -206,10 +130,10 @@ let portfolioData = {};
             const page = document.getElementById(`page-${pageId}`);
             if (!page) return;
             page.style.display = 'block';
-            const targetUrl = cleanPageUrls[pageId] || cleanPageUrls.home;
-            if (window.location.pathname !== targetUrl || window.location.hash || window.location.search) {
+            const targetUrl = (cleanPageUrls[pageId] || cleanPageUrls.home) + (search ? `?search=${encodeURIComponent(search)}` : '');
+            if (window.location.protocol !== 'file:' && window.location.pathname + window.location.search + window.location.hash !== targetUrl) {
                 try {
-                    history.replaceState(null, '', targetUrl);
+                    history[replace ? 'replaceState' : 'pushState'](null, '', targetUrl);
                 } catch (error) {
                     window.location.href = targetUrl;
                 }
@@ -225,7 +149,8 @@ let portfolioData = {};
             if (pageId === 'home') {
                 renderFeaturedProjects();
             } else if (pageId === 'projects') {
-                renderProjects(projects);
+                if (search) renderSearchResults(getSearchResults(search), search);
+                else renderProjects(projects);
             } else if (pageId === 'about') {
                 renderSkills();
             }
@@ -295,11 +220,8 @@ let portfolioData = {};
             ].join(' '));
         }
 
-        function getSearchResults(query) {
-            const normalizedQuery = normalizeSearchText(query);
-            if (!normalizedQuery) return [];
-
-            const searchableItems = [
+        function buildSearchIndex() {
+            return [
                 ...projects.map(project => ({
                     type: 'project',
                     icon: 'folder',
@@ -325,13 +247,14 @@ let portfolioData = {};
                     tags: page.tags || [],
                     searchText: normalizeSearchText(`${page.title} ${page.description} ${page.keywords}`),
                 })),
-            ];
+            ].map(item => ({ ...item, compactText: compactSearchText(item.searchText) }));
+        }
 
+        function getSearchResults(query) {
+            const normalizedQuery = normalizeSearchText(query);
+            if (!normalizedQuery) return [];
             const compactQuery = compactSearchText(query);
-            return searchableItems.filter(item => {
-                const compactItemText = compactSearchText(item.searchText);
-                return item.searchText.includes(normalizedQuery) || compactItemText.includes(compactQuery);
-            });
+            return searchIndex.filter(item => item.searchText.includes(normalizedQuery) || item.compactText.includes(compactQuery));
         }
 
         function renderSearchResults(results, query) {
@@ -356,7 +279,7 @@ let portfolioData = {};
             grid.style.display = 'grid';
             emptyState.style.display = 'none';
             grid.innerHTML = results.map((result, index) => `
-                <div class="project-card" data-result-index="${index}" style="cursor: pointer;">
+                <div class="project-card" data-result-index="${index}" role="link" tabindex="0" style="cursor: pointer;">
                     <div class="project-icon">
                         <span class="material-symbols-outlined">${escapeHTML(result.icon)}</span>
                     </div>
@@ -372,6 +295,9 @@ let portfolioData = {};
             `).join('');
 
             grid.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('keydown', event => {
+                    if (event.key === 'Enter') card.click();
+                });
                 card.addEventListener('click', () => {
                     const result = results[parseInt(card.dataset.resultIndex, 10)];
                     if (result.type === 'project') {
@@ -509,7 +435,7 @@ let portfolioData = {};
         const sunIcon = themeToggle.querySelector('.sun-icon');
         const moonIcon = themeToggle.querySelector('.moon-icon');
 
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedTheme = window.Portfolio.local.getItem('theme') || 'light';
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-mode');
             sunIcon.style.display = 'none';
@@ -522,11 +448,11 @@ let portfolioData = {};
             if (document.body.classList.contains('dark-mode')) {
                 sunIcon.style.display = 'none';
                 moonIcon.style.display = 'block';
-                localStorage.setItem('theme', 'dark');
+                window.Portfolio.local.setItem('theme', 'dark');
             } else {
                 sunIcon.style.display = 'block';
                 moonIcon.style.display = 'none';
-                localStorage.setItem('theme', 'light');
+                window.Portfolio.local.setItem('theme', 'light');
             }
         });
 
@@ -588,8 +514,7 @@ let portfolioData = {};
                 const query = searchInput.value.trim();
                 if (!query) return;
                 event.preventDefault();
-                showPage('projects');
-                renderSearchResults(getSearchResults(query), query);
+                showPage('projects', { search: query });
                 closeSearchSuggestions();
             }
         });
@@ -601,10 +526,11 @@ let portfolioData = {};
             if (!projectLink) return;
             const visiblePage = Array.from(document.querySelectorAll('.page')).find(page => page.style.display === 'block');
             const returnPage = visiblePage?.id === 'page-home' ? 'home' : 'projects';
-            sessionStorage.setItem('caseStudyReturnPage', returnPage);
+            window.Portfolio.session.setItem('caseStudyReturnPage', returnPage);
         });
 
         window.addEventListener('resize', updateStickyOffsets);
         window.addEventListener('orientationchange', updateStickyOffsets);
         window.addEventListener('load', updateStickyOffsets);
-        loadPortfolioData();
+        window.addEventListener('popstate', restoreRoute);
+        initializePortfolio(window.Portfolio.data);

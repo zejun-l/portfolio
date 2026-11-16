@@ -8,7 +8,7 @@
     "skillsTitle": "Skills",
     "resumeTitle": "Resume",
     "profilePhotoUrl": "assets/images/profile-photo.jpg",
-    "resumeUrl": "assets/documents/zejun-li-resume.pdf",
+    "resumeUrl": "assets/zejun-li-resume.pdf",
     "email": "zejunli@umich.edu",
     "linkedinUrl": "https://www.linkedin.com/in/zejli/",
     "githubUrl": "https://github.com/zejun-l",
@@ -49,7 +49,10 @@
         "UXR"
       ],
       "image": "assets/images/snap-finance/Snap_logo337X150.jpg",
-      "fullDescription": "Case study details coming soon."
+      "fullDescription": "Case study details coming soon.",
+      "searchKeywords": "snap finance internship ux research uxr",
+      "suggestionOrder": 5,
+      "suggestionDescription": "Coming soon"
     },
     {
       "id": 1,
@@ -66,7 +69,9 @@
       "teamSize": "1",
       "timeline": "Aug 2025 - Dec 2025",
       "image": "assets/images/um-gpt/card-cover.webp",
-      "fullDescription": "This project centered on a redesign of the interface of U-M GPT, the University of Michigan's custom generative AI platform, including the implementation of a new feature to improve the user experience of students. Completed within a semester-long intro to UX course, this project progressed through the full UX design process, starting with the client brief and initial sketches to low- and high-fidelity wireframes, all underscored by an emphasis on strong storytelling and thoughtful design choices."
+      "fullDescription": "This project centered on a redesign of the interface of U-M GPT, the University of Michigan's custom generative AI platform, including the implementation of a new feature to improve the user experience of students. Completed within a semester-long intro to UX course, this project progressed through the full UX design process, starting with the client brief and initial sketches to low- and high-fidelity wireframes, all underscored by an emphasis on strong storytelling and thoughtful design choices.",
+      "searchKeywords": "um gpt ai chatbot uxd ui ux",
+      "suggestionOrder": 1
     },
     {
       "id": 2,
@@ -84,7 +89,9 @@
       "teamSize": "5",
       "timeline": "Oct 2025 - Nov 2025",
       "image": "assets/images/motimuse/card-cover.webp",
-      "fullDescription": "MotiMuse is a motivational music practice tool designed by a cross-functional team of five over the course of six weeks for the U-M Ross Business+Tech Innovation Jam. Our design won 1st place in the EdTech track and 2nd overall out of 72 teams, receiving a total of $4,500 in seed funding."
+      "fullDescription": "MotiMuse is a motivational music practice tool designed by a cross-functional team of five over the course of six weeks for the U-M Ross Business+Tech Innovation Jam. Our design won 1st place in the EdTech track and 2nd overall out of 72 teams, receiving a total of $4,500 in seed funding.",
+      "searchKeywords": "motimuse music practice uxr uxd ui ux",
+      "suggestionOrder": 2
     },
     {
       "id": 3,
@@ -101,7 +108,9 @@
       "teamSize": "4",
       "timeline": "Jan 2025 - Mar 2025",
       "image": "assets/images/stardew-valley/card-cover.webp",
-      "fullDescription": "This project was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. Our team identified areas for improvement and proposed design changes for a hypothetical remake/update of the game Stardew Valley based on insights from market research and user interviews."
+      "fullDescription": "This project was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. Our team identified areas for improvement and proposed design changes for a hypothetical remake/update of the game Stardew Valley based on insights from market research and user interviews.",
+      "searchKeywords": "stardew valley games ux research uxr uxd",
+      "suggestionOrder": 3
     },
     {
       "id": 4,
@@ -128,7 +137,9 @@
           "value": ""
         }
       ],
-      "fullDescription": "This case study article was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. I explored the effectiveness of Counter-Strike 2's UX and provided considerations for the developers if a game update were to be made."
+      "fullDescription": "This case study article was completed as an assignment for the class Games & UX, where we explored the industry practice of video games user research and design. I explored the effectiveness of Counter-Strike 2's UX and provided considerations for the developers if a game update were to be made.",
+      "searchKeywords": "counter strike cs2 article games ux heuristics",
+      "suggestionOrder": 4
     }
   ],
   "skills": [
@@ -185,7 +196,11 @@
       "description": "Learn more about Zejun.",
       "date": "Page",
       "pageId": "about",
-      "keywords": "About me Zejun Ting Ting junior University of Michigan User Experience Design UX design interdisciplinary problems spark joy ultimate frisbee fishing fly fishing birdwatching reading fantasy sci-fi books The Priory of the Orange Tree food reviews YouTube"
+      "keywords": "About me Zejun Ting Ting junior University of Michigan User Experience Design UX design interdisciplinary problems spark joy ultimate frisbee fishing fly fishing birdwatching reading fantasy sci-fi books The Priory of the Orange Tree food reviews YouTube",
+      "caseStudySuggestion": {
+        "description": "Learn more about Zejun",
+        "keywords": "about profile skills zejun"
+      }
     },
     {
       "type": "page",
@@ -194,7 +209,11 @@
       "description": "View Zejun's resume.",
       "date": "Page",
       "pageId": "resume",
-      "keywords": "Resume CV experience education projects Zejun Li University of Michigan UX design"
+      "keywords": "Resume CV experience education projects Zejun Li University of Michigan UX design",
+      "caseStudySuggestion": {
+        "description": "View Zejun's resume",
+        "keywords": "resume cv experience education"
+      }
     },
     {
       "type": "page",

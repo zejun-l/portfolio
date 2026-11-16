@@ -1,3 +1,29 @@
+.resume-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.resume-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 24px;
+    background: var(--drive-blue);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.resume-action:hover { filter: brightness(.9); }
+.resume-action:focus-visible { outline: 2px solid var(--drive-blue-focus); outline-offset: 3px; }
+body.dark-mode .resume-action { background: var(--drive-blue-dark); color: #121212; }
+
 * {
             margin: 0;
             padding: 0;
@@ -40,35 +66,9 @@
             position: relative;
         }
 
-        /* Final dark-mode contrast safeguards shared by the portfolio shell. */
-        body.dark-mode .nav-item.active {
-            background-color: #174ea6;
-            color: #ffffff;
-        }
-
-        body.dark-mode .nav-item.active .nav-icon,
-        body.dark-mode .nav-item.active .nav-icon .material-symbols-outlined {
-            color: #ffffff;
-        }
-
-        body.dark-mode .project-tag {
-            background-color: #303134;
-            color: #e8eaed;
-        }
-
         body.dark-mode .project-tag.tag-uxd,
         body.dark-mode .project-tag.tag-uiux {
             background-color: #174ea6;
-            color: #ffffff;
-        }
-
-        body.dark-mode .project-tag.tag-uxr {
-            background-color: #1b5e20;
-            color: #ffffff;
-        }
-
-        body.dark-mode .project-tag.tag-article {
-            background-color: #a63c00;
             color: #ffffff;
         }
 
@@ -378,10 +378,6 @@
         body.dark-mode .social-icon:hover {
             color: #ffffff;
             background-color: transparent;
-        }
-
-        .top-bar-actions a:nth-child(3) {
-            margin-right: 24px;
         }
 
         /* Dark Mode Styles */
@@ -1220,10 +1216,6 @@
             color: #202124;
         }
 
-        body.dark-mode .search-icon {
-            color: #bdc1c6;
-        }
-
         body.dark-mode .search-bar:focus-within .search-icon {
             color: #e8eaed;
         }
@@ -1951,10 +1943,6 @@
         .top-bar-actions .social-icon,
         .top-bar-actions .theme-toggle {
             padding: 8px;
-        }
-
-        .top-bar-actions .avatar {
-            padding: 4px;
         }
 
         @media (max-width: 900px) {
